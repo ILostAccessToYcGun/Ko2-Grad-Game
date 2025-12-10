@@ -55,8 +55,8 @@ public class EnemyBase : MonoBehaviour, IDamage
         {
             if (ATKTimer > 0f) return;
             IDamage dmg = player.GetComponent<IDamage>();
-            //dmg.TakeDamage(ATK);
-            TakeDamage(ATK);
+            dmg.TakeDamage(ATK);
+            //TakeDamage(ATK);
             StartCoroutine(Cooldown());
         }
     }

@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = originalTimeScale;
         GameManager.instance.gameState = GameManager.States.Playing;
         UIManager.instance.TogglePause();
+        UIManager.instance.ToggleHUD();
+
     }
 
     public void Play()
@@ -60,5 +62,8 @@ public class GameManager : MonoBehaviour
         playerStats.ResetStats();
         TimeManager.instance.ResetDifficulty();
         TimeManager.instance.ResetTimers();
+        GameManager.instance.playerMovement.ResetPosition();
+        GameManager.instance.playerStats.ResetStats();
+        EnemyManager.instance.CleanUpEnemies();
     }
 }

@@ -15,7 +15,8 @@ public class PlayerStats : MonoBehaviour, IDamage
     //The actual stats we will use for damage and calculations
     [Space]
     [Header("Stats")]
-    public float HP;
+    public float maxHP;
+    public float currentHP;
     public float ATK;
     public float SPD;
     public float ATKSPD; //only affects main weapon
@@ -35,7 +36,8 @@ public class PlayerStats : MonoBehaviour, IDamage
 
     public void ResetStats()
     {
-        HP = baseHP;
+        maxHP = baseHP;
+        currentHP = maxHP;
         ATK = baseATK;
         SPD = baseSPD;
         ATKSPD = baseATKSPD;
@@ -45,6 +47,8 @@ public class PlayerStats : MonoBehaviour, IDamage
         Level = 1;
         EXPForLevel = baseLevelExp;
         magnetRange = baseMagnetRange;
+        UIManager.instance.UpdateHPBar(currentHP, maxHP);
+        UIManager.instance.UpdateEXPBar(EXP, EXPForLevel);
 
         //temp
         EXPCrystal[] EXPs = FindObjectsByType<EXPCrystal>(FindObjectsSortMode.None);
@@ -59,6 +63,7 @@ public class PlayerStats : MonoBehaviour, IDamage
     {
         Debug.Log(" + " + amount * XPG + " EXP!");
         EXP += amount * XPG;
+        UIManager.instance.UpdateEXPBar(EXP, EXPForLevel);
         if (EXP >= EXPForLevel) LevelUp();
     }
 
@@ -67,15 +72,17 @@ public class PlayerStats : MonoBehaviour, IDamage
         Level++;
         EXP -= EXPForLevel;
         EXPForLevel = baseLevelExp * Mathf.Pow(1.2f, Level - 1);
+        UIManager.instance.UpdateEXPBar(EXP, EXPForLevel);
         if (EXP >= EXPForLevel) LevelUp();
         //will need an interrupt here for upgrade UI
     }
 
     public void TakeDamage(float damage)
     {
-        HP -= damage;
+        currentHP -= damage;
+        UIManager.instance.UpdateHPBar(currentHP, maxHP);
 
-        if (HP <= 0)
+        if (maxHP <= 0)
         {
             GameManager.instance.Lose();
         }

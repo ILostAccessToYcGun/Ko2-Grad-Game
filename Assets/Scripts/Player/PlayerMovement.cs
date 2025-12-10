@@ -35,4 +35,10 @@ public class PlayerMovement : MonoBehaviour
         moveDir = movement.ReadValue<Vector2>().normalized * Time.deltaTime * player.SPD;
         transform.position += (Vector3)moveDir;
     }
+
+    public void ResetPosition()
+    {
+        moveDir = Vector3.zero;
+        transform.position = Vector3.zero;
+    }
 }

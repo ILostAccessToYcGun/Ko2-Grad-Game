@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -7,6 +8,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject Upgrade;
     [SerializeField] GameObject Win;
     [SerializeField] GameObject Lose;
+    [SerializeField] GameObject HUD;
+
+    [SerializeField] Image HPBar;
+    [SerializeField] Image EXPBar;
 
     public static UIManager instance;
     private void Awake()
@@ -36,12 +41,27 @@ public class UIManager : MonoBehaviour
     {
         if (Lose != null) Lose.SetActive(!Lose.activeSelf);
     }
+    public void ToggleHUD()
+    {
+        if (HUD != null) HUD.SetActive(!HUD.activeSelf);
+    }
+
+    public void UpdateHPBar(float value, float max)
+    {
+        HPBar.fillAmount = value / max;
+    }
+
+    public void UpdateEXPBar(float value, float max)
+    {
+        EXPBar.fillAmount = value / max;
+    }
 
     public void Play()
     {
         Debug.Log("Choose ur weapon now");
         //below is temp i think
         ToggleMainMenu();
+        ToggleHUD();
         GameManager.instance.Play();
     }
 

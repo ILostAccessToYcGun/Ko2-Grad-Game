@@ -57,7 +57,14 @@ public class EnemyManager : MonoBehaviour
         spawnCD = baseSpawnTimer * Mathf.Pow(0.75f, difficulty);
     }
 
-    
+    public void CleanUpEnemies()
+    {
+        EnemyBase[] enemyes = FindObjectsByType<EnemyBase>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (EnemyBase enemeh in enemyes)
+        {
+            Destroy(enemeh.gameObject);
+        }
+    }
 
     
 }
