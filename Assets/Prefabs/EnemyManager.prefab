@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalEnemyPool:
-  - {fileID: 0}
+  - {fileID: 2719321541515030722, guid: f0ce25f8dd0de204eaea8b6e036e6df3, type: 3}
   CurrentEnemyPool:
-  - {fileID: 0}
+  - {fileID: 2719321541515030722, guid: f0ce25f8dd0de204eaea8b6e036e6df3, type: 3}
+  EXPCrystal: {fileID: 3929528921131327485, guid: 95d263614ef327d48b0273dfcf878f1b, type: 3}
   spawnCD: 2
   baseSpawnTimer: 2
   spawnRange: {x: 25, y: 30}

@@ -7,6 +7,7 @@ public class EnemyBase : MonoBehaviour, IDamage
     [SerializeField] int baseHP = 4;
     [SerializeField] int baseATK = 1;
     [SerializeField] float baseSPD = 1.0f;
+    [SerializeField] float baseEXP = 5.0f;
 
     [SerializeField] float ATKCD = 1.00f;
     float ATKTimer = 0f;
@@ -19,6 +20,7 @@ public class EnemyBase : MonoBehaviour, IDamage
     public float HP;
     public float ATK;
     public float SPD;
+    public float EXP;
 
     public PlayerMovement player;
     public void TakeDamage(float damage)
@@ -27,9 +29,9 @@ public class EnemyBase : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            Debug.Log("YOU DED");
-            Debug.Log("DROP EXP");
             EnemyManager.instance.enemyCount--;
+            EXPCrystal exp = Instantiate(EnemyManager.instance.EXPCrystal, transform.position, Quaternion.identity).GetComponent<EXPCrystal>();
+            exp.EXP = EXP;
             Destroy(gameObject);
         }
     }
@@ -39,9 +41,11 @@ public class EnemyBase : MonoBehaviour, IDamage
     {
         player = GameManager.instance.playerMovement;
         EnemyManager.instance.enemyCount++;
-        HP = baseHP;
-        ATK = baseATK;
-        SPD = baseSPD;
+        float mult = TimeManager.instance.difficultyModifier;
+        HP = baseHP * mult;
+        ATK = baseATK * mult;
+        SPD = baseSPD * mult;
+        EXP = baseEXP * TimeManager.instance.expModifier;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -51,7 +55,8 @@ public class EnemyBase : MonoBehaviour, IDamage
         {
             if (ATKTimer > 0f) return;
             IDamage dmg = player.GetComponent<IDamage>();
-            dmg.TakeDamage(ATK);
+            //dmg.TakeDamage(ATK);
+            TakeDamage(ATK);
             StartCoroutine(Cooldown());
         }
     }

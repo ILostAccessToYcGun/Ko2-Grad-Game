@@ -8,7 +8,9 @@ public class PlayerStats : MonoBehaviour, IDamage
     [SerializeField] float baseSPD = 3.0f;
     [SerializeField] float baseATKSPD = 10.0f; //only affects main weapon
     [SerializeField] int basePRJ = 1; //projectile count
-    [SerializeField] float baseXP = 1.0f; //xp gain
+    [SerializeField] float baseXPG = 1.0f; //xp gain
+    [SerializeField] float baseLevelExp = 25.0f; 
+    [SerializeField] float baseMagnetRange = 2.5f; 
 
     //The actual stats we will use for damage and calculations
     [Space]
@@ -18,7 +20,13 @@ public class PlayerStats : MonoBehaviour, IDamage
     public float SPD;
     public float ATKSPD; //only affects main weapon
     public int PRJ; //projectile count
-    public float XP; //xp gain
+    public float XPG; //xp gain
+
+    public float EXPForLevel;
+    public float magnetRange; //xp suck
+    [Space]
+    public float EXP;
+    public int Level;
 
     private void Start()
     {
@@ -32,7 +40,35 @@ public class PlayerStats : MonoBehaviour, IDamage
         SPD = baseSPD;
         ATKSPD = baseATKSPD;
         PRJ = basePRJ;
-        XP = baseXP;
+        XPG = baseXPG;
+        EXP = 0.0f;
+        Level = 1;
+        EXPForLevel = baseLevelExp;
+        magnetRange = baseMagnetRange;
+
+        //temp
+        EXPCrystal[] EXPs = FindObjectsByType<EXPCrystal>(FindObjectsSortMode.None);
+
+        foreach (EXPCrystal exp in EXPs)
+        {
+            exp.UpdateRange();
+        }
+    }
+
+    public void GainEXP(float amount)
+    {
+        Debug.Log(" + " + amount * XPG + " EXP!");
+        EXP += amount * XPG;
+        if (EXP >= EXPForLevel) LevelUp();
+    }
+
+    public void LevelUp()
+    {
+        Level++;
+        EXP -= EXPForLevel;
+        EXPForLevel = baseLevelExp * Mathf.Pow(1.2f, Level - 1);
+        if (EXP >= EXPForLevel) LevelUp();
+        //will need an interrupt here for upgrade UI
     }
 
     public void TakeDamage(float damage)
@@ -41,8 +77,7 @@ public class PlayerStats : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            Debug.Log("YOU DED");
-            GameManager.instance.gameState = GameManager.States.Loss;
+            GameManager.instance.Lose();
         }
     }
 }

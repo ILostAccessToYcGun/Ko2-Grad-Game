@@ -7,6 +7,7 @@ public class TimeManager : MonoBehaviour
     public float secondTimer;
     public int difficulty = 0;
     public float difficultyModifier = 1.0f;
+    public float expModifier = 1.0f;
     public int seconds;
     public int minutes;
 
@@ -21,6 +22,8 @@ public class TimeManager : MonoBehaviour
         //Timer Incrementing
         elapsedTime += Time.deltaTime;
         secondTimer += Time.deltaTime;
+
+        if (elapsedTime >= 900.0f) GameManager.instance.Win();
 
         //Timer Values for UI & scaling
         if (secondTimer >= 1.0f)
@@ -40,10 +43,26 @@ public class TimeManager : MonoBehaviour
     {
         difficulty++;
         difficultyModifier *= 1.1f;
+        expModifier *= 1.05f;
         // increase difficulty multipliticately by 10%
         //e.g 1.0f, 1.1f, 1.21, 1.331, 1.464, 1.611
 
         //the modifier will mainly be used for enemy stats, where the integer will be used for spawn rate
         EnemyManager.instance.SetSpawnCD(difficulty);
+    }
+
+    public void ResetDifficulty()
+    {
+        difficulty = 0;
+        difficultyModifier = 1.0f;
+        expModifier = 1.0f;
+    }
+
+    public void ResetTimers()
+    {
+        elapsedTime = 0;
+        secondTimer = 0;
+        seconds = 0;
+        minutes = 0;
     }
 }

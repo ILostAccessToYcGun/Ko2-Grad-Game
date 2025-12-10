@@ -10,6 +10,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] List<GameObject> TotalEnemyPool;
     [SerializeField] List<GameObject> CurrentEnemyPool;
 
+    public GameObject EXPCrystal;
+
     [SerializeField] float spawnCD;
     float spawnTimer;
     public float baseSpawnTimer; //does not include difficulty scaling
@@ -52,11 +54,10 @@ public class EnemyManager : MonoBehaviour
     public void SetSpawnCD(int difficulty)
     {
         Debug.Log("Setting new spawn cooldown");
-        float newCD = baseSpawnTimer;
-        for (int i = 0; i < difficulty; i++)
-        {
-            newCD *= 0.75f;
-        }
-        spawnCD = newCD;
+        spawnCD = baseSpawnTimer * Mathf.Pow(0.75f, difficulty);
     }
+
+    
+
+    
 }

@@ -2,34 +2,78 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] GameObject MainMenu;
+    [SerializeField] GameObject Pause;
+    [SerializeField] GameObject Upgrade;
+    [SerializeField] GameObject Win;
+    [SerializeField] GameObject Lose;
+
+    public static UIManager instance;
+    private void Awake()
     {
-        
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ToggleMainMenu()
     {
-        
+        if (MainMenu != null) MainMenu.SetActive(!MainMenu.activeSelf);
     }
 
-    void Play()
+    public void TogglePause()
+    {
+        if (Pause != null) Pause.SetActive(!Pause.activeSelf);
+    }
+
+    public void ToggleUpgrade()
+    {
+        if (Upgrade != null) Upgrade.SetActive(!Upgrade.activeSelf);
+    }
+    public void ToggleWin()
+    {
+        if (Win != null) Win.SetActive(!Win.activeSelf);
+    }
+    public void ToggleLose()
+    {
+        if (Lose != null) Lose.SetActive(!Lose.activeSelf);
+    }
+
+    public void Play()
     {
         Debug.Log("Choose ur weapon now");
+        //below is temp i think
+        ToggleMainMenu();
+        GameManager.instance.Play();
     }
 
-    void Extras()
+    public void Extras()
     {
-        Debug.Log("Choose ur weapon now");
+        Debug.Log("gj on graduating med school frfr");
     }
 
-    void Quit()
+    public void Quit()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+    }
+
+    public void ReturnFromLose()
+    {
+        Debug.Log("ur done now bro");
+        //below is temp i think
+        ToggleMainMenu();
+        ToggleLose();
+        GameManager.instance.Pause();
+    }
+
+    public void ReturnFromWin()
+    {
+        Debug.Log("ur done now bro");
+        //below is temp i think
+        ToggleMainMenu();
+        ToggleWin();
+        GameManager.instance.Pause();
     }
 }
