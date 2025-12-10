@@ -1,0 +1,69 @@
+using System.Collections;
+using UnityEngine;
+
+public class EnemyBase : MonoBehaviour, IDamage
+{
+    [Header("Base Stats")]
+    [SerializeField] int baseHP = 4;
+    [SerializeField] int baseATK = 1;
+    [SerializeField] float baseSPD = 1.0f;
+
+    [SerializeField] float ATKCD = 1.00f;
+    float ATKTimer = 0f;
+
+    
+
+    //The actual stats we will use for damage and calculations
+    [Space]
+    [Header("Stats")]
+    public float HP;
+    public float ATK;
+    public float SPD;
+
+    public PlayerMovement player;
+    public void TakeDamage(float damage)
+    {
+        HP -= damage;
+
+        if (HP <= 0)
+        {
+            Debug.Log("YOU DED");
+            Debug.Log("DROP EXP");
+            EnemyManager.instance.enemyCount--;
+            Destroy(gameObject);
+        }
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        player = GameManager.instance.playerMovement;
+        EnemyManager.instance.enemyCount++;
+        HP = baseHP;
+        ATK = baseATK;
+        SPD = baseSPD;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        PlayerStats player = collision.GetComponent<PlayerStats>();
+        if (player != null)
+        {
+            if (ATKTimer > 0f) return;
+            IDamage dmg = player.GetComponent<IDamage>();
+            dmg.TakeDamage(ATK);
+            StartCoroutine(Cooldown());
+        }
+    }
+
+    IEnumerator Cooldown()
+    {
+        ATKTimer = ATKCD;
+        while(ATKTimer > 0)
+        {
+            ATKTimer -= Time.deltaTime;
+            yield return null;
+        }
+        yield return null;
+    }
+}

@@ -1,0 +1,62 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+
+
+public class EnemyManager : MonoBehaviour
+{
+    public static EnemyManager instance;
+
+    [SerializeField] List<GameObject> TotalEnemyPool;
+    [SerializeField] List<GameObject> CurrentEnemyPool;
+
+    [SerializeField] float spawnCD;
+    float spawnTimer;
+    public float baseSpawnTimer; //does not include difficulty scaling
+
+    public Vector2 spawnRange;
+    public int maxEnemies = 1000;
+    public int enemyCount = 0;
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    private void Update()
+    {
+        //bascially what we're going to do, we're going to spawn enemies outisde the range of teh camera and plus some
+        //we are also goign to have an adjustable spawn rate
+
+        if (enemyCount > maxEnemies) return;
+
+        spawnTimer -= Time.deltaTime;
+        if (spawnTimer <= 0)
+        {
+            spawnTimer = spawnCD;
+            //Spawn an enemy outside of the player's range
+
+            for (int i = 0; i < 50; i++)
+            {
+                Vector2 pos = Random.insideUnitCircle * spawnRange.y;
+
+                if (pos.magnitude > spawnRange.x) //valid spawn
+                {
+                    int rand = Random.Range(0, CurrentEnemyPool.Count);
+                    Instantiate(CurrentEnemyPool[rand], GameManager.instance.playerMovement.transform.position + new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void SetSpawnCD(int difficulty)
+    {
+        Debug.Log("Setting new spawn cooldown");
+        float newCD = baseSpawnTimer;
+        for (int i = 0; i < difficulty; i++)
+        {
+            newCD *= 0.75f;
+        }
+        spawnCD = newCD;
+    }
+}
