@@ -6,5 +6,6 @@ public class BasicEnemy : EnemyBase
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, SPD * Time.deltaTime);
+        FacePlayer();
     }
 }

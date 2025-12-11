@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public PlayerMovement playerMovement;
     public PlayerStats playerStats;
+    public CameraTween cam;
 
     public enum States { Playing, Paused, Win, Loss}
     public States gameState = States.Playing;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
         originalTimeScale = Time.timeScale;
         if (!playerMovement) playerMovement = FindFirstObjectByType<PlayerMovement>();
         if (!playerStats) playerStats = FindFirstObjectByType<PlayerStats>();
+        if (!cam) cam = FindFirstObjectByType<CameraTween>();
         Time.timeScale = 0;
         GameManager.instance.gameState = GameManager.States.Paused;
     }

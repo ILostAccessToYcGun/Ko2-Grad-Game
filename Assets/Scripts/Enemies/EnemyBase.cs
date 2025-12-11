@@ -23,6 +23,8 @@ public class EnemyBase : MonoBehaviour, IDamage
     public float EXP;
 
     public PlayerMovement player;
+
+    SpriteRenderer sprite;
     public void TakeDamage(float damage)
     {
         HP -= damage;
@@ -46,6 +48,7 @@ public class EnemyBase : MonoBehaviour, IDamage
         ATK = baseATK * mult;
         SPD = baseSPD * mult;
         EXP = baseEXP * TimeManager.instance.expModifier;
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -70,5 +73,14 @@ public class EnemyBase : MonoBehaviour, IDamage
             yield return null;
         }
         yield return null;
+    }
+
+    protected void FacePlayer()
+    {
+        if (player.transform.position.x < transform.position.x && !sprite.flipX ||
+            player.transform.position.x > transform.position.x && sprite.flipX)
+        {
+            sprite.flipX = !sprite.flipX;
+        }
     }
 }

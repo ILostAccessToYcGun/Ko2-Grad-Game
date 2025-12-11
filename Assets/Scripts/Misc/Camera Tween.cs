@@ -10,6 +10,7 @@ public class CameraTween : MonoBehaviour
     public float tweenSpeed = 0.1f;
     [Space]
     public Vector2 mousePos;
+    public Vector2 screenToWorld;
     public InputAction mouse;
     float startOffset;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,7 +37,7 @@ public class CameraTween : MonoBehaviour
         //Debug.Log("huh");
         mouse.performed += MousePos;
 
-        Vector3 screenToWorld = Camera.main.ScreenToWorldPoint(mousePos);
+        screenToWorld = Camera.main.ScreenToWorldPoint(mousePos);
         Vector3 zRemove = Vector3.Lerp(player.transform.position, screenToWorld, followRatio);
         Vector3 currentPos = cam.transform.position;
         Vector3 targetPos = new Vector3(zRemove.x, zRemove.y, startOffset);

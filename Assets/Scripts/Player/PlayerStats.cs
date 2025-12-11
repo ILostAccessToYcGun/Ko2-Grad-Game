@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour, IDamage
     [SerializeField] int baseHP = 100;
     [SerializeField] int baseATK = 5;
     [SerializeField] float baseSPD = 3.0f;
-    [SerializeField] float baseATKSPD = 10.0f; //only affects main weapon
+    [SerializeField] float baseATKSPD = 1.0f; //only affects main weapon
     [SerializeField] int basePRJ = 1; //projectile count
     [SerializeField] float baseXPG = 1.0f; //xp gain
     [SerializeField] float baseLevelExp = 25.0f; 
