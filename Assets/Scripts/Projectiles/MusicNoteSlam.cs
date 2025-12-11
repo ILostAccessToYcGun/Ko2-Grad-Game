@@ -25,12 +25,5 @@ public class MusicNoteSlam : MonoBehaviour
         Destroy(transform.parent.gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        IDamage dmg = collision.gameObject.GetComponent<IDamage>();
-        if (dmg != null)
-        {
-            dmg.TakeDamage(damage);
-        }
-    }
+    
 }

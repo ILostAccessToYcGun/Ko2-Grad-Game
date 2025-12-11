@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Jobs;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -42,7 +43,7 @@ public class UnfinishedInstrument : WeaponBase
                     for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
                     {
                         MusicNoteProjectile note =
-                            Instantiate(m1Projectile, playerMovement.transform.position, Quaternion.identity)
+                            Instantiate(m1Projectile, transform.position, Quaternion.identity)
                             .GetComponent<MusicNoteProjectile>();
 
                         if (isFlippedSide)
@@ -69,7 +70,7 @@ public class UnfinishedInstrument : WeaponBase
                     for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
                     {
                         MusicNoteProjectile note =
-                            Instantiate(m1Projectile, playerMovement.transform.position, Quaternion.identity)
+                            Instantiate(m1Projectile, transform.position, Quaternion.identity)
                             .GetComponent<MusicNoteProjectile>();
 
                         if (i == 0)
@@ -104,12 +105,7 @@ public class UnfinishedInstrument : WeaponBase
                 //M2 attack
                 Vector2 forwardVector = (GameManager.instance.cam.screenToWorld - (Vector2)playerMovement.transform.position).normalized;
 
-                MusicNoteSlam note =
-                            Instantiate(m2Projectile, GameManager.instance.cam.screenToWorld, Quaternion.identity)
-                            .GetComponentInChildren<MusicNoteSlam>();
-
-                note.damage = GameManager.instance.playerStats.ATK * m2DmgMult;
-
+                StartCoroutine(SlamAttack(GameManager.instance.cam.screenToWorld, forwardVector));
                 attackTimer = m2CD;
             }
         }
@@ -129,5 +125,29 @@ public class UnfinishedInstrument : WeaponBase
             v.x * cos - v.y * sin,
             v.x * sin + v.y * cos
         );
+    }
+
+    IEnumerator SlamAttack(Vector2 pos, Vector2 forward)
+    {
+        float timer = 0.2f;
+        
+        for ( int i = 0; i < GameManager.instance.playerStats.PRJ; i++ )
+        {
+            MusicNoteSlam note =
+                            Instantiate(m2Projectile, pos, Quaternion.identity)
+                            .GetComponentInChildren<MusicNoteSlam>();
+
+            note.damage = GameManager.instance.playerStats.ATK * m2DmgMult;
+            note.moveDir = forward;
+
+            timer = 0.1f;
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                yield return null;
+            }
+            yield return null;
+        }
+        yield return null;
     }
 }
