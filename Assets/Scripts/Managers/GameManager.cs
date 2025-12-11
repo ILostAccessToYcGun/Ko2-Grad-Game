@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
         originalTimeScale = Time.timeScale;
         if (!playerMovement) playerMovement = FindFirstObjectByType<PlayerMovement>();
         if (!playerStats) playerStats = FindFirstObjectByType<PlayerStats>();
-        Pause();
+        Time.timeScale = 0;
+        GameManager.instance.gameState = GameManager.States.Paused;
     }
 
     // Update is called once per frame
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
         GameManager.instance.gameState = GameManager.States.Loss;
         Time.timeScale = 0;
         UIManager.instance.ToggleLose();
+        UIManager.instance.ToggleHUD();
     }
 
     public void Win()
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
         GameManager.instance.gameState = GameManager.States.Win;
         Time.timeScale = 0;
         UIManager.instance.ToggleWin();
+        UIManager.instance.ToggleHUD();
     }
 
     public void Pause()

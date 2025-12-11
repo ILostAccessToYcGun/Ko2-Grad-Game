@@ -82,7 +82,7 @@ public class PlayerStats : MonoBehaviour, IDamage
         currentHP -= damage;
         UIManager.instance.UpdateHPBar(currentHP, maxHP);
 
-        if (maxHP <= 0)
+        if (currentHP <= 0)
         {
             GameManager.instance.Lose();
         }
