@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7399340266873698265}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.41, y: 1.03, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -81,6 +81,7 @@ MonoBehaviour:
     m_Flags: 0
   playerStats: {fileID: 0}
   playerMovement: {fileID: 0}
+  weaponSprite: {fileID: 8152509121013999946, guid: 44b54af284a0e7848bf5c9678b986bb2, type: 3}
   attackTimer: 0
   m1CD: 1
   m2CD: 1

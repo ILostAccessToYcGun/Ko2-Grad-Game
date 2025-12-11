@@ -28,6 +28,8 @@ public class PlayerStats : MonoBehaviour, IDamage
     [Space]
     public float EXP;
     public int Level;
+    [Space]
+    public GameObject currentWeapon;
 
     private void Start()
     {
@@ -86,5 +88,11 @@ public class PlayerStats : MonoBehaviour, IDamage
         {
             GameManager.instance.Lose();
         }
+    }
+
+    public void SetCurrentWeapon(GameObject newWeapon)
+    {
+        if (currentWeapon != null) Destroy(currentWeapon);
+        currentWeapon = Instantiate(newWeapon, GameManager.instance.weaponHolder.holder.gameObject.transform);
     }
 }

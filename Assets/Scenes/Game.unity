@@ -119,16 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &179169555 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4729407032367584057, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
-  m_PrefabInstance: {fileID: 8379118098803406969}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &431716984 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4465126979058382565, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-  m_PrefabInstance: {fileID: 9184565755409546347}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &499238771
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,6 +852,10 @@ PrefabInstance:
       propertyPath: baseMagnetRange
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3645039578937009557, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
+      propertyPath: test
+      value: 
+      objectReference: {fileID: 7399340266873698265, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
     - target: {fileID: 5692192589590910309, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
       propertyPath: holdDistance
       value: 1.5
@@ -916,69 +910,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4729407032367584057, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 431716984}
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
---- !u!1001 &9184565755409546347
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 179169555}
-    m_Modifications:
-    - target: {fileID: 4465126979058382565, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4465126979058382565, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4465126979058382565, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4465126979058382565, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4465126979058382565, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4465126979058382565, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4465126979058382565, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4465126979058382565, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4465126979058382565, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4465126979058382565, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7399340266873698265, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
-      propertyPath: m_Name
-      value: UnfinishedInstrument
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c01112b91aa256f4d9364756e7d780dd, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

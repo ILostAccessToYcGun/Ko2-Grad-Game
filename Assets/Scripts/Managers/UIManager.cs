@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Image HPBar;
     [SerializeField] Image EXPBar;
+    [SerializeField] Image WeaponSlot;
 
     public static UIManager instance;
     private void Awake()
@@ -54,6 +55,11 @@ public class UIManager : MonoBehaviour
     public void UpdateEXPBar(float value, float max)
     {
         EXPBar.fillAmount = value / max;
+    }
+
+    public void UpdateWeaponSlot(Sprite sprite)
+    {
+        WeaponSlot.sprite = sprite;
     }
 
     public void Play()

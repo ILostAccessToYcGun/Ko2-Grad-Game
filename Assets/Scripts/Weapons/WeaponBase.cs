@@ -7,6 +7,7 @@ public class WeaponBase : MonoBehaviour
     public InputAction m2;
     public PlayerStats playerStats;
     public PlayerMovement playerMovement;
+    public Sprite weaponSprite;
 
     public float attackTimer;
     public float m1CD;

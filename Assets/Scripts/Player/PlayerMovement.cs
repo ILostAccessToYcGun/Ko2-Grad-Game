@@ -12,9 +12,12 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 moveDir;
     //public InputAction mousePos;
 
+    public GameObject test;
+
     private void Start()
     {
         player = GameManager.instance.playerStats;
+        GameManager.instance.playerStats.SetCurrentWeapon(test);
     }
 
     private void OnEnable()
