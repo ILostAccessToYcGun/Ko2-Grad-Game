@@ -1,17 +1,18 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.U2D;
 
 public class UnforgedWeapon : WeaponBase
 {
     [SerializeField] GameObject m1Projectile;
     [SerializeField] GameObject m2Projectile;
     [Header("Mouse 1")]
-    //[SerializeField] float m1DmgMult = 1.0f;
-    //[SerializeField] float startSpeed;
-    //[SerializeField] float deceleration;
-    //[SerializeField] float m1Knockback;
-    //[SerializeField] float duration;
-    //[SerializeField] float angleSpread = 30.0f;
+    [SerializeField] SpriteRenderer sprite;
+    [SerializeField] float m1DmgMult = 1.0f;
+    [SerializeField] float m1Knockback;
+    bool isSwingRight;
+
 
 
     [Header("Mouse 2")]
@@ -38,7 +39,9 @@ public class UnforgedWeapon : WeaponBase
             if (m1.ReadValue<float>() > 0.0f)
             {
                 //M1 attack
-                
+                StartCoroutine(SwingAttack(forwardVector));
+                attackTimer = m1CD;
+
             }
 
             else if (m2.ReadValue<float>() > 0.0f)
@@ -88,11 +91,13 @@ public class UnforgedWeapon : WeaponBase
                     for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
                     {
                         SpinSwordProjectile boom =
-                            Instantiate(m1Projectile, transform.position, Quaternion.identity)
+                            Instantiate(m2Projectile, transform.position, Quaternion.identity)
                             .GetComponent<SpinSwordProjectile>();
 
+                        //Debug.Log(boom);
                         if (i == 0)
                         {
+                            
                             boom.moveDir = forwardVector;
                         }
                         else
@@ -121,5 +126,41 @@ public class UnforgedWeapon : WeaponBase
                 }
             }
         }
+    }
+
+    IEnumerator SwingAttack(Vector2 forward)
+    {
+        sprite.enabled = false;
+        isSwingRight = !isSwingRight;
+        float timer = 0.1f;
+
+        for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
+        {
+            SwordSwing swing =
+                    Instantiate(m1Projectile, transform.position, Quaternion.identity, transform)
+                    .GetComponentInChildren<SwordSwing>();
+
+            HelperManager.instance.RotateTowardsDirection((GameManager.instance.cam.screenToWorld - (Vector2)GameManager.instance.playerMovement.transform.position).normalized, swing.transform.parent);
+            swing.damage = GameManager.instance.playerStats.ATK * m1DmgMult;
+            swing.knockback = m1Knockback;
+            //swing.moveDir = forward;
+
+            if (isSwingRight) swing.swingAnimation.clip = swing.right;
+            else swing.swingAnimation.clip = swing.left;
+            swing.swingAnimation.Play();
+
+            
+
+            timer = 0.1f;
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                yield return null;
+            }
+            yield return null;
+        }
+        this.transform.rotation = Quaternion.identity;
+        sprite.enabled = true;
+        yield return null;
     }
 }

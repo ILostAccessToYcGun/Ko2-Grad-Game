@@ -106,7 +106,6 @@ public class UnfinishedInstrument : WeaponBase
             else if (m2.ReadValue<float>() > 0.0f)
             {
                 //M2 attack
-                //do a cart wheeltowards the mouse
                 StartCoroutine(SlamAttack(GameManager.instance.cam.screenToWorld, forwardVector));
                 attackTimer = m2CD;
             }

@@ -172,8 +172,11 @@ MonoBehaviour:
   attackTimer: 0
   m1CD: 1
   m2CD: 1
-  m1Projectile: {fileID: 0}
+  m1Projectile: {fileID: 3156992977344946001, guid: e1a3f7e463b29b446a4ec112626b22d4, type: 3}
   m2Projectile: {fileID: 810445123565128199, guid: 50c5768bf54197f42863068eea18d31d, type: 3}
+  sprite: {fileID: 6406215831344497221}
+  m1DmgMult: 3
+  m1Knockback: 0.2
   m2DmgMult: 1
   m2Knockback: 0.5
   speed: 8
