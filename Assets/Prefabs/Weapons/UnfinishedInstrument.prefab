@@ -27,8 +27,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7250597198899066423}
   m_Father: {fileID: 0}
@@ -84,7 +84,7 @@ MonoBehaviour:
   weaponSprite: {fileID: 8152509121013999946, guid: 44b54af284a0e7848bf5c9678b986bb2, type: 3}
   attackTimer: 0
   m1CD: 1
-  m2CD: 1
+  m2CD: 2
   m1Projectile: {fileID: 125990100077451070, guid: c7b0f109170570347955830935928817, type: 3}
   m2Projectile: {fileID: 3281700788182517059, guid: 7833323a4f02d67428b57288ad2cde4d, type: 3}
   m1DmgMult: 1

@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [Space]
     [Header("Components")]
     PlayerStats player;
+    public bool canMove;
     [Header("Debug")]
     public Vector2 moveDir;
     //public InputAction mousePos;
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove) return;
         moveDir = movement.ReadValue<Vector2>().normalized * Time.deltaTime * player.SPD;
         transform.position += (Vector3)moveDir;
     }

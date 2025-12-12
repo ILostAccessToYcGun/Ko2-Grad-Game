@@ -28,18 +28,21 @@ public class UnfinishedInstrument : WeaponBase
         else
         {
             if (GameManager.instance.gameState != GameManager.States.Playing) return;
+            Vector2 forwardVector = (GameManager.instance.cam.screenToWorld - (Vector2)playerMovement.transform.position).normalized;
             if (m1.ReadValue<float>() > 0.0f)
             {
                 //M1 attack
-                Vector2 forwardVector = (GameManager.instance.cam.screenToWorld - (Vector2)playerMovement.transform.position).normalized;
                 bool isFlippedSide = false;
                 bool isEven = GameManager.instance.playerStats.PRJ % 2 == 0 ? true : false;
                 int flipCounter = 0;
                 float currentSpread = 0.0f;
+                float angle = angleSpread;
+
+                angle = angle / (GameManager.instance.playerStats.PRJ * 0.25f);
 
                 if (isEven)
                 {
-                    currentSpread += angleSpread * 0.5f;
+                    currentSpread += angle * 0.5f;
                     for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
                     {
                         MusicNoteProjectile note =
@@ -47,9 +50,9 @@ public class UnfinishedInstrument : WeaponBase
                             .GetComponent<MusicNoteProjectile>();
 
                         if (isFlippedSide)
-                            note.moveDir = RotateVector2(forwardVector, -currentSpread);
+                            note.moveDir = HelperManager.instance.RotateVector2(forwardVector, -currentSpread);
                         else
-                            note.moveDir = RotateVector2(forwardVector, currentSpread);
+                            note.moveDir = HelperManager.instance.RotateVector2(forwardVector, currentSpread);
 
                         note.damage = GameManager.instance.playerStats.ATK * m1DmgMult;
                         note.speed = bulletSpeed;
@@ -61,7 +64,7 @@ public class UnfinishedInstrument : WeaponBase
 
                         isFlippedSide = !isFlippedSide;
                         flipCounter++;
-                        if (flipCounter >= 2) currentSpread += angleSpread;
+                        if (flipCounter >= 2) currentSpread += angle;
                     }
                 }
                 else
@@ -80,9 +83,9 @@ public class UnfinishedInstrument : WeaponBase
                         else
                         {
                             if (isFlippedSide)
-                                note.moveDir = RotateVector2(forwardVector, -currentSpread);
+                                note.moveDir = HelperManager.instance.RotateVector2(forwardVector, -currentSpread);
                             else
-                                note.moveDir = RotateVector2(forwardVector, currentSpread);
+                                note.moveDir = HelperManager.instance.RotateVector2(forwardVector, currentSpread);
                         }
 
                         note.damage = GameManager.instance.playerStats.ATK * m1DmgMult;
@@ -95,7 +98,7 @@ public class UnfinishedInstrument : WeaponBase
 
                         isFlippedSide = !isFlippedSide;
                         flipCounter++;
-                        if (flipCounter >= 2) currentSpread += angleSpread;
+                        if (flipCounter >= 2) currentSpread += angle;
                     }
                 }
             }
@@ -103,29 +106,13 @@ public class UnfinishedInstrument : WeaponBase
             else if (m2.ReadValue<float>() > 0.0f)
             {
                 //M2 attack
-                Vector2 forwardVector = (GameManager.instance.cam.screenToWorld - (Vector2)playerMovement.transform.position).normalized;
-
+                //do a cart wheeltowards the mouse
                 StartCoroutine(SlamAttack(GameManager.instance.cam.screenToWorld, forwardVector));
                 attackTimer = m2CD;
             }
         }
     }
 
-
-    public Vector2 RotateVector2(Vector2 v, float degrees)
-    {
-        float radians = degrees * Mathf.Deg2Rad; // Convert degrees to radians
-        float cos = Mathf.Cos(radians);
-        float sin = Mathf.Sin(radians);
-
-        // Apply rotation matrix:
-        // newX = x * cos - y * sin
-        // newY = x * sin + y * cos
-        return new Vector2(
-            v.x * cos - v.y * sin,
-            v.x * sin + v.y * cos
-        );
-    }
 
     IEnumerator SlamAttack(Vector2 pos, Vector2 forward)
     {

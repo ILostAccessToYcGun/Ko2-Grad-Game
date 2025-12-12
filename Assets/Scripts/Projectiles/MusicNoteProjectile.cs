@@ -30,7 +30,7 @@ public class MusicNoteProjectile : MonoBehaviour
 
         angle += Time.deltaTime * oscillationSpeed;
 
-        //transform.position += (Vector3)Vector2.Perpendicular(moveDir) * oscillationRange * Mathf.Sin(angle * Mathf.Deg2Rad) * Time.deltaTime;
+        transform.position += (Vector3)Vector2.Perpendicular(moveDir) * oscillationRange * Mathf.Sin(angle * Mathf.Deg2Rad) * Time.deltaTime;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

@@ -29,7 +29,10 @@ public class PlayerStats : MonoBehaviour, IDamage
     public float EXP;
     public int Level;
     [Space]
+    [Header("Components")]
     public GameObject currentWeapon;
+    public SpriteRenderer sprite;
+    public bool canTakeDamage;
 
     private void Start()
     {
@@ -81,6 +84,7 @@ public class PlayerStats : MonoBehaviour, IDamage
 
     public void TakeDamage(float damage)
     {
+        if (!canTakeDamage) return;
         currentHP -= damage;
         UIManager.instance.UpdateHPBar(currentHP, maxHP);
 
@@ -94,5 +98,6 @@ public class PlayerStats : MonoBehaviour, IDamage
     {
         if (currentWeapon != null) Destroy(currentWeapon);
         currentWeapon = Instantiate(newWeapon, GameManager.instance.weaponHolder.holder.gameObject.transform);
+        UIManager.instance.UpdateWeaponSlot(currentWeapon.GetComponent<WeaponBase>().weaponSprite);
     }
 }
