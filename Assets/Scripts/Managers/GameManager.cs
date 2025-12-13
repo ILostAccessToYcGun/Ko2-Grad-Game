@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement;
     public PlayerStats playerStats;
     public WeaponHolder weaponHolder;
+    public GameObject weaponHand;
     public CameraTween cam;
 
     public enum States { Playing, Paused, Win, Loss}
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
         if (!playerMovement) playerMovement = FindFirstObjectByType<PlayerMovement>();
         if (!playerStats) playerStats = FindFirstObjectByType<PlayerStats>();
         if (!weaponHolder) weaponHolder = FindFirstObjectByType<WeaponHolder>();
+        if (!weaponHand) weaponHand = FindFirstObjectByType<IHoldWeapons>().gameObject;
         if (!cam) cam = FindFirstObjectByType<CameraTween>();
         Time.timeScale = 0;
         GameManager.instance.gameState = GameManager.States.Paused;

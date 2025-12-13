@@ -9,16 +9,18 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] List<GameObject> TotalEnemyPool;
     [SerializeField] List<GameObject> CurrentEnemyPool;
+    
 
     public GameObject EXPCrystal;
 
     [SerializeField] float spawnCD;
-    float spawnTimer;
+    float spawnTimer = 0.5f;
     public float baseSpawnTimer; //does not include difficulty scaling
 
     public Vector2 spawnRange;
     public int maxEnemies = 1000;
     public int enemyCount = 0;
+    public List<GameObject> Enemies;
     private void Awake()
     {
         instance = this;
@@ -44,7 +46,7 @@ public class EnemyManager : MonoBehaviour
                 if (pos.magnitude > spawnRange.x) //valid spawn
                 {
                     int rand = Random.Range(0, CurrentEnemyPool.Count);
-                    Instantiate(CurrentEnemyPool[rand], GameManager.instance.playerMovement.transform.position + new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+                    Enemies.Add(Instantiate(CurrentEnemyPool[rand], GameManager.instance.playerMovement.transform.position + new Vector3(pos.x, pos.y, 0), Quaternion.identity));
                     break;
                 }
             }
@@ -64,6 +66,7 @@ public class EnemyManager : MonoBehaviour
         {
             Destroy(enemeh.gameObject);
         }
+        spawnTimer = 0.5f;
     }
 
     

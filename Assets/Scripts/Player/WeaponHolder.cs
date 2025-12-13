@@ -3,6 +3,7 @@ using UnityEngine;
 public class WeaponHolder : MonoBehaviour
 {
     public GameObject holder;
+    public GameObject swordHolder;
     [SerializeField] float holdDistance;
     void Update()
     {

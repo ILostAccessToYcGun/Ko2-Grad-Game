@@ -83,4 +83,9 @@ public class EnemyBase : MonoBehaviour, IDamage
             sprite.flipX = !sprite.flipX;
         }
     }
+
+    private void OnDestroy()
+    {
+        EnemyManager.instance.Enemies.Remove(this.gameObject);
+    }
 }

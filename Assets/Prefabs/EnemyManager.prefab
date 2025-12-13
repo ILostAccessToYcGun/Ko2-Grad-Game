@@ -45,12 +45,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalEnemyPool:
-  - {fileID: 2719321541515030722, guid: f0ce25f8dd0de204eaea8b6e036e6df3, type: 3}
+  - {fileID: 2719321541515030722, guid: 31dd2ae69cb05a7488485ac9cf001a9c, type: 3}
+  - {fileID: 2719321541515030722, guid: 5d8756303ba61fc47a657ee53c37ba47, type: 3}
+  - {fileID: 2719321541515030722, guid: d8fc348dc07c0194fae792b3d440787a, type: 3}
+  - {fileID: 2719321541515030722, guid: ea8373e33d8da474ca12bcf4b7a26e43, type: 3}
   CurrentEnemyPool:
-  - {fileID: 2719321541515030722, guid: f0ce25f8dd0de204eaea8b6e036e6df3, type: 3}
+  - {fileID: 2719321541515030722, guid: 31dd2ae69cb05a7488485ac9cf001a9c, type: 3}
+  - {fileID: 2719321541515030722, guid: 5d8756303ba61fc47a657ee53c37ba47, type: 3}
+  - {fileID: 2719321541515030722, guid: d8fc348dc07c0194fae792b3d440787a, type: 3}
+  - {fileID: 2719321541515030722, guid: ea8373e33d8da474ca12bcf4b7a26e43, type: 3}
   EXPCrystal: {fileID: 3929528921131327485, guid: 95d263614ef327d48b0273dfcf878f1b, type: 3}
   spawnCD: 2
   baseSpawnTimer: 2
   spawnRange: {x: 25, y: 30}
   maxEnemies: 1000
   enemyCount: 0
+  Enemies: []

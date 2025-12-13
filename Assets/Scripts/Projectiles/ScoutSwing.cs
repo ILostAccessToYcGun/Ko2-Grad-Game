@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public class SwordSwing : MonoBehaviour
+public class ScoutSwing : MonoBehaviour
 {
     public Animation swingAnimation;
-    public AnimationClip right;
-    public AnimationClip left;
+    public AnimationClip first;
+    public AnimationClip second;
+    public AnimationClip third;
     public SpriteRenderer sprite;
+    public ScoutBlades parent;
     public Vector2 moveDir = new Vector2(1, 1);
     public float damage;
     public float knockback;
@@ -13,6 +15,7 @@ public class SwordSwing : MonoBehaviour
 
     public void DestroySelf()
     {
+        parent.bladeCounter--;
         Destroy(transform.parent.gameObject);
     }
 }

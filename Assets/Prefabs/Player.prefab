@@ -183,6 +183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4729407032367584057}
+  - component: {fileID: 20473726428638541}
   m_Layer: 0
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -205,6 +206,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8458616252781432463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &20473726428638541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120795316553764245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d959eb1ef9600448bf94ed4e02a23f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8658342291779829053
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +320,7 @@ MonoBehaviour:
     m_Flags: 0
   canMove: 1
   moveDir: {x: 0, y: 0}
-  test: {fileID: 5992922567400291029, guid: 9d67d49ab5692074a8ca9bc0a69e07ac, type: 3}
+  test: {fileID: 2007053524576380659, guid: 4aedaa0e023196846855cce1c7fd233c, type: 3}
 --- !u!114 &2566137808847938615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +353,8 @@ MonoBehaviour:
   EXP: 0
   Level: 0
   currentWeapon: {fileID: 0}
+  sprite: {fileID: 3484808357604859492}
+  canTakeDamage: 0
 --- !u!114 &5692192589590910309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 8120795316553764245}
+  swordHolder: {fileID: 0}
   holdDistance: 1.5
 --- !u!50 &2440061539605292457
 Rigidbody2D:
@@ -367,8 +383,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.0001
-  m_LinearDamping: 1
-  m_AngularDamping: 1
+  m_LinearDamping: 2
+  m_AngularDamping: 2
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
