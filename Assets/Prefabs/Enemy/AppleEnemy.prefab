@@ -126,6 +126,9 @@ MonoBehaviour:
   SPD: 0
   EXP: 0
   player: {fileID: 0}
+  frame1: {fileID: 2735937606301415605, guid: 281ca1996b7ac3542957731752092fcc, type: 3}
+  frame2: {fileID: 4343028407324090628, guid: 7ef004fde55b4da4f9666f8fe6c4ded6, type: 3}
+  frameDelay: 0.5
 --- !u!58 &5324838072509733287
 CircleCollider2D:
   m_ObjectHideFlags: 0

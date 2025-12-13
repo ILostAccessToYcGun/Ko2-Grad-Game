@@ -320,7 +320,7 @@ MonoBehaviour:
     m_Flags: 0
   canMove: 1
   moveDir: {x: 0, y: 0}
-  test: {fileID: 2007053524576380659, guid: 4aedaa0e023196846855cce1c7fd233c, type: 3}
+  test: {fileID: 4749687285817234203, guid: e01929a3e3d06e14facf0c5412bc25b8, type: 3}
 --- !u!114 &2566137808847938615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,6 +341,7 @@ MonoBehaviour:
   baseXPG: 1
   baseLevelExp: 25
   baseMagnetRange: 2.5
+  baseDmgTaken: 1
   maxHP: 0
   currentHP: 0
   ATK: 0
@@ -350,11 +351,12 @@ MonoBehaviour:
   XPG: 0
   EXPForLevel: 0
   magnetRange: 0
+  dmgTaken: 0
   EXP: 0
   Level: 0
   currentWeapon: {fileID: 0}
   sprite: {fileID: 3484808357604859492}
-  canTakeDamage: 0
+  canTakeDamage: 1
 --- !u!114 &5692192589590910309
 MonoBehaviour:
   m_ObjectHideFlags: 0

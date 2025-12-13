@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class EnemyBase : MonoBehaviour, IDamage
 {
@@ -25,6 +27,9 @@ public class EnemyBase : MonoBehaviour, IDamage
     public PlayerMovement player;
 
     SpriteRenderer sprite;
+    public Sprite frame1;
+    public Sprite frame2;
+    public float frameDelay;
     public void TakeDamage(float damage)
     {
         HP -= damage;
@@ -49,6 +54,7 @@ public class EnemyBase : MonoBehaviour, IDamage
         SPD = baseSPD * mult;
         EXP = baseEXP * TimeManager.instance.expModifier;
         sprite = GetComponentInChildren<SpriteRenderer>();
+        StartCoroutine(WalkAnimation());
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -87,5 +93,16 @@ public class EnemyBase : MonoBehaviour, IDamage
     private void OnDestroy()
     {
         EnemyManager.instance.Enemies.Remove(this.gameObject);
+    }
+
+    IEnumerator WalkAnimation()
+    {
+        while (HP > 0)
+        {
+            if (sprite.sprite == frame1) sprite.sprite = frame2;
+            else sprite.sprite = frame1;
+            yield return new WaitForSeconds(frameDelay);
+        }
+        
     }
 }

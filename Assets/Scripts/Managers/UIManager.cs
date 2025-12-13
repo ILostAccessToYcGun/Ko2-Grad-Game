@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image HPBar;
     [SerializeField] Image EXPBar;
     [SerializeField] Image WeaponSlot;
+    [SerializeField] TextMeshProUGUI Time;
 
     public static UIManager instance;
     private void Awake()
@@ -60,6 +62,11 @@ public class UIManager : MonoBehaviour
     public void UpdateWeaponSlot(Sprite sprite)
     {
         WeaponSlot.sprite = sprite;
+    }
+
+    public void UpdateTimeText(string text)
+    {
+        Time.text = text;
     }
 
     public void Play()

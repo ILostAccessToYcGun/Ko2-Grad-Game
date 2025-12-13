@@ -4,8 +4,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.U2D;
 
 public class UnforgedWeapon : WeaponBase
-{
-    [SerializeField] GameObject m1Projectile;
+{[SerializeField] GameObject m1Projectile;
     [SerializeField] GameObject m2Projectile;
     [Header("Mouse 1")]
     [SerializeField] SpriteRenderer sprite;
@@ -163,4 +162,5 @@ public class UnforgedWeapon : WeaponBase
         sprite.enabled = true;
         yield return null;
     }
+    
 }

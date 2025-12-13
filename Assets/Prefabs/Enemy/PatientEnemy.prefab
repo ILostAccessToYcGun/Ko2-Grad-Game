@@ -58,6 +58,9 @@ MonoBehaviour:
   SPD: 0
   EXP: 0
   player: {fileID: 0}
+  frame1: {fileID: 4355368289479609345, guid: c4b60f077f13c3d4ca759853a35180ac, type: 3}
+  frame2: {fileID: -5887625785655730070, guid: 53992429a1042df4da004f1f2a1f76a5, type: 3}
+  frameDelay: 0.5
 --- !u!58 &5324838072509733287
 CircleCollider2D:
   m_ObjectHideFlags: 0

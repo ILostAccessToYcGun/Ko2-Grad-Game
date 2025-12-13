@@ -36,6 +36,14 @@ public class TimeManager : MonoBehaviour
                 minutes++;
                 IncreaseDifficulty();
             }
+
+            string TimeText = "";
+            if (minutes < 10) TimeText += "0";
+            TimeText += minutes;
+            TimeText += ":";
+            if (seconds < 10) TimeText += "0";
+            TimeText += seconds;
+            UIManager.instance.UpdateTimeText(TimeText);
         }
     }
 
