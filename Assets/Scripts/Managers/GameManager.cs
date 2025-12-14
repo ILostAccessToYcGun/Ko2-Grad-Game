@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour
 
     public void Play()
     {
-        Debug.Log("huh");
         //reset everything
         GameManager.instance.gameState = GameManager.States.Playing;
         Time.timeScale = originalTimeScale;

@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class PlayerStats : MonoBehaviour, IDamage
 {
@@ -34,6 +36,7 @@ public class PlayerStats : MonoBehaviour, IDamage
     [Header("Components")]
     public GameObject currentWeapon;
     public SpriteRenderer sprite;
+    
     public bool canTakeDamage;
 
     private void Start()
@@ -57,6 +60,8 @@ public class PlayerStats : MonoBehaviour, IDamage
         dmgTaken = baseDmgTaken;
         UIManager.instance.UpdateHPBar(currentHP, maxHP);
         UIManager.instance.UpdateEXPBar(EXP, EXPForLevel);
+
+        
 
         //temp
         EXPCrystal[] EXPs = FindObjectsByType<EXPCrystal>(FindObjectsSortMode.None);
@@ -103,4 +108,6 @@ public class PlayerStats : MonoBehaviour, IDamage
         currentWeapon = Instantiate(newWeapon, GameManager.instance.weaponHolder.holder.gameObject.transform);
         UIManager.instance.UpdateWeaponSlot(currentWeapon.GetComponent<WeaponBase>().weaponSprite);
     }
+
+    
 }

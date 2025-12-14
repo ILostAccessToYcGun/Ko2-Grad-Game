@@ -131,13 +131,17 @@ public class CyclingFlail : WeaponBase
                 if (demonForm)
                 {
                     GameManager.instance.playerStats.sprite.sprite = demonForm1;
-                    //second sprite will need to be here
+                    GameManager.instance.playerMovement.frame1 = demonForm1;
+                    GameManager.instance.playerMovement.frame2 = demonForm2;
+
                     GameManager.instance.playerStats.dmgTaken = m2DmgTaken;
                 }
                 else
                 {
                     GameManager.instance.playerStats.sprite.sprite = unDemonForm1;
-                    //second sprite will need to be here
+                    GameManager.instance.playerMovement.frame1 = unDemonForm1;
+                    GameManager.instance.playerMovement.frame2 = unDemonForm2;
+
                     GameManager.instance.playerStats.dmgTaken = GameManager.instance.playerStats.baseDmgTaken;
                 }
 

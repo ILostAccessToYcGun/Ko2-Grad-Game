@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5764706}
   m_FlipX: 0
@@ -320,7 +320,12 @@ MonoBehaviour:
     m_Flags: 0
   canMove: 1
   moveDir: {x: 0, y: 0}
+  frame1: {fileID: -5034902523926515590, guid: 2c86f40375557bc4a92f03c9e723e7fa, type: 3}
+  frame2: {fileID: -1773374257727732231, guid: 8b3c8d1a5001a2146bc7279aa0c3b96e, type: 3}
+  baseFrameDelay: 0.5
+  frameDelay: 0
   test: {fileID: 4749687285817234203, guid: e01929a3e3d06e14facf0c5412bc25b8, type: 3}
+  timer: 0
 --- !u!114 &2566137808847938615
 MonoBehaviour:
   m_ObjectHideFlags: 0

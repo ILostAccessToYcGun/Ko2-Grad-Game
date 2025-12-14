@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -30,6 +31,7 @@ public class EnemyBase : MonoBehaviour, IDamage
     public Sprite frame1;
     public Sprite frame2;
     public float frameDelay;
+    public bool canMove = true;
     public void TakeDamage(float damage)
     {
         HP -= damage;
@@ -103,6 +105,16 @@ public class EnemyBase : MonoBehaviour, IDamage
             else sprite.sprite = frame1;
             yield return new WaitForSeconds(frameDelay);
         }
-        
+    }
+
+    public void Stun(float stunTime)
+    {
+        canMove = false;
+        Invoke("StunEnd", stunTime);
+    }
+
+    public void StunEnd()
+    {
+        canMove = true;
     }
 }
