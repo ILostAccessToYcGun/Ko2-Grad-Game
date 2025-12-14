@@ -74,5 +74,6 @@ public class GameManager : MonoBehaviour
         GameManager.instance.playerMovement.ResetPosition();
         GameManager.instance.playerStats.ResetStats();
         EnemyManager.instance.CleanUpEnemies();
+        EnemyManager.instance.CleanUpEXP();
     }
 }

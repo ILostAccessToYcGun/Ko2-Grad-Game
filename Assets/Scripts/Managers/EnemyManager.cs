@@ -67,7 +67,17 @@ public class EnemyManager : MonoBehaviour
             Destroy(enemeh.gameObject);
         }
         spawnTimer = 0.5f;
+
     }
 
-    
+    public void CleanUpEXP()
+    {
+        EXPCrystal[] exps = FindObjectsByType<EXPCrystal>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach(EXPCrystal xp in exps)
+        {
+            Destroy(xp.gameObject);
+        }
+    }
+
+
 }
