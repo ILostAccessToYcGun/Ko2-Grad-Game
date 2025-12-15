@@ -24,6 +24,7 @@ public class MedicalScrubs : WeaponBase
     bool isEmitting = false;
     float emitTimer = 0.0f;
     float emitInterval = 1.0f;
+    [Space]
     [SerializeField] Sprite scrub1;
     [SerializeField] Sprite scrub2;
     new public void Start()

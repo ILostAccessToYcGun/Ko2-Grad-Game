@@ -12,15 +12,15 @@ public class PlayerMovement : MonoBehaviour
     [Header("Components")]
     PlayerStats player;
     public bool canMove;
-    [Header("Debug")]
-    public Vector2 moveDir;
-
+    public FlipAnimation flip;
     public Sprite currentFrame1;
     public Sprite currentFrame2;
-    public Sprite baseFrame1;
-    public Sprite baseFrame2;
+    Sprite baseFrame1;
+    Sprite baseFrame2;
     public float baseFrameDelay;
-    public float frameDelay;
+
+    [Header("Debug")]
+    public Vector2 moveDir;
 
     public GameObject test;
 
@@ -29,8 +29,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.playerStats;
-
-        frameDelay = baseFrameDelay * (GameManager.instance.playerStats.SPD * 0.25f);
     }
 
     private void OnEnable()
@@ -49,12 +47,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (!canMove) return;
-        moveDir = movement.ReadValue<Vector2>().normalized * Time.deltaTime * player.SPD;
+        moveDir = movement.ReadValue<Vector2>().normalized * Time.deltaTime * player.SPD * player.speedMult;
         transform.position += (Vector3)moveDir;
 
         if (moveDir != Vector2.zero)
         {
-            if (timer >= frameDelay)
+            if (timer >= baseFrameDelay * (GameManager.instance.playerStats.SPD * 0.25f))
             {
                 timer = 0.0f;
                 if (GameManager.instance.playerStats.sprite.sprite == currentFrame1) GameManager.instance.playerStats.sprite.sprite = currentFrame2;

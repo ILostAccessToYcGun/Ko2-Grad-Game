@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour, IDamage
     [SerializeField] float baseLevelExp = 25.0f; 
     [SerializeField] float baseMagnetRange = 2.5f; 
     public float baseDmgTaken = 1.0f; 
+    public float baseSpeedMult = 1.0f; 
 
     //The actual stats we will use for damage and calculations
     [Space]
@@ -29,6 +30,7 @@ public class PlayerStats : MonoBehaviour, IDamage
     public float EXPForLevel;
     public float magnetRange; //xp suck
     public float dmgTaken; //xp suck
+    public float speedMult; //xp suck
     [Space]
     public float EXP;
     public int Level;
@@ -59,6 +61,7 @@ public class PlayerStats : MonoBehaviour, IDamage
         EXPForLevel = baseLevelExp;
         magnetRange = baseMagnetRange;
         dmgTaken = baseDmgTaken;
+        speedMult = baseSpeedMult;
         UIManager.instance.UpdateHPBar(currentHP, maxHP);
         UIManager.instance.UpdateEXPBar(EXP, EXPForLevel);
 

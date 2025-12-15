@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620423437159267733}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8458616252781432463}
+  m_Father: {fileID: 4438755148919804445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3633758883258237822
 SpriteRenderer:
@@ -117,8 +117,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8458616252781432463}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 4438755148919804445}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 360}
 --- !u!212 &3484808357604859492
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -218,6 +218,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d959eb1ef9600448bf94ed4e02a23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8580430614140532181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4438755148919804445}
+  - component: {fileID: 3279509927632606872}
+  - component: {fileID: 6954861853286366077}
+  m_Layer: 3
+  m_Name: Animaton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4438755148919804445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8580430614140532181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7508653119518951621}
+  - {fileID: 7937250757723830848}
+  m_Father: {fileID: 8458616252781432463}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &3279509927632606872
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8580430614140532181}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 0ab5ddb96f691774996414fbdfc8e094, type: 2}
+  - {fileID: 7400000, guid: 0a7714a20aa07c64bbdfccdd1b721df0, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
+--- !u!114 &6954861853286366077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8580430614140532181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eeee4082c956544f9fefff0c62dcb35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flipAnimation: {fileID: 3279509927632606872}
+  clock: {fileID: 7400000, guid: 0ab5ddb96f691774996414fbdfc8e094, type: 2}
+  anti: {fileID: 7400000, guid: 0a7714a20aa07c64bbdfccdd1b721df0, type: 2}
+  parent: {fileID: 0}
+  dmg: {fileID: 1682438528994681639, guid: 8f6d0e150f257c74a9d2f4e250f7a6e5, type: 3}
+  moveDir: {x: 1, y: 1}
+  damage: 0
+  knockback: 0
 --- !u!1 &8658342291779829053
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,9 +325,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7508653119518951621}
   - {fileID: 4729407032367584057}
-  - {fileID: 7937250757723830848}
+  - {fileID: 4438755148919804445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3645039578937009557
@@ -319,14 +391,12 @@ MonoBehaviour:
       m_Flags: 8
     m_Flags: 0
   canMove: 1
-  moveDir: {x: 0, y: 0}
+  flip: {fileID: 6954861853286366077}
   currentFrame1: {fileID: -5034902523926515590, guid: 2c86f40375557bc4a92f03c9e723e7fa, type: 3}
   currentFrame2: {fileID: -1773374257727732231, guid: 8b3c8d1a5001a2146bc7279aa0c3b96e, type: 3}
-  baseFrame1: {fileID: -5034902523926515590, guid: 2c86f40375557bc4a92f03c9e723e7fa, type: 3}
-  baseFrame2: {fileID: -1773374257727732231, guid: 8b3c8d1a5001a2146bc7279aa0c3b96e, type: 3}
   baseFrameDelay: 0.5
-  frameDelay: 0
-  test: {fileID: 4820372709380396025, guid: 61c36722e42061e46a2aa1f7be1cdc2e, type: 3}
+  moveDir: {x: 0, y: 0}
+  test: {fileID: 1685600914658295553, guid: c91c1fd665f914e449a1f484a805ed0e, type: 3}
   timer: 0
 --- !u!114 &2566137808847938615
 MonoBehaviour:
