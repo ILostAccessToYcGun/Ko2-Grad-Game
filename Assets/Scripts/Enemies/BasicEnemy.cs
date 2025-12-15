@@ -6,7 +6,12 @@ public class BasicEnemy : EnemyBase
     void Update()
     {
         if (!canMove) return;
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, SPD * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, SPD * Time.deltaTime);
         FacePlayer();
+
+        if (Vector2.Distance(transform.position, player.transform.position) < 0.1f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position + Random.insideUnitSphere, SPD * Time.deltaTime);
+        }
     }
 }

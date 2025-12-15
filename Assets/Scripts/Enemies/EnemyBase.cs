@@ -66,6 +66,7 @@ public class EnemyBase : MonoBehaviour, IDamage
         PlayerStats player = collision.GetComponent<PlayerStats>();
         if (player != null)
         {
+            Debug.Log("why");
             if (ATKTimer > 0f) return;
             IDamage dmg = player.GetComponent<IDamage>();
             dmg.TakeDamage(ATK);
