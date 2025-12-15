@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public FlipAnimation flip;
     public Sprite currentFrame1;
     public Sprite currentFrame2;
-    Sprite baseFrame1;
-    Sprite baseFrame2;
+    [SerializeField] Sprite baseFrame1;
+    [SerializeField] Sprite baseFrame2;
     public float baseFrameDelay;
 
     [Header("Debug")]

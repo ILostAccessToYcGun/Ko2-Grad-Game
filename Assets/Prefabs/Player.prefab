@@ -287,7 +287,6 @@ MonoBehaviour:
   clock: {fileID: 7400000, guid: 0ab5ddb96f691774996414fbdfc8e094, type: 2}
   anti: {fileID: 7400000, guid: 0a7714a20aa07c64bbdfccdd1b721df0, type: 2}
   parent: {fileID: 0}
-  dmg: {fileID: 1682438528994681639, guid: 8f6d0e150f257c74a9d2f4e250f7a6e5, type: 3}
   moveDir: {x: 1, y: 1}
   damage: 0
   knockback: 0
@@ -394,9 +393,11 @@ MonoBehaviour:
   flip: {fileID: 6954861853286366077}
   currentFrame1: {fileID: -5034902523926515590, guid: 2c86f40375557bc4a92f03c9e723e7fa, type: 3}
   currentFrame2: {fileID: -1773374257727732231, guid: 8b3c8d1a5001a2146bc7279aa0c3b96e, type: 3}
+  baseFrame1: {fileID: -5034902523926515590, guid: 2c86f40375557bc4a92f03c9e723e7fa, type: 3}
+  baseFrame2: {fileID: -1773374257727732231, guid: 8b3c8d1a5001a2146bc7279aa0c3b96e, type: 3}
   baseFrameDelay: 0.5
   moveDir: {x: 0, y: 0}
-  test: {fileID: 1685600914658295553, guid: c91c1fd665f914e449a1f484a805ed0e, type: 3}
+  test: {fileID: 2007053524576380659, guid: 4aedaa0e023196846855cce1c7fd233c, type: 3}
   timer: 0
 --- !u!114 &2566137808847938615
 MonoBehaviour:
@@ -419,6 +420,7 @@ MonoBehaviour:
   baseLevelExp: 25
   baseMagnetRange: 2.5
   baseDmgTaken: 1
+  baseSpeedMult: 1
   maxHP: 0
   currentHP: 0
   ATK: 0
@@ -429,6 +431,7 @@ MonoBehaviour:
   EXPForLevel: 0
   magnetRange: 0
   dmgTaken: 0
+  speedMult: 0
   EXP: 0
   Level: 0
   currentWeapon: {fileID: 0}
