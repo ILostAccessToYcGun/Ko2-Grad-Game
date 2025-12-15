@@ -15,8 +15,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Debug")]
     public Vector2 moveDir;
 
-    public Sprite frame1;
-    public Sprite frame2;
+    public Sprite currentFrame1;
+    public Sprite currentFrame2;
+    public Sprite baseFrame1;
+    public Sprite baseFrame2;
     public float baseFrameDelay;
     public float frameDelay;
 
@@ -27,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.playerStats;
-        GameManager.instance.playerStats.SetCurrentWeapon(test);
 
         frameDelay = baseFrameDelay * (GameManager.instance.playerStats.SPD * 0.25f);
     }
@@ -56,8 +57,8 @@ public class PlayerMovement : MonoBehaviour
             if (timer >= frameDelay)
             {
                 timer = 0.0f;
-                if (GameManager.instance.playerStats.sprite.sprite == frame1) GameManager.instance.playerStats.sprite.sprite = frame2;
-                else GameManager.instance.playerStats.sprite.sprite = frame1;
+                if (GameManager.instance.playerStats.sprite.sprite == currentFrame1) GameManager.instance.playerStats.sprite.sprite = currentFrame2;
+                else GameManager.instance.playerStats.sprite.sprite = currentFrame1;
             }
             else
             {
@@ -69,7 +70,12 @@ public class PlayerMovement : MonoBehaviour
     public void ResetPosition()
     {
         moveDir = Vector3.zero;
-        transform.position = Vector3.zero;
+        transform.position = new Vector3(-10.0f, -4.8f, 0.0f);
     }
 
+    public void ResetFrames()
+    {
+        currentFrame1 = baseFrame1;
+        currentFrame2 = baseFrame2;
+    }
 }

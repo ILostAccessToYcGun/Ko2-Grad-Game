@@ -320,11 +320,13 @@ MonoBehaviour:
     m_Flags: 0
   canMove: 1
   moveDir: {x: 0, y: 0}
-  frame1: {fileID: -5034902523926515590, guid: 2c86f40375557bc4a92f03c9e723e7fa, type: 3}
-  frame2: {fileID: -1773374257727732231, guid: 8b3c8d1a5001a2146bc7279aa0c3b96e, type: 3}
+  currentFrame1: {fileID: -5034902523926515590, guid: 2c86f40375557bc4a92f03c9e723e7fa, type: 3}
+  currentFrame2: {fileID: -1773374257727732231, guid: 8b3c8d1a5001a2146bc7279aa0c3b96e, type: 3}
+  baseFrame1: {fileID: -5034902523926515590, guid: 2c86f40375557bc4a92f03c9e723e7fa, type: 3}
+  baseFrame2: {fileID: -1773374257727732231, guid: 8b3c8d1a5001a2146bc7279aa0c3b96e, type: 3}
   baseFrameDelay: 0.5
   frameDelay: 0
-  test: {fileID: 4749687285817234203, guid: e01929a3e3d06e14facf0c5412bc25b8, type: 3}
+  test: {fileID: 4820372709380396025, guid: 61c36722e42061e46a2aa1f7be1cdc2e, type: 3}
   timer: 0
 --- !u!114 &2566137808847938615
 MonoBehaviour:

@@ -13,7 +13,7 @@ public class WeaponBase : MonoBehaviour
     public float m1CD;
     public float m2CD;
 
-    private void Start()
+    public void Start()
     {
         playerStats = GameManager.instance.playerStats;
         playerMovement = GameManager.instance.playerMovement;

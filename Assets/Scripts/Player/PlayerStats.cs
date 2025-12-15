@@ -38,6 +38,7 @@ public class PlayerStats : MonoBehaviour, IDamage
     public SpriteRenderer sprite;
     
     public bool canTakeDamage;
+    bool isRegen = false;
 
     private void Start()
     {
@@ -61,7 +62,8 @@ public class PlayerStats : MonoBehaviour, IDamage
         UIManager.instance.UpdateHPBar(currentHP, maxHP);
         UIManager.instance.UpdateEXPBar(EXP, EXPForLevel);
 
-        
+        if (!isRegen)
+            StartCoroutine(PassiveRegen());
 
         //temp
         EXPCrystal[] EXPs = FindObjectsByType<EXPCrystal>(FindObjectsSortMode.None);
@@ -99,8 +101,22 @@ public class PlayerStats : MonoBehaviour, IDamage
         if (currentHP <= 0)
         {
             GameManager.instance.Lose();
+            isRegen = false;
         }
     }
+
+    public void TakeHealing(float heal)
+    {
+        
+        if (!canTakeDamage) return;
+        currentHP += (heal);
+        UIManager.instance.UpdateHPBar(currentHP, maxHP);
+
+        if (currentHP > maxHP)
+        {
+            currentHP = maxHP;
+        }
+    }    
 
     public void SetCurrentWeapon(GameObject newWeapon)
     {
@@ -109,5 +125,24 @@ public class PlayerStats : MonoBehaviour, IDamage
         UIManager.instance.UpdateWeaponSlot(currentWeapon.GetComponent<WeaponBase>().weaponSprite);
     }
 
-    
+
+    IEnumerator PassiveRegen()
+    {
+        isRegen = true;
+        float timer = 0.0f;
+        while (currentHP > 0)
+        {
+            timer = 1.0f;
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                yield return null;
+            }
+            TakeHealing(maxHP * 0.005f);
+            yield return null;
+
+        }
+        yield return null;
+    }
+    //add a regen timer
 }

@@ -127,6 +127,8 @@ public class Bass_dGuitar : WeaponBase
                 else smash.swingAnimation.clip = smash.left;
                 smash.swingAnimation.Play();
 
+                isSwingRight = !isSwingRight;
+
                 attackTimer = m2CD;
             }
         }

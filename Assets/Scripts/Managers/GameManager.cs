@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -71,8 +72,11 @@ public class GameManager : MonoBehaviour
         TimeManager.instance.ResetDifficulty();
         TimeManager.instance.ResetTimers();
         GameManager.instance.playerMovement.ResetPosition();
+        GameManager.instance.playerMovement.ResetFrames();
         GameManager.instance.playerStats.ResetStats();
         EnemyManager.instance.CleanUpEnemies();
         EnemyManager.instance.CleanUpEXP();
+
+        GameManager.instance.playerStats.SetCurrentWeapon(GameManager.instance.playerMovement.test);
     }
 }

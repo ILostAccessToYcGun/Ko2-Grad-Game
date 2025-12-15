@@ -32,6 +32,8 @@ public class EnemyBase : MonoBehaviour, IDamage
     public Sprite frame2;
     public float frameDelay;
     public bool canMove = true;
+    public bool isBurn = false;
+    
     public void TakeDamage(float damage)
     {
         HP -= damage;
@@ -116,5 +118,32 @@ public class EnemyBase : MonoBehaviour, IDamage
     public void StunEnd()
     {
         canMove = true;
+    }
+
+    public void TryBurn(float burnTime, float damage)
+    {
+        if (!isBurn) StartCoroutine(Burn(burnTime, damage));
+    }
+
+    IEnumerator Burn(float burnTime, float damage)
+    {
+        isBurn = true;
+        float timer = 0.0f;
+        float burnTimer = burnTime;
+        while (burnTimer > 0)
+        {
+            burnTimer -= Time.deltaTime;
+            timer = 1.0f;
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                yield return null;
+            }
+            TakeDamage(damage);
+            yield return null;
+
+        }
+        yield return null;
+        isBurn = false;
     }
 }
