@@ -49,7 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   rotationSpeed: 0
-  baseInterval: 0.5
+  baseInterval: 5
+  knockback: 0.5
   DOTInterval: 0
   hitTargets: []
 --- !u!58 &3157944979128459408

@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Debug")]
     public Vector2 moveDir;
 
-    public GameObject test;
+    public GameObject weaponToEquip;
 
     public float timer = 0.0f;
 

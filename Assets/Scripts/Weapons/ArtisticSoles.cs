@@ -87,7 +87,7 @@ public class ArtisticSoles : WeaponBase
             {
                 float angle = Vector2.SignedAngle(GameManager.instance.playerMovement.moveDir, lastDir);
 
-                if (Mathf.Abs(angle) > 0.1f)
+                if (Mathf.Abs(angle) > 0.1f && Mathf.Abs(angle) < 180.0f)
                 {
                     if (angle < 0)
                     {
@@ -103,11 +103,10 @@ public class ArtisticSoles : WeaponBase
                     }
                 }
 
-                currentCircle.rotationSpeed = currentRotationSpeed;
-
                 if (GameManager.instance.playerMovement.moveDir != Vector2.zero)
                     lastDir = GameManager.instance.playerMovement.moveDir;
             }
+            currentCircle.rotationSpeed = currentRotationSpeed;
         }
 
 
@@ -124,6 +123,7 @@ public class ArtisticSoles : WeaponBase
             {
                 if (!canFlip) return;
                 if (mouseDown) return;
+                if (isCircling) return;
                 isCircling = false;
                 mouseDown = true;
                 canFlip = false;
@@ -159,6 +159,7 @@ public class ArtisticSoles : WeaponBase
                 currentRotationSpeed = 0.1f;
                 lastDir = GameManager.instance.playerMovement.moveDir;
                 isCircling = !isCircling;
+                
 
                 if (isCircling)
                 {

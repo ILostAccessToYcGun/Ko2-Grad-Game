@@ -77,6 +77,6 @@ public class GameManager : MonoBehaviour
         EnemyManager.instance.CleanUpEnemies();
         EnemyManager.instance.CleanUpEXP();
 
-        GameManager.instance.playerStats.SetCurrentWeapon(GameManager.instance.playerMovement.test);
+        GameManager.instance.playerStats.SetCurrentWeapon(GameManager.instance.playerMovement.weaponToEquip);
     }
 }

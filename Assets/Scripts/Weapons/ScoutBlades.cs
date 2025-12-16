@@ -87,7 +87,7 @@ public class ScoutBlades : WeaponBase
                     ODMsConnected = 0;
                     ODMing = false;
                     playerMovement.canMove = true;
-                    playerStats.canTakeDamage = true;
+                    Invoke("DelayedEnableDamage", 0.5f);
 
                     bladeAmmo--;
                     GameObject frag = Instantiate(fragment, playerMovement.transform.position, Quaternion.identity);
@@ -133,6 +133,12 @@ public class ScoutBlades : WeaponBase
 
             else if (m2.ReadValue<float>() > 0.0f)
             {
+                if (bladeAmmo <= 0)
+                {
+                    Debug.Log("NO AMMO");
+                    return;
+                }
+
                 float distance = 0.0f;
                 ODMtarget = null;
                 dashSlash = false;
@@ -228,5 +234,10 @@ public class ScoutBlades : WeaponBase
         odm.target = ODMtarget;
         odm.offset = offset;
 
+    }
+
+    void DelayedEnableDamage()
+    {
+        playerStats.canTakeDamage = true;
     }
 }
