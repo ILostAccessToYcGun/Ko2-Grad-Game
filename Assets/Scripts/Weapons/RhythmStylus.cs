@@ -26,7 +26,7 @@ public class RhythmStylus : WeaponBase
     [SerializeField] LineRenderer dragLine;
 
 
-    
+
 
     //[SerializeField] float m2Knockback;
     //[SerializeField] float m2Speed;
@@ -36,7 +36,13 @@ public class RhythmStylus : WeaponBase
     //[SerializeField] float angleSpread = 45.0f;
     //[SerializeField] float rotationSpeed = 300f;
 
+    private void Start()
+    {
+        base.Start();
+        UIManager.instance.ToggleStylusUI();
+        UIManager.instance.UpdateStylusReserve(currentDragTime / maxDragTime);
 
+    }
     protected override void OnUpdate()
     {
         if (explosions.Count <= 0)
@@ -48,6 +54,7 @@ public class RhythmStylus : WeaponBase
         if (m2Held)
         {
             explosionTimer += Time.deltaTime;
+            UIManager.instance.UpdateExplosionReserve(explosionTimer / currentDragTime);
             if (explosionTimer >= currentDragTime)
             {
                 //expload everything
@@ -60,8 +67,9 @@ public class RhythmStylus : WeaponBase
         }
         else //we arent holding right click
         {
-            currentDragTime += Time.deltaTime;
+            currentDragTime += Time.deltaTime * 0.5f;
             if (currentDragTime > maxDragTime) currentDragTime = maxDragTime;
+            UIManager.instance.UpdateStylusReserve(currentDragTime / maxDragTime);
         }
 
         if (m1.ReadValue<float>() == 0.0f)
@@ -125,8 +133,10 @@ public class RhythmStylus : WeaponBase
         currentDragTime -= explosionTimer;
         if (currentDragTime < 0) currentDragTime = 0.0f;
         m2Held = false;
-        attackTimer = m2CD;
+        attackTimer = explosionTimer + m2CD;
         explosionTimer = 0.0f;
+        UIManager.instance.UpdateExplosionReserve(explosionTimer / currentDragTime);
+        UIManager.instance.UpdateStylusReserve(currentDragTime / maxDragTime);
 
         foreach (var drag in explosions)
         {

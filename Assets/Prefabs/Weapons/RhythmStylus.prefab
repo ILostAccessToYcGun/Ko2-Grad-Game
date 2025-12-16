@@ -85,7 +85,7 @@ MonoBehaviour:
   weaponSprite: {fileID: 8919667445531398032, guid: dedf559797e2b834aa890d3229c9faca, type: 3}
   attackTimer: 0
   m1CD: 0.05
-  m2CD: 1
+  m2CD: 2
   m1Projectile: {fileID: 4456673905689888036, guid: c602632019f2405469f8d1475d17da3b, type: 3}
   m2Projectile: {fileID: 7304359617758835087, guid: 4ce4cb5d7539bd74083a5bf387840486, type: 3}
   m1DmgMult: 1

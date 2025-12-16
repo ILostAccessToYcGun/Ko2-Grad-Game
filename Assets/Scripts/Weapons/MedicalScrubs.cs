@@ -69,13 +69,16 @@ public class MedicalScrubs : WeaponBase
     IEnumerator SocialDistancing()
     {
         float timer = 0.1f;
-
+        Vector2 randRotation;
         for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
         {
+            randRotation = Random.insideUnitCircle;
+
             MaskProjectile mask =
                     Instantiate(m1Projectile, GameManager.instance.playerMovement.transform.position, Quaternion.identity, GameManager.instance.playerMovement.transform)
                     .GetComponent<MaskProjectile>();
 
+            HelperManager.instance.RotateTowardsDirection(randRotation, mask.transform);
             mask.damage = GameManager.instance.playerStats.ATK * m1DmgMult;
             mask.speed = m1Speed;
             mask.deceleration = deceleration;

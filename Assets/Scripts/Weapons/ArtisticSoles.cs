@@ -132,6 +132,10 @@ public class ArtisticSoles : WeaponBase
                 checkConsecutive = false;
 
                 target = (Vector2)playerMovement.transform.position + (forwardVector * playerStats.SPD * 1.5f);
+
+                if (Mathf.Abs(target.x) > 39.0f) target.x = 39.0f * (target.x / Mathf.Abs(target.x));
+                if (Mathf.Abs(target.y) > 26.2f) target.y = 26.2f * (target.y / Mathf.Abs(target.y));
+
                 current = playerMovement.transform.position;
                 //M1 attack
                 //consecutive flips

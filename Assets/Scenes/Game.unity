@@ -23017,6 +23017,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5362903893702281762, guid: 7a6ec6380416f7446a1757cb3f855794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400682736268533977, guid: 7a6ec6380416f7446a1757cb3f855794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609398616254010293, guid: 7a6ec6380416f7446a1757cb3f855794, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862154571925225135, guid: 7a6ec6380416f7446a1757cb3f855794, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862154571925225135, guid: 7a6ec6380416f7446a1757cb3f855794, type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6842202454531071104, guid: 7a6ec6380416f7446a1757cb3f855794, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -23097,6 +23117,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8285291809416342180, guid: 7a6ec6380416f7446a1757cb3f855794, type: 3}
+      propertyPath: m_SortingOrder
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672538651738585417, guid: 7a6ec6380416f7446a1757cb3f855794, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23117,7 +23145,7 @@ PrefabInstance:
     - target: {fileID: 3645039578937009557, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
       propertyPath: weaponToEquip
       value: 
-      objectReference: {fileID: 1685600914658295553, guid: c91c1fd665f914e449a1f484a805ed0e, type: 3}
+      objectReference: {fileID: 6841627146122221847, guid: f2929f7df00e27c4d8ab337573dc67d4, type: 3}
     - target: {fileID: 8458616252781432463, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10

@@ -55,6 +55,7 @@ MonoBehaviour:
   speed: 3
   damageInterval: 0.5
   rotationSpeed: 600
+  duration: 0
   rightMult: 1
 --- !u!58 &6478596042102297034
 CircleCollider2D:
@@ -118,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 4103338547202966287}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.05, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

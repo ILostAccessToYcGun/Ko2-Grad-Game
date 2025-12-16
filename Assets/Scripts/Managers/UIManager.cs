@@ -16,6 +16,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image WeaponSlot;
     [SerializeField] TextMeshProUGUI Time;
 
+    [Header("ScoutBlades")]
+    [SerializeField] GameObject ScoutBladeUI;
+    [SerializeField] Image Blade1;
+    [SerializeField] Image Blade2;
+    [SerializeField] Image Blade3;
+    [SerializeField] Image Blade4;
+    [SerializeField] Image Blade5;
+
+    [Header("RhythmStylus")]
+    [SerializeField] GameObject RhythmStylusUI;
+    [SerializeField] Image RhythmStylusFill;
+    [SerializeField] Image ExplosionFill;
+
     public static UIManager instance;
     private void Awake()
     {
@@ -108,5 +121,79 @@ public class UIManager : MonoBehaviour
         ToggleMainMenu();
         ToggleWin();
         GameManager.instance.Pause();
+    }
+
+    public void ToggleBladeUI()
+    {
+        if (ScoutBladeUI != null) ScoutBladeUI.SetActive(!ScoutBladeUI.activeSelf);
+    }
+
+    public void UpdateBladeCount(int blades)
+    {
+        switch (blades)
+        {
+            case 0:
+                Blade1.enabled = false;
+                Blade2.enabled = false;
+                Blade3.enabled = false;
+                Blade4.enabled = false;
+                Blade5.enabled = false;
+                break;
+
+            case 1:
+                Blade1.enabled = true;
+                Blade2.enabled = false;
+                Blade3.enabled = false;
+                Blade4.enabled = false;
+                Blade5.enabled = false;
+                break;
+
+            case 2:
+                Blade1.enabled = true;
+                Blade2.enabled = true;
+                Blade3.enabled = false;
+                Blade4.enabled = false;
+                Blade5.enabled = false;
+                break;
+
+            case 3:
+                Blade1.enabled = true;
+                Blade2.enabled = true;
+                Blade3.enabled = true;
+                Blade4.enabled = false;
+                Blade5.enabled = false;
+                break;
+
+            case 4:
+                Blade1.enabled = true;
+                Blade2.enabled = true;
+                Blade3.enabled = true;
+                Blade4.enabled = true;
+                Blade5.enabled = false;
+                break;
+
+            case 5:
+                Blade1.enabled = true;
+                Blade2.enabled = true;
+                Blade3.enabled = true;
+                Blade4.enabled = true;
+                Blade5.enabled = true;
+                break;
+        }
+    }
+
+    public void ToggleStylusUI()
+    {
+        if (RhythmStylusUI != null) RhythmStylusUI.SetActive(!RhythmStylusUI.activeSelf);
+    }
+
+    public void UpdateStylusReserve(float ratio)
+    {
+        RhythmStylusFill.fillAmount = ratio;
+    }
+
+    public void UpdateExplosionReserve(float ratio)
+    {
+        ExplosionFill.fillAmount = ratio;
     }
 }

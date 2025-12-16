@@ -42,6 +42,13 @@ public class ScoutBlades : WeaponBase
     //[SerializeField] float angleSpread = 45.0f;
     //[SerializeField] float rotationSpeed = 300f;
 
+    private void Start()
+    {
+        base.Start();
+        UIManager.instance.ToggleBladeUI();
+        UIManager.instance.UpdateBladeCount(bladeAmmo);
+
+    }
 
     protected override void OnUpdate()
     {
@@ -90,6 +97,7 @@ public class ScoutBlades : WeaponBase
                     Invoke("DelayedEnableDamage", 0.5f);
 
                     bladeAmmo--;
+                    UIManager.instance.UpdateBladeCount(bladeAmmo);
                     GameObject frag = Instantiate(fragment, playerMovement.transform.position, Quaternion.identity);
                     frag.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-200.0f, 200.0f);
                     frag.GetComponent<Rigidbody2D>().linearVelocity = Random.insideUnitCircle * 10.0f;
@@ -103,6 +111,7 @@ public class ScoutBlades : WeaponBase
         if (hitEnemy == true && swingAnimation == 3 && ejectFrag == false)
         {
             bladeAmmo--;
+            UIManager.instance.UpdateBladeCount(bladeAmmo);
             GameObject frag = Instantiate(fragment, playerMovement.transform.position, Quaternion.identity);
             frag.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-200.0f, 200.0f);
             frag.GetComponent<Rigidbody2D>().linearVelocity = Random.insideUnitCircle * 10.0f;
@@ -147,6 +156,11 @@ public class ScoutBlades : WeaponBase
                     distance = Vector2.Distance(GameManager.instance.cam.screenToWorld, enemy.transform.position);
                     if (distance < accuracyRange)
                     {
+
+                        //outside of range check
+                        if (Mathf.Abs(enemy.transform.position.y) > 26.2f ||
+                            Mathf.Abs(enemy.transform.position.x) > 39.0f) continue;
+
                         ODMtarget = enemy;
                         break;
                     }
