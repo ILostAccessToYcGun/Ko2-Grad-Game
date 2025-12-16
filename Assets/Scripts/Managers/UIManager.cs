@@ -70,6 +70,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI weapon;
     [SerializeField] Image weaponIcon;
 
+    [SerializeField] TextMeshProUGUI finalStats2;
+    [SerializeField] TextMeshProUGUI timeSurvived2;
+    [SerializeField] TextMeshProUGUI kills2;
+    [SerializeField] TextMeshProUGUI weapon2;
+    [SerializeField] Image weaponIcon2;
+
     public static UIManager instance;
     private void Awake()
     {
@@ -109,24 +115,41 @@ public class UIManager : MonoBehaviour
             PopulateUpgradePool();
             //ADD RANDOM UPGRADES HERE
             int random = 0;
+            GameObject current = UpgradePool[random];
             Upgrade.SetActive(true);
 
             // slot 1
             random = Random.Range(0, UpgradePool.Count);
+            current = UpgradePool[random];
             Instantiate(UpgradePool[random], Upgrade1.transform);
-            UpgradePool.Remove(UpgradePool[random]);
+            while (UpgradePool.Contains(current))
+            {
+                UpgradePool.Remove(current);
+            }
             // slot 2
             random = Random.Range(0, UpgradePool.Count);
+            current = UpgradePool[random];
             Instantiate(UpgradePool[random], Upgrade2.transform);
-            UpgradePool.Remove(UpgradePool[random]);
+            while (UpgradePool.Contains(current))
+            {
+                UpgradePool.Remove(current);
+            }
             // slot 3
             random = Random.Range(0, UpgradePool.Count);
+            current = UpgradePool[random];
             Instantiate(UpgradePool[random], Upgrade3.transform);
-            UpgradePool.Remove(UpgradePool[random]);
+            while (UpgradePool.Contains(current))
+            {
+                UpgradePool.Remove(current);
+            }
             // slot 4
             random = Random.Range(0, UpgradePool.Count);
+            current = UpgradePool[random];
             Instantiate(UpgradePool[random], Upgrade4.transform);
-            UpgradePool.Remove(UpgradePool[random]);
+            while (UpgradePool.Contains(current))
+            {
+                UpgradePool.Remove(current);
+            }
         }
     }
 
@@ -134,9 +157,14 @@ public class UIManager : MonoBehaviour
     {
         UpgradePool.Clear();
         UpgradePool.Add(HP_Upgrade);
+        UpgradePool.Add(HP_Upgrade);
+        UpgradePool.Add(ATK_Upgrade);
         UpgradePool.Add(ATK_Upgrade);
         UpgradePool.Add(SPD_Upgrade);
+        UpgradePool.Add(SPD_Upgrade);
         UpgradePool.Add(ATKSPD_Upgrade);
+        UpgradePool.Add(ATKSPD_Upgrade);
+        UpgradePool.Add(EXP_Upgrade);
         UpgradePool.Add(EXP_Upgrade);
         UpgradePool.Add(PRJ_Upgrade);
     }
@@ -375,11 +403,24 @@ public class UIManager : MonoBehaviour
             "SPD: " + GameManager.instance.playerStats.SPD + "\n" +
             "ATKSPD: " + GameManager.instance.playerStats.ATKSPD + "\n" +
             "EXP: " + GameManager.instance.playerStats.XPG + "\n" +
-            "PRJ: " + GameManager.instance.playerStats.PRJ + "\n";
+            "PRJ: " + GameManager.instance.playerStats.PRJ;
 
         timeSurvived.text = "Time Survived: " + Time.text;
         kills.text = "Kills: " + GameManager.instance.playerStats.killCount;
         weapon.text = "Weapon: " + GameManager.instance.playerMovement.weaponToEquip.GetComponent<WeaponBase>().weaponName;
         weaponIcon.sprite = GameManager.instance.playerMovement.weaponToEquip.GetComponent<WeaponBase>().weaponSprite;
+
+        finalStats2.text =
+            "HP: " + GameManager.instance.playerStats.maxHP + "\n" +
+            "ATK: " + GameManager.instance.playerStats.ATK + "\n" +
+            "SPD: " + GameManager.instance.playerStats.SPD + "\n" +
+            "ATKSPD: " + GameManager.instance.playerStats.ATKSPD + "\n" +
+            "EXP: " + GameManager.instance.playerStats.XPG + "\n" +
+            "PRJ: " + GameManager.instance.playerStats.PRJ;
+
+        timeSurvived2.text = "Time Survived: " + Time.text;
+        kills2.text = "Kills: " + GameManager.instance.playerStats.killCount;
+        weapon2.text = "Weapon: " + GameManager.instance.playerMovement.weaponToEquip.GetComponent<WeaponBase>().weaponName;
+        weaponIcon2.sprite = GameManager.instance.playerMovement.weaponToEquip.GetComponent<WeaponBase>().weaponSprite;
     }
 }

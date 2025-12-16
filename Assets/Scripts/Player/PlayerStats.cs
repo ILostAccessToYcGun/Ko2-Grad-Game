@@ -101,6 +101,12 @@ public class PlayerStats : MonoBehaviour, IDamage
         UIManager.instance.UpdateEXPBar(EXP, EXPForLevel);
         GameManager.instance.Upgrade();
 
+        EXPCrystal[] EXPs = FindObjectsByType<EXPCrystal>(FindObjectsSortMode.None);
+        foreach (EXPCrystal exp in EXPs)
+        {
+            exp.UpdateRange();
+        }
+
         if (EXP >= EXPForLevel)
         {
             Invoke("LevelUp", 1.0f);
