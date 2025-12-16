@@ -389,6 +389,31 @@ MonoBehaviour:
       m_Action: Movement
       m_Flags: 8
     m_Flags: 0
+  pause:
+    m_Name: Pause
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ccfd6f42-5836-448b-b083-1de0f1ef3ca7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5a8ec2a1-14a8-443d-81f6-5a563eb20b7c
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause
+      m_Flags: 0
+    - m_Name: 
+      m_Id: a8407cd7-39f9-4dc1-8d97-e7d2ebcc9d9c
+      m_Path: <Keyboard>/p
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause
+      m_Flags: 0
+    m_Flags: 0
   canMove: 1
   flip: {fileID: 6954861853286366077}
   currentFrame1: {fileID: -5034902523926515590, guid: 2c86f40375557bc4a92f03c9e723e7fa, type: 3}
@@ -397,7 +422,7 @@ MonoBehaviour:
   baseFrame2: {fileID: -1773374257727732231, guid: 8b3c8d1a5001a2146bc7279aa0c3b96e, type: 3}
   baseFrameDelay: 0.5
   moveDir: {x: 0, y: 0}
-  test: {fileID: 2007053524576380659, guid: 4aedaa0e023196846855cce1c7fd233c, type: 3}
+  weaponToEquip: {fileID: 6841627146122221847, guid: f2929f7df00e27c4d8ab337573dc67d4, type: 3}
   timer: 0
 --- !u!114 &2566137808847938615
 MonoBehaviour:

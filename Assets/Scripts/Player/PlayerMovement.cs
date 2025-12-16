@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public InputAction movement;
+    public InputAction pause;
     [Space]
     [Header("Components")]
     PlayerStats player;
@@ -26,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float timer = 0.0f;
 
+    bool pauseDown = false;
+
     private void Start()
     {
         player = GameManager.instance.playerStats;
@@ -34,18 +37,39 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         movement.Enable();
+        pause.Enable();
         //mousePos.Enable();
     }
 
     private void OnDisable()
     {
         movement.Disable();
+        pause.Disable();
         //mousePos.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (pause.ReadValue<float>() > 0.0f && !pauseDown)
+        {
+            pauseDown = true;
+            if (GameManager.instance.gameState == GameManager.States.Paused)
+            {
+                GameManager.instance.Unpause();
+            }
+            else
+            {
+                GameManager.instance.Pause();
+            }
+                
+        }
+
+        if (pause.ReadValue<float>() == 0.0f)
+        {
+            pauseDown = false;
+        }
+
         if (!canMove) return;
         moveDir = movement.ReadValue<Vector2>().normalized * Time.deltaTime * player.SPD * player.speedMult;
         transform.position += (Vector3)moveDir;

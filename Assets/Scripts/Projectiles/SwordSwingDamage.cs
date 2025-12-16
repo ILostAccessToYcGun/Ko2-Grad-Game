@@ -12,8 +12,9 @@ public class SwordSwingDamage : MonoBehaviour
         IDamage dmg = collision.gameObject.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.TakeDamage(parent.damage);
+            dmg.TakeDamage(parent.damage, 1);
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = parent.moveDir * parent.knockback;
+            EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
         }
     }
 }

@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
@@ -34,19 +35,6 @@ public class EnemyBase : MonoBehaviour, IDamage
     public bool canMove = true;
     public bool isBurn = false;
     
-    public void TakeDamage(float damage)
-    {
-        HP -= damage;
-
-        if (HP <= 0)
-        {
-            EnemyManager.instance.enemyCount--;
-            EXPCrystal exp = Instantiate(EnemyManager.instance.EXPCrystal, transform.position, Quaternion.identity).GetComponent<EXPCrystal>();
-            exp.EXP = EXP;
-            Destroy(gameObject);
-        }
-    }
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -63,6 +51,7 @@ public class EnemyBase : MonoBehaviour, IDamage
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (GameManager.instance.gameState != GameManager.States.Playing) return;
         PlayerStats player = collision.GetComponent<PlayerStats>();
         if (player != null)
         {
@@ -146,5 +135,29 @@ public class EnemyBase : MonoBehaviour, IDamage
         }
         yield return null;
         isBurn = false;
+    }
+
+    public void TakeDamage(float damage, int evoId = 0)
+    {
+        HP -= damage;
+
+        if (HP <= 0)
+        {
+            EnemyManager.instance.enemyCount--;
+            EXPCrystal exp = Instantiate(EnemyManager.instance.EXPCrystal, transform.position, Quaternion.identity).GetComponent<EXPCrystal>();
+            exp.EXP = EXP;
+
+            if (evoId == 1)
+            {
+                GameManager.instance.playerStats.ProgressEvolution1();
+            }
+            else if (evoId == 2)
+            {
+                GameManager.instance.playerStats.ProgressEvolution2();
+            }
+
+            GameManager.instance.playerStats.killCount++;
+            Destroy(gameObject);
+        }
     }
 }

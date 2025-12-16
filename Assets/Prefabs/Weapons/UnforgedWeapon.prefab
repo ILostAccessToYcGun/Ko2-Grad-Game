@@ -169,6 +169,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   playerMovement: {fileID: 0}
   weaponSprite: {fileID: -7603697060717709245, guid: 17e3c86968df18c4c8494b6047843952, type: 3}
+  weaponName: Unforged Weapon
   attackTimer: 0
   m1CD: 1
   m2CD: 1

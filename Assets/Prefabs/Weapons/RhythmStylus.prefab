@@ -83,6 +83,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   playerMovement: {fileID: 0}
   weaponSprite: {fileID: 8919667445531398032, guid: dedf559797e2b834aa890d3229c9faca, type: 3}
+  weaponName: Rhythm Stylus
   attackTimer: 0
   m1CD: 0.05
   m2CD: 2

@@ -169,6 +169,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   playerMovement: {fileID: 0}
   weaponSprite: {fileID: 8245461989179692756, guid: 50747d04cccbabb488e26c73faa1c772, type: 3}
+  weaponName: Tattered Equipment
   attackTimer: 0
   m1CD: 1
   m2CD: 2

@@ -169,6 +169,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   playerMovement: {fileID: 0}
   weaponSprite: {fileID: -1548447749041693241, guid: 6826e15a894bfdb4eb7eee6a3c24b743, type: 3}
+  weaponName: Medical Scrubs
   attackTimer: 0
   m1CD: 7.5
   m2CD: 1

@@ -82,6 +82,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   playerMovement: {fileID: 0}
   weaponSprite: {fileID: 8152509121013999946, guid: 44b54af284a0e7848bf5c9678b986bb2, type: 3}
+  weaponName: Unfinished Instrument
   attackTimer: 0
   m1CD: 1
   m2CD: 2

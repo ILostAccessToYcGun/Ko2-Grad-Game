@@ -5,14 +5,14 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 public class PlayerStats : MonoBehaviour, IDamage
 {
     [Header("Base Stats")]
-    [SerializeField] int baseHP = 100;
-    [SerializeField] int baseATK = 5;
-    [SerializeField] float baseSPD = 3.0f;
-    [SerializeField] float baseATKSPD = 1.0f; //only affects main weapon
-    [SerializeField] int basePRJ = 1; //projectile count
-    [SerializeField] float baseXPG = 1.0f; //xp gain
-    [SerializeField] float baseLevelExp = 25.0f; 
-    [SerializeField] float baseMagnetRange = 2.5f; 
+    public int baseHP = 100;
+    public int baseATK = 5;
+    public float baseSPD = 3.0f;
+    public float baseATKSPD = 1.0f; //only affects main weapon
+    public int basePRJ = 1; //projectile count
+    public float baseXPG = 1.0f; //xp gain
+    public float baseLevelExp = 25.0f;
+    public float baseMagnetRange = 2.5f; 
     public float baseDmgTaken = 1.0f; 
     public float baseSpeedMult = 1.0f; 
 
@@ -29,8 +29,8 @@ public class PlayerStats : MonoBehaviour, IDamage
 
     public float EXPForLevel;
     public float magnetRange; //xp suck
-    public float dmgTaken; //xp suck
-    public float speedMult; //xp suck
+    public float dmgTaken; 
+    public float speedMult;
     [Space]
     public float EXP;
     public int Level;
@@ -41,6 +41,13 @@ public class PlayerStats : MonoBehaviour, IDamage
     
     public bool canTakeDamage;
     bool isRegen = false;
+
+    [Header("Evolution")]
+    public int Evolution1KillCount = 0;
+    public int Evolution2KillCount = 0;
+    public int Evolution1KillsRequired = 500;
+    public int Evolution2KillsRequired = 500;
+    public int killCount = 0;
 
     private void Start()
     {
@@ -65,12 +72,13 @@ public class PlayerStats : MonoBehaviour, IDamage
         UIManager.instance.UpdateHPBar(currentHP, maxHP);
         UIManager.instance.UpdateEXPBar(EXP, EXPForLevel);
 
+        Evolution1KillCount = Evolution1KillsRequired;
+        Evolution2KillCount = Evolution2KillsRequired;
+
         if (!isRegen)
             StartCoroutine(PassiveRegen());
 
-        //temp
         EXPCrystal[] EXPs = FindObjectsByType<EXPCrystal>(FindObjectsSortMode.None);
-
         foreach (EXPCrystal exp in EXPs)
         {
             exp.UpdateRange();
@@ -89,23 +97,15 @@ public class PlayerStats : MonoBehaviour, IDamage
     {
         Level++;
         EXP -= EXPForLevel;
-        EXPForLevel = baseLevelExp * Mathf.Pow(1.2f, Level - 1);
+        EXPForLevel = baseLevelExp * Mathf.Pow(1.5f, Level - 1);
         UIManager.instance.UpdateEXPBar(EXP, EXPForLevel);
-        if (EXP >= EXPForLevel) LevelUp();
-        //will need an interrupt here for upgrade UI
-    }
+        GameManager.instance.Upgrade();
 
-    public void TakeDamage(float damage)
-    {
-        if (!canTakeDamage) return;
-        currentHP -= (damage * dmgTaken);
-        UIManager.instance.UpdateHPBar(currentHP, maxHP);
-
-        if (currentHP <= 0)
+        if (EXP >= EXPForLevel)
         {
-            GameManager.instance.Lose();
-            isRegen = false;
+            Invoke("LevelUp", 1.0f);
         }
+        
     }
 
     public void TakeHealing(float heal)
@@ -128,6 +128,10 @@ public class PlayerStats : MonoBehaviour, IDamage
         UIManager.instance.UpdateWeaponSlot(currentWeapon.GetComponent<WeaponBase>().weaponSprite);
     }
 
+    public void UpdateCurrentWeapon()
+    {
+        GameManager.instance.playerStats.SetCurrentWeapon(GameManager.instance.playerMovement.weaponToEquip);
+    }
 
     IEnumerator PassiveRegen()
     {
@@ -147,5 +151,36 @@ public class PlayerStats : MonoBehaviour, IDamage
         }
         yield return null;
     }
-    //add a regen timer
+    
+
+    public void ProgressEvolution1()
+    {
+        Evolution1KillCount--;
+        if (Evolution1KillCount <= 0)
+        {
+            UIManager.instance.ToggleEvolution1();
+        }
+    }
+
+    public void ProgressEvolution2()
+    {
+        Evolution2KillCount--;
+        if (Evolution2KillCount <= 0)
+        {
+            UIManager.instance.ToggleEvolution2();
+        }
+    }
+
+    public void TakeDamage(float damage, int evoId = 0)
+    {
+        if (!canTakeDamage) return;
+        currentHP -= (damage * dmgTaken);
+        UIManager.instance.UpdateHPBar(currentHP, maxHP);
+
+        if (currentHP <= 0)
+        {
+            GameManager.instance.Lose();
+            isRegen = false;
+        }
+    }
 }

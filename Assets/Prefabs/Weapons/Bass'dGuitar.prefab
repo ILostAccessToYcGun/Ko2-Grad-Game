@@ -169,6 +169,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   playerMovement: {fileID: 0}
   weaponSprite: {fileID: 2314910465607468138, guid: 50f25485fce3aae43a98d242638b7574, type: 3}
+  weaponName: Bass'd Guitar
   attackTimer: 0
   m1CD: 1
   m2CD: 1.5

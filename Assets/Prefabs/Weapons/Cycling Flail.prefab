@@ -169,6 +169,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   playerMovement: {fileID: 0}
   weaponSprite: {fileID: -7510287060068837623, guid: a07c31e82dbbaf24797b4730ee37ec68, type: 3}
+  weaponName: Cycling Flail
   attackTimer: 0
   m1CD: 0.1
   m2CD: 2

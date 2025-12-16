@@ -169,6 +169,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   playerMovement: {fileID: 0}
   weaponSprite: {fileID: -965552165390097976, guid: 4fa455b9a48f49d4a9066f05f61cac9a, type: 3}
+  weaponName: Artistic Soles
   attackTimer: 0
   m1CD: 3
   m2CD: 1

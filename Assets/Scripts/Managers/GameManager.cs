@@ -36,6 +36,18 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         UIManager.instance.ToggleLose();
         UIManager.instance.ToggleHUD();
+        UIManager.instance.ShowFinalStats();
+    }
+
+    public void ForceLose()
+    {
+        Debug.Log("YOU DED");
+        GameManager.instance.gameState = GameManager.States.Loss;
+        Time.timeScale = 0;
+        UIManager.instance.ToggleLose();
+        UIManager.instance.TogglePause();
+        UIManager.instance.ToggleConfirmation();
+        UIManager.instance.ShowFinalStats();
     }
 
     public void Win()
@@ -45,6 +57,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         UIManager.instance.ToggleWin();
         UIManager.instance.ToggleHUD();
+        UIManager.instance.ShowFinalStats();
     }
 
     public void Pause()
@@ -52,6 +65,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         GameManager.instance.gameState = GameManager.States.Paused;
         UIManager.instance.TogglePause();
+        UIManager.instance.ToggleHUD();
     }
 
     public void Unpause()
@@ -63,9 +77,25 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void Upgrade()
+    {
+        Time.timeScale = 0;
+        GameManager.instance.gameState = GameManager.States.Paused;
+        UIManager.instance.ToggleHUD();
+        UIManager.instance.ToggleUpgrade();
+    }
+
+    public void CloseUpgrade()
+    {
+        Time.timeScale = originalTimeScale;
+        GameManager.instance.gameState = GameManager.States.Playing;
+        UIManager.instance.ToggleHUD();
+        UIManager.instance.ToggleUpgrade();
+    }
+
     public void Play()
     {
-        //reset everything
+        //reset everything in preparation
         GameManager.instance.gameState = GameManager.States.Playing;
         Time.timeScale = originalTimeScale;
         playerStats.ResetStats();
