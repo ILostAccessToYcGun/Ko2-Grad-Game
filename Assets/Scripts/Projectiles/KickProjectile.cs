@@ -38,7 +38,6 @@ public class KickProjectile : MonoBehaviour
         if (flail != null)
         {
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = moveDir * knockback * 4.0f;
-            flail.kicked = true;
             //StartCoroutine(flail.Kicked());
             flail.Kicked();
         }

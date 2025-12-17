@@ -24,7 +24,8 @@ public class UnforgedWeapon : WeaponBase
     [SerializeField] float angleSpread = 45.0f;
     [SerializeField] float rotationSpeed = 300f;
 
-
+    [Header("Particles")]
+    [SerializeField] GameObject spark; // ?
     protected override void OnUpdate()
     {
         if (attackTimer > 0)

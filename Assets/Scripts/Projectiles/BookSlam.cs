@@ -19,7 +19,7 @@ public class BookSlam : MonoBehaviour
 
     public void SpawnDamage()
     {
-        JCUSlamDamage slam = Instantiate(Hitbox, transform.position, Quaternion.identity).GetComponent<JCUSlamDamage>();
+        BookSlamDamage slam = Instantiate(Hitbox, transform.position, Quaternion.identity).GetComponent<BookSlamDamage>();
         slam.damage = damage;
         Destroy(gameObject);
     }

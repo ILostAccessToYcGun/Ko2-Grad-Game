@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using UnityEditor.ShaderGraph.Internal;
 
 public class PlayerStats : MonoBehaviour, IDamage
 {
@@ -57,6 +58,7 @@ public class PlayerStats : MonoBehaviour, IDamage
     public bool evo2unlocked = false;
     public bool evolved = false;
 
+    Color originalColour;
     private void Start()
     {
         ResetStats();
@@ -105,6 +107,8 @@ public class PlayerStats : MonoBehaviour, IDamage
         {
             exp.UpdateRange();
         }
+
+        originalColour = sprite.color;
     }
 
     public void GainEXP(float amount)
@@ -236,6 +240,9 @@ public class PlayerStats : MonoBehaviour, IDamage
         GameObject part = Instantiate(hitParticle, transform.position, Quaternion.identity);
         HelperManager.instance.RotateTowardsDirection(attackPos, part.transform);
 
+        CameraShake.instance.Shake(0.1f, 0.25f);
+        StartCoroutine(FlashRed());
+
         if (currentHP <= 0)
         {
             GameManager.instance.Lose();
@@ -248,5 +255,13 @@ public class PlayerStats : MonoBehaviour, IDamage
         Destroy(currentEvolve);
         currentEvolve = null;
         evolved = true;
+    }
+
+
+    IEnumerator FlashRed()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.25f);
+        sprite.color = originalColour;
     }
 }

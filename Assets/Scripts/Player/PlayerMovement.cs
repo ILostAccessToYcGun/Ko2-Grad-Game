@@ -20,13 +20,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Sprite baseFrame2;
     public float baseFrameDelay;
 
+    public TrailRenderer AOTtrail;
+
     [Header("Debug")]
     public Vector2 moveDir;
 
     public GameObject weaponToEquip;
-
     public float timer = 0.0f;
-
     bool pauseDown = false;
 
     private void Start()

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4330929412731470127}
-  - component: {fileID: 7090363578269930189}
+  - component: {fileID: 8401053292752574991}
   - component: {fileID: 4845216439477429279}
   m_Layer: 11
   m_Name: BookSlam
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7090363578269930189
+--- !u!114 &8401053292752574991
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,12 +42,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1041637643960073238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa6eb359f790a04abbff7277571606f, type: 3}
+  m_Script: {fileID: 11500000, guid: 777e39046862eef4e8f958ecec99e09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
   knockback: 0
   particle: {fileID: 4850480710276039473, guid: 88d3ad4be1bf84847b7ed5fff637f69c, type: 3}
+  spawnOffset: {x: 0, y: 0, z: 0}
 --- !u!58 &4845216439477429279
 CircleCollider2D:
   m_ObjectHideFlags: 0

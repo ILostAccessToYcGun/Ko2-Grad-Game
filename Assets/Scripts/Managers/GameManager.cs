@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public WeaponHolder weaponHolder;
     public GameObject weaponHand;
     public CameraTween cam;
+    public Texture2D cursorSprite;
 
     public enum States { Playing, Paused, Win, Loss}
     public States gameState = States.Playing;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
         if (!cam) cam = FindFirstObjectByType<CameraTween>();
         Time.timeScale = 0;
         GameManager.instance.gameState = GameManager.States.Paused;
+        Cursor.SetCursor(cursorSprite, Vector2.zero, CursorMode.Auto);
     }
 
     // Update is called once per frame
