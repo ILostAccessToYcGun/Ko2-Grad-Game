@@ -41,6 +41,8 @@ public class EnemyBase : MonoBehaviour, IDamage
     public GameObject covidParticle;
     public GameObject currentCovid = null;
 
+    Color originalColour;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
@@ -54,6 +56,7 @@ public class EnemyBase : MonoBehaviour, IDamage
         EXP = baseEXP * TimeManager.instance.expModifier;
         sprite = GetComponentInChildren<SpriteRenderer>();
         StartCoroutine(WalkAnimation());
+        originalColour = sprite.color;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -181,7 +184,10 @@ public class EnemyBase : MonoBehaviour, IDamage
         GameObject part1 = Instantiate(hitParticle, transform.position, Quaternion.identity);
         part1.transform.localScale = sprite.transform.localScale;
         HelperManager.instance.RotateTowardsDirection(attackPos, part1.transform);
-        //Play Particle here
+
+        
+        StartCoroutine(FlashRed());
+
         if (HP <= 0)
         {
             EnemyManager.instance.enemyCount--;
@@ -202,7 +208,19 @@ public class EnemyBase : MonoBehaviour, IDamage
             //HelperManager.instance.RotateTowardsDirection(attackPos, part2.transform);
 
             GameManager.instance.playerStats.killCount++;
+            CameraShake.instance.Shake(0.1f, 0.2f);
             Destroy(gameObject);
         }
+        else
+        {
+            CameraShake.instance.Shake(0.05f, 0.075f);
+        }
+    }
+
+    IEnumerator FlashRed()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.25f);
+        sprite.color = originalColour;
     }
 }

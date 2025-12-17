@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class CameraTween : MonoBehaviour
 {
-    Camera cam;
+    public GameObject cam;
     PlayerMovement player;
     public float followRatio = 0.5f;
     public float tweenSpeed = 0.1f;
@@ -16,7 +16,7 @@ public class CameraTween : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        cam = Camera.main;
+        //cam = Camera.main;
         startOffset = cam.transform.position.z;
         player = GameManager.instance.playerMovement;
     }

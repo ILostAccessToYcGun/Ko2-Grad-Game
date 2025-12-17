@@ -38,6 +38,7 @@ public class JCUBoss : EnemyBase
     {
         base.Start();
         attackCooldown = 6.0f;
+        EnemyManager.instance.SetSpawnCD(3);
     }
 
     void Update()
