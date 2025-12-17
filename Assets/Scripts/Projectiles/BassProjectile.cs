@@ -34,7 +34,7 @@ public class BassProjectile : MonoBehaviour
             if (!hitTargets.Contains(collision.gameObject))
             {
                 hitTargets.Add(collision.gameObject);
-                dmg.TakeDamage(damage);
+                dmg.TakeDamage(damage, transform.position);
                 collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = moveDir * knockback;
             }
 

@@ -38,9 +38,9 @@ public class MaskProjectile : MonoBehaviour
         IDamage dmg = collision.gameObject.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.TakeDamage(damage);
+            dmg.TakeDamage(damage, transform.position);
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = (collision.gameObject.transform.position - transform.position).normalized * knockback;
-            collision.gameObject.GetComponent<EnemyBase>().TryBurn(burnTime, damage * 0.2f);
+            collision.gameObject.GetComponent<EnemyBase>().TryCovid(burnTime, damage * 0.2f);
         }
     }
 

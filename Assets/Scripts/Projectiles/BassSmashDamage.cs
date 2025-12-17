@@ -16,7 +16,7 @@ public class BassSmashDamage : MonoBehaviour
         IDamage dmg = collision.gameObject.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.TakeDamage(damage);
+            dmg.TakeDamage(damage, transform.position);
             collision.GetComponent<EnemyBase>().Stun(stunTime);
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = moveDir * knockback;
         }

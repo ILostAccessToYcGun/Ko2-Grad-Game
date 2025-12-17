@@ -34,6 +34,13 @@ public class EnemyBase : MonoBehaviour, IDamage
     public float frameDelay;
     public bool canMove = true;
     public bool isBurn = false;
+    public float burnTimer;
+
+    public GameObject hitParticle;
+    public GameObject deathParticle;
+    public GameObject covidParticle;
+    public GameObject currentCovid = null;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
@@ -58,7 +65,7 @@ public class EnemyBase : MonoBehaviour, IDamage
             //Debug.Log("why");
             if (ATKTimer > 0f) return;
             IDamage dmg = player.GetComponent<IDamage>();
-            dmg.TakeDamage(ATK);
+            dmg.TakeDamage(ATK, transform.position);
             //TakeDamage(ATK);
             StartCoroutine(Cooldown());
         }
@@ -110,16 +117,21 @@ public class EnemyBase : MonoBehaviour, IDamage
         canMove = true;
     }
 
-    public void TryBurn(float burnTime, float damage)
+    public void TryCovid(float burnTime, float damage)
     {
-        if (!isBurn) StartCoroutine(Burn(burnTime, damage));
+        if (!isBurn) StartCoroutine(Covid19(burnTime, damage));
+        else burnTimer += burnTime;
     }
 
-    IEnumerator Burn(float burnTime, float damage)
+    IEnumerator Covid19(float burnTime, float damage)
     {
+        currentCovid = Instantiate(covidParticle, transform);
+        currentCovid.transform.localScale = sprite.transform.localScale;
+
+        StartCoroutine(SycnCovid());
         isBurn = true;
         float timer = 0.0f;
-        float burnTimer = burnTime;
+        burnTimer = burnTime;
         while (burnTimer > 0)
         {
             burnTimer -= Time.deltaTime;
@@ -135,11 +147,40 @@ public class EnemyBase : MonoBehaviour, IDamage
         }
         yield return null;
         isBurn = false;
+        Destroy(currentCovid);
+    }
+
+    IEnumerator SycnCovid()
+    {
+        while (currentCovid != null)
+        {
+            currentCovid.transform.position = transform.position;
+            yield return null;
+        }
     }
 
     public void TakeDamage(float damage, int evoId = 0)
     {
+        TakeDamage(damage, Vector2.zero, evoId);
+    }
+
+    public void TakeDamage(float damage, Vector2 attackPos, int evoId = 0)
+    {
+        if (attackPos == Vector2.zero)
+        {
+            //random direction
+            attackPos = Random.insideUnitCircle;
+        }
+        else
+        {
+            attackPos = attackPos - (Vector2)transform.position;
+        }
+            attackPos = -attackPos.normalized;
+
         HP -= damage;
+        GameObject part1 = Instantiate(hitParticle, transform.position, Quaternion.identity);
+        part1.transform.localScale = sprite.transform.localScale;
+        HelperManager.instance.RotateTowardsDirection(attackPos, part1.transform);
         //Play Particle here
         if (HP <= 0)
         {
@@ -155,6 +196,10 @@ public class EnemyBase : MonoBehaviour, IDamage
             {
                 GameManager.instance.playerStats.ProgressEvolution2();
             }
+
+            GameObject part2 = Instantiate(deathParticle, transform.position, Quaternion.identity);
+            part2.transform.localScale = sprite.transform.localScale;
+            //HelperManager.instance.RotateTowardsDirection(attackPos, part2.transform);
 
             GameManager.instance.playerStats.killCount++;
             Destroy(gameObject);

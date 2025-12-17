@@ -63,7 +63,7 @@ public class StylusTap : MonoBehaviour
                 {
                     mult = 0.1f;
                 }
-                target.GetComponent<IDamage>().TakeDamage(damage * mult);
+                target.GetComponent<IDamage>().TakeDamage(damage * mult, transform.position);
                 target.GetComponent<Rigidbody2D>().linearVelocity = (target.transform.position - transform.position).normalized * knockback;
             }
             parent.lastHit = target;

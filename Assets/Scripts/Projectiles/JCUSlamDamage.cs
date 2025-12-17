@@ -5,24 +5,19 @@ public class JCUSlamDamage : MonoBehaviour
     public float damage;
     public float knockback;
     public GameObject particle;
+    public Vector3 spawnOffset;
 
     private void Start()
     {
         Invoke("DestroySelf", 0.5f);
-        if (particle == null)
-        {
-            Debug.Log("no particle");
-            return;
-        }
-        GameObject part = Instantiate(particle, transform.position + new Vector3(0.0f, -0.15f, 0.0f), Quaternion.identity);
-        part.transform.localScale = new Vector3(0.08f, 0.08f, 0.08f);
+        GameObject part = Instantiate(particle, transform.position + spawnOffset, Quaternion.identity);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IDamage dmg = collision.gameObject.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.TakeDamage(damage);
+            dmg.TakeDamage(damage, transform.position);
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = (collision.gameObject.transform.position - transform.position).normalized * knockback;
         }
     }

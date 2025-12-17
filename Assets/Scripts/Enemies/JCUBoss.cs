@@ -80,7 +80,7 @@ public class JCUBoss : EnemyBase
 
     public void SpawnSlam()
     {
-        JCUSlamDamage slam = Instantiate(spawnSlam).GetComponent<JCUSlamDamage>();
+        JCUSlamDamage slam = Instantiate(spawnSlam, transform.position, Quaternion.identity).GetComponent<JCUSlamDamage>();
         slam.damage = ATK;
         slam.knockback = slamKB;
         RandomAttackCD();

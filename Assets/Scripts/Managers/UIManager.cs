@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
@@ -55,13 +56,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject evolution2;
     [SerializeField] Image evo2Icon;
     [SerializeField] TextMeshProUGUI evo2Name;
-
+    [Space]
     [SerializeField] GameObject evolution1UI;
     [SerializeField] GameObject evolution1Lock;
     [SerializeField] TextMeshProUGUI evolution1LockText;
     [SerializeField] GameObject evolution2UI;
     [SerializeField] GameObject evolution2Lock;
     [SerializeField] TextMeshProUGUI evolution2LockText;
+    [Space]
+    [SerializeField] GameObject evolutionPopup;
 
     [Header("Final Stats")]
     [SerializeField] TextMeshProUGUI finalStats;
@@ -359,11 +362,13 @@ public class UIManager : MonoBehaviour
     {
         GameManager.instance.playerMovement.weaponToEquip = evolution1;
         DisableEvolutions();
+        GameManager.instance.playerStats.ClearCanEvolveStatus();
     }
     public void ChooseEvolution2()
     {
         GameManager.instance.playerMovement.weaponToEquip = evolution2;
         DisableEvolutions();
+        GameManager.instance.playerStats.ClearCanEvolveStatus();
     }
 
     public void ToggleEvolution1()
@@ -422,5 +427,25 @@ public class UIManager : MonoBehaviour
         kills2.text = "Kills: " + GameManager.instance.playerStats.killCount;
         weapon2.text = "Weapon: " + GameManager.instance.playerMovement.weaponToEquip.GetComponent<WeaponBase>().weaponName;
         weaponIcon2.sprite = GameManager.instance.playerMovement.weaponToEquip.GetComponent<WeaponBase>().weaponSprite;
+    }
+
+    public void EvolutionPopup()
+    {
+        StartCoroutine(EvolutionSequence());
+    }
+    private IEnumerator EvolutionSequence()
+    {
+        //Debug.Log("popup");
+        LeanTween.moveLocalY(evolutionPopup, 300.0f, 3f).setEaseInOutBack();
+        yield return new WaitForSeconds(5);
+        LeanTween.moveLocalY(evolutionPopup, 450.0f, 3f).setEaseInBack();
+        LeanTween.moveLocalX(evolutionPopup, 800.0f, 3f).setEaseInBack();
+        LeanTween.scale(evolutionPopup, Vector3.zero, 3f).setEaseInBack();
+
+        yield return new WaitForSeconds(5);
+        LeanTween.moveLocalY(evolutionPopup, 700.0f, 0.01f).setEaseInBack();
+        LeanTween.moveLocalX(evolutionPopup, 0.0f, 0.01f).setEaseInBack();
+        yield return new WaitForSeconds(5);
+        evolutionPopup.transform.localScale = Vector3.one;
     }
 }

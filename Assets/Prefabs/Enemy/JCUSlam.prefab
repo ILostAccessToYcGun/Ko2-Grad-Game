@@ -48,6 +48,7 @@ MonoBehaviour:
   damage: 0
   knockback: 0
   particle: {fileID: 3980553413869679822, guid: db68e7abf8a885e459cd7563c87f7fbc, type: 3}
+  spawnOffset: {x: 0, y: -4.84, z: 0}
 --- !u!58 &4845216439477429279
 CircleCollider2D:
   m_ObjectHideFlags: 0

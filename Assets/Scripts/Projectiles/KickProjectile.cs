@@ -30,7 +30,7 @@ public class KickProjectile : MonoBehaviour
         if (dmg != null)
         {
             //kick logic here
-            dmg.TakeDamage(damage);
+            dmg.TakeDamage(damage, transform.position);
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = moveDir * knockback;
         }
 

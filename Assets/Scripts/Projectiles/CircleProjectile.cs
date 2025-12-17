@@ -18,6 +18,7 @@ public class CircleProjectile : MonoBehaviour
     public List<GameObject> hitTargets;
     void Update()
     {
+        if (GameManager.instance.gameState != GameManager.States.Playing) return;
         if (rotationSpeed == 0.0f)
             DOTInterval = baseInterval / Mathf.Clamp(Mathf.Abs(0.00001f * 0.5f), 1.0f, 100.0f);
         else
@@ -39,7 +40,7 @@ public class CircleProjectile : MonoBehaviour
             {
                 hitTargets.Add(collision.gameObject);
                 collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = (collision.gameObject.transform.position - transform.position).normalized * knockback;
-                dmg.TakeDamage(damage);
+                dmg.TakeDamage(damage, transform.position);
             }
         }
     }

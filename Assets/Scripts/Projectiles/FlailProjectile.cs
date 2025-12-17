@@ -42,9 +42,9 @@ public class FlailProjectile : MonoBehaviour
         if (dmg != null)
         {
             if (demonForm)
-                dmg.TakeDamage(damage * DmgAmp);
+                dmg.TakeDamage(damage * DmgAmp, transform.position);
             else
-                dmg.TakeDamage(damage);
+                dmg.TakeDamage(damage, transform.position);
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = (collision.gameObject.transform.position - transform.position).normalized * knockback * (demonForm ? 2.0f : 1.0f);
         }
     }

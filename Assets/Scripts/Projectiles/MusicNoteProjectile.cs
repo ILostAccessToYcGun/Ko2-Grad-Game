@@ -41,7 +41,7 @@ public class MusicNoteProjectile : MonoBehaviour
             if (!hitTargets.Contains(collision.gameObject))
             {
                 hitTargets.Add(collision.gameObject);
-                dmg.TakeDamage(damage, 1);
+                dmg.TakeDamage(damage, transform.position, 1);
             }
 
             if (hitTargets.Count >= pierce) DestroySelf();
