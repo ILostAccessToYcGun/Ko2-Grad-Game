@@ -64,6 +64,7 @@ public class EnemyManager : MonoBehaviour
         EnemyBase[] enemyes = FindObjectsByType<EnemyBase>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (EnemyBase enemeh in enemyes)
         {
+            if (enemeh.GetComponent<JCUBoss>() != null) continue; //TESTING TEMPORARY
             Destroy(enemeh.gameObject);
         }
         spawnTimer = 0.5f;

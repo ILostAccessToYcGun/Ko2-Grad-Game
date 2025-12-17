@@ -34,9 +34,9 @@ public class EnemyBase : MonoBehaviour, IDamage
     public float frameDelay;
     public bool canMove = true;
     public bool isBurn = false;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Start()
     {
         player = GameManager.instance.playerMovement;
         EnemyManager.instance.enemyCount++;
