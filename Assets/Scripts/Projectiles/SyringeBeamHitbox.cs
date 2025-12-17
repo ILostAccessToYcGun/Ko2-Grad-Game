@@ -8,7 +8,7 @@ public class SyringeBeamHitbox : MonoBehaviour
         IDamage dmg = collision.gameObject.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.TakeDamage(parent.damage);
+            dmg.TakeDamage(parent.damage, transform.position);
         }
     }
 }

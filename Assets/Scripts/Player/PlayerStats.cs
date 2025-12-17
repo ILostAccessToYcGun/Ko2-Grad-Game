@@ -38,7 +38,11 @@ public class PlayerStats : MonoBehaviour, IDamage
     [Header("Components")]
     public GameObject currentWeapon;
     public SpriteRenderer sprite;
-    
+    public GameObject hitParticle;
+    public GameObject levelUpParticle;
+    public GameObject evolveReadyParticle;
+    public GameObject currentEvolve;
+
     public bool canTakeDamage;
     bool isRegen = false;
 
@@ -51,10 +55,21 @@ public class PlayerStats : MonoBehaviour, IDamage
 
     public bool evo1unlocked = false;
     public bool evo2unlocked = false;
+    public bool evolved = false;
 
     private void Start()
     {
         ResetStats();
+    }
+
+    private void Update()
+    {
+        if (currentEvolve == null) return;
+        if (!evolved)
+        {
+            currentEvolve.transform.position = transform.position + new Vector3(0.0f, -0.75f, 0.0f);
+        }
+        
     }
 
     public void ResetStats()
@@ -80,6 +95,7 @@ public class PlayerStats : MonoBehaviour, IDamage
 
         evo1unlocked = false;
         evo2unlocked = false;
+        evolved = false;
 
         if (!isRegen)
             StartCoroutine(PassiveRegen());
@@ -101,6 +117,8 @@ public class PlayerStats : MonoBehaviour, IDamage
 
     public void LevelUp()
     {
+        GameObject part = Instantiate(levelUpParticle, transform.position, Quaternion.identity, transform);
+
         Level++;
         EXP -= EXPForLevel;
         EXPForLevel = baseLevelExp * Mathf.Pow(1.5f, Level - 1);
@@ -172,6 +190,9 @@ public class PlayerStats : MonoBehaviour, IDamage
         {
             evo1unlocked = true;
             UIManager.instance.ToggleEvolution1();
+            UIManager.instance.EvolutionPopup();
+            if (currentEvolve == null)
+                currentEvolve = Instantiate(evolveReadyParticle, transform.position, Quaternion.identity, transform);
         }
     }
 
@@ -182,19 +203,50 @@ public class PlayerStats : MonoBehaviour, IDamage
         {
             evo2unlocked = true;
             UIManager.instance.ToggleEvolution2();
+            UIManager.instance.EvolutionPopup();
+            if (currentEvolve == null)
+                currentEvolve = Instantiate(evolveReadyParticle, transform.position, Quaternion.identity, transform);
         }
     }
 
     public void TakeDamage(float damage, int evoId = 0)
     {
+        TakeDamage(damage, Vector2.zero, evoId);
+    }
+
+    public void TakeDamage(float damage, Vector2 attackPos, int evoId = 0)
+    {
         if (!canTakeDamage) return;
+
+        if (attackPos == Vector2.zero)
+        {
+            //random direction
+            attackPos = Random.insideUnitCircle;
+        }
+        else
+        {
+            attackPos = attackPos - (Vector2)transform.position;
+        }
+
+        attackPos = -attackPos.normalized;
+
         currentHP -= (damage * dmgTaken);
         UIManager.instance.UpdateHPBar(currentHP, maxHP);
+
+        GameObject part = Instantiate(hitParticle, transform.position, Quaternion.identity);
+        HelperManager.instance.RotateTowardsDirection(attackPos, part.transform);
 
         if (currentHP <= 0)
         {
             GameManager.instance.Lose();
             isRegen = false;
         }
+    }
+
+    public void ClearCanEvolveStatus()
+    {
+        Destroy(currentEvolve);
+        currentEvolve = null;
+        evolved = true;
     }
 }

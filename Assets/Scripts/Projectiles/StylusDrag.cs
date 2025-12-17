@@ -40,7 +40,7 @@ public class StylusDrag : MonoBehaviour
         IDamage dmg = collision.gameObject.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.TakeDamage(damage);
+            dmg.TakeDamage(damage, transform.position);
         }
     }
 

@@ -29,7 +29,7 @@ public class ClothProjectile : MonoBehaviour
         IDamage dmg = collision.gameObject.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.TakeDamage(damage, 1);
+            dmg.TakeDamage(damage, transform.position, 1);
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = moveDir * knockback;
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
 

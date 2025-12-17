@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   knockback: 0
+  particle: {fileID: 4850480710276039473, guid: 88d3ad4be1bf84847b7ed5fff637f69c, type: 3}
 --- !u!58 &4845216439477429279
 CircleCollider2D:
   m_ObjectHideFlags: 0

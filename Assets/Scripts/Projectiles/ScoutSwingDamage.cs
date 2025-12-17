@@ -12,7 +12,7 @@ public class ScoutSwingDamage : MonoBehaviour
         IDamage dmg = collision.gameObject.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.TakeDamage(parent.damage);
+            dmg.TakeDamage(parent.damage, transform.position);
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = parent.moveDir * parent.knockback;
             if (parent.swingAnimation.clip == parent.third)
             {

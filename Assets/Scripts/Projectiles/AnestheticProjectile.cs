@@ -42,7 +42,7 @@ public class AnestheticProjectile : MonoBehaviour
             if (!hitTargets.Contains(collision.gameObject))
             {
                 hitTargets.Add(collision.gameObject);
-                dmg.TakeDamage(damage);
+                dmg.TakeDamage(damage, transform.position);
             }
 
         }

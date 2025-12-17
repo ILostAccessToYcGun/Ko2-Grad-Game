@@ -61,6 +61,12 @@ MonoBehaviour:
   frame1: {fileID: -2300277833693205539, guid: fed970b0cc6f52c4f883d55fcd171b83, type: 3}
   frame2: {fileID: -8097998959670808017, guid: b58c29a0ba2dea745b10fa1847e0742f, type: 3}
   frameDelay: 0.5
+  canMove: 1
+  isBurn: 0
+  burnTimer: 0
+  hitParticle: {fileID: 1778622824079943310, guid: 058bbbd86dc393245ad6835ce17db022, type: 3}
+  deathParticle: {fileID: 1726164367576575488, guid: 21335fc8e5a45e1418794f650fbec365, type: 3}
+  covidParticle: {fileID: 2997754031368863368, guid: 5fd483dcdd635b84a9e168ad15d2507b, type: 3}
 --- !u!58 &5324838072509733287
 CircleCollider2D:
   m_ObjectHideFlags: 0

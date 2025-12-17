@@ -49,6 +49,9 @@ MonoBehaviour:
   col: {fileID: 0}
   damage: 0
   knockback: 0
+  particle1: {fileID: 4850480710276039473, guid: 88d3ad4be1bf84847b7ed5fff637f69c, type: 3}
+  particle2: {fileID: 4345138012899188119, guid: 83856d6c9f538254c8c7a98c962f5d7f, type: 3}
+  spawnOffset: {x: 0, y: 0, z: 0}
 --- !u!58 &4576650666370271462
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -112,7 +115,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.75, y: 2.75, z: 2.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3763401798318254867}
@@ -161,7 +164,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5205044907046133894, guid: 99d882f4646a421499f143acd6f6f09d, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.9372549, g: 0.49019608, b: 0.34117648, a: 0.29411766}
   m_FlipX: 0
   m_FlipY: 0

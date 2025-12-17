@@ -12,7 +12,7 @@ public class MusicNoteSlamDamage : MonoBehaviour
         IDamage dmg = collision.gameObject.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.TakeDamage(parent.damage, 2);
+            dmg.TakeDamage(parent.damage, transform.position, 2);
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
         }
     }

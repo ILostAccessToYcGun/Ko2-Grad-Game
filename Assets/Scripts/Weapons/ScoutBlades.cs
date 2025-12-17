@@ -53,7 +53,8 @@ public class ScoutBlades : WeaponBase
     protected override void OnUpdate()
     {
         Vector2 forwardVector = (GameManager.instance.cam.screenToWorld - (Vector2)playerMovement.transform.position).normalized;
-        HelperManager.instance.RotateTowardsDirection(forwardVector, GameManager.instance.weaponHand.transform);
+        if (GameManager.instance.gameState == GameManager.States.Playing)
+            HelperManager.instance.RotateTowardsDirection(forwardVector, GameManager.instance.weaponHand.transform);
 
         if (ODMing)
         {

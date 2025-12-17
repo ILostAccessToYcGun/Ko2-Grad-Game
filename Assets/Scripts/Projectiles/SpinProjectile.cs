@@ -17,7 +17,7 @@ public class SpinProjectile : MonoBehaviour
         IDamage dmg = collision.gameObject.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.TakeDamage(damage, 2);
+            dmg.TakeDamage(damage, transform.position, 2);
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = (collision.gameObject.transform.position - GameManager.instance.playerMovement.transform.position) * knockback;
         }
     }

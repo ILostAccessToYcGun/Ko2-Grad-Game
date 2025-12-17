@@ -118,5 +118,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(b.gameObject);
         }
+
+        BladeFragment[] blades = FindObjectsByType<BladeFragment>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (BladeFragment b in blades)
+        {
+            Destroy(b.gameObject);
+        }
+
+        CircleProjectile[] circles = FindObjectsByType<CircleProjectile>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (CircleProjectile c in circles)
+        {
+            Destroy(c.gameObject);
+        }
     }
 }
