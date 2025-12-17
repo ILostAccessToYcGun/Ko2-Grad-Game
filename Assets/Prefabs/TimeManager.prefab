@@ -52,6 +52,9 @@ MonoBehaviour:
   expModifier: 1
   seconds: 0
   minutes: 0
+  JCU: {fileID: 7626309822164753, guid: cf208a2aa71420a4788ada20df32aa73, type: 3}
+  canTick: 1
+  bossSpawned: 0
 --- !u!114 &6023287185292229819
 MonoBehaviour:
   m_ObjectHideFlags: 0

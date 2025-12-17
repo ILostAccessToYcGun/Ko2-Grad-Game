@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class SpinSwordProjectile : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class SpinSwordProjectile : MonoBehaviour
     public int rightMult;
 
     bool returning = false;
+    bool destroying = false;
 
     void Update()
     {
@@ -48,9 +50,11 @@ public class SpinSwordProjectile : MonoBehaviour
                 speed += Time.deltaTime * acceleration * 2.0f;
                 transform.position += (GameManager.instance.playerMovement.transform.position - transform.position).normalized * speed * Time.deltaTime;
 
-                if (Vector3.Distance(GameManager.instance.playerMovement.transform.position, (Vector3)transform.position) < 0.5f)
+                if (Vector3.Distance(GameManager.instance.playerMovement.transform.position, (Vector3)transform.position) < 0.5f && destroying == false)
                 {
-                    DestroySelf();
+                    destroying = true;
+                    sprite.enabled = false;
+                    Invoke("DestroySelf", 0.5f);
                 }
             }
         }

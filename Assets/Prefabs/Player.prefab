@@ -461,12 +461,19 @@ MonoBehaviour:
   Level: 0
   currentWeapon: {fileID: 0}
   sprite: {fileID: 3484808357604859492}
+  hitParticle: {fileID: 1778622824079943310, guid: 058bbbd86dc393245ad6835ce17db022, type: 3}
+  levelUpParticle: {fileID: 4664331599484071825, guid: 7931a5c6e6bea834bb9cd06fb3e5d774, type: 3}
+  evolveReadyParticle: {fileID: 3980011112860137525, guid: e17eb9bc259477c4faf5e90b11aa05b0, type: 3}
+  currentEvolve: {fileID: 0}
   canTakeDamage: 1
   Evolution1KillCount: 0
   Evolution2KillCount: 0
   Evolution1KillsRequired: 1
   Evolution2KillsRequired: 1
   killCount: 0
+  evo1unlocked: 0
+  evo2unlocked: 0
+  evolved: 0
 --- !u!114 &5692192589590910309
 MonoBehaviour:
   m_ObjectHideFlags: 0

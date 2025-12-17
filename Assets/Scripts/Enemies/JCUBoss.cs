@@ -34,7 +34,7 @@ public class JCUBoss : EnemyBase
 
 
 
-    public void Start()
+    public new void Start()
     {
         base.Start();
         attackCooldown = 6.0f;

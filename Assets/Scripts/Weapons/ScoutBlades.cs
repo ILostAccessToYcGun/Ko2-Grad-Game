@@ -42,7 +42,7 @@ public class ScoutBlades : WeaponBase
     //[SerializeField] float angleSpread = 45.0f;
     //[SerializeField] float rotationSpeed = 300f;
 
-    private void Start()
+    private new void Start()
     {
         base.Start();
         UIManager.instance.ToggleBladeUI();
