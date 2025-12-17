@@ -193,6 +193,7 @@ public class EnemyBase : MonoBehaviour, IDamage
             EnemyManager.instance.enemyCount--;
             EXPCrystal exp = Instantiate(EnemyManager.instance.EXPCrystal, transform.position, Quaternion.identity).GetComponent<EXPCrystal>();
             exp.EXP = EXP;
+            HelperManager.instance.RotateTowardsDirection(Random.insideUnitCircle, exp.transform);
 
             if (evoId == 1)
             {

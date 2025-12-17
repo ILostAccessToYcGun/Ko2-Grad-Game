@@ -3,6 +3,7 @@ using UnityEngine;
 public class SwordSwingDamage : MonoBehaviour
 {
     SwordSwing parent;
+    public GameObject part;
     private void Start()
     {
         parent = GetComponentInParent<SwordSwing>();
@@ -15,6 +16,7 @@ public class SwordSwingDamage : MonoBehaviour
             dmg.TakeDamage(parent.damage, transform.position, 1);
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = parent.moveDir * parent.knockback;
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
+            Instantiate(part, transform.position, Quaternion.identity);
         }
     }
 }

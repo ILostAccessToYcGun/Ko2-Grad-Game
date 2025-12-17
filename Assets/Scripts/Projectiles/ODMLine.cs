@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UIElements.Experimental;
 
 public class ODMLine : MonoBehaviour
@@ -13,11 +14,16 @@ public class ODMLine : MonoBehaviour
     bool attached = false;
     public Vector3 offset;
 
+    public GameObject sparkingPart;
+    public GameObject currentSpark;
+    public GameObject gougePart;
+
     private void Start()
     {
-       rb.angularVelocity = Random.Range(-200.0f, 200.0f);
-       rb.linearVelocity = Random.insideUnitCircle * 5.0f;
-       Invoke("Dash", Random.Range(0.2f, 0.4f));
+        rb.angularVelocity = Random.Range(-200.0f, 200.0f);
+        rb.linearVelocity = Random.insideUnitCircle * 10.0f;
+        Invoke("Dash", Random.Range(0.2f, 0.4f));
+        currentSpark = Instantiate(sparkingPart, GameManager.instance.playerMovement.transform.position + offset, Quaternion.identity);
     }
     // Update is called once per frame
     void Update()
@@ -33,10 +39,15 @@ public class ODMLine : MonoBehaviour
 
         if (Vector2.Distance(transform.position, target.transform.position) < 0.5f && !attached)
         {
+            Destroy(currentSpark);
             Debug.Log("ATTACH");
             attached = true;
             dashing = false;
             parent.ODMsConnected++;
+
+            GameObject ouch = Instantiate(gougePart, target.transform.position, Quaternion.identity);
+            ouch.transform.localScale = target.GetComponentInChildren<SpriteRenderer>().transform.localScale;
+            HelperManager.instance.RotateTowardsDirection((target.transform.position - transform.position).normalized, ouch.transform);
         }
 
         if (dashing)

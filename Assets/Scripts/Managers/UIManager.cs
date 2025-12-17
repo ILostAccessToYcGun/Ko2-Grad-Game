@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject MainMenu;
     [SerializeField] GameObject WeaponSelect;
+    [SerializeField] GameObject HowToPlay;
     [SerializeField] GameObject Pause;
     [SerializeField] GameObject Confirmation;
     [SerializeField] GameObject Upgrade;
@@ -93,6 +94,11 @@ public class UIManager : MonoBehaviour
     public void ToggleWeaponSelect()
     {
         if (WeaponSelect != null) WeaponSelect.SetActive(!WeaponSelect.activeSelf);
+    }
+
+    public void ToggleHowToPlay()
+    {
+        if (HowToPlay != null) HowToPlay.SetActive(!HowToPlay.activeSelf);
     }
 
     public void TogglePause()
@@ -223,9 +229,11 @@ public class UIManager : MonoBehaviour
         ToggleMainMenu();
     }
 
-    public void Extras()
+    public void HowToPlayButton()
     {
         Debug.Log("gj on graduating med school frfr");
+        ToggleMainMenu();
+        ToggleHowToPlay();
     }
 
     public void Quit()

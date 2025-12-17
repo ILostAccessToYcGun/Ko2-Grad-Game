@@ -149,7 +149,7 @@ public class JCUBoss : EnemyBase
 
     IEnumerator BookRain()
     {
-        float timer = 0.1f;
+        float timer = 0.05f;
         Vector2 spawnOffset = Vector2.zero;
 
         for (int i = 0; i < bookCount; i++)
@@ -163,7 +163,7 @@ public class JCUBoss : EnemyBase
 
             book.damage = ATK * 0.25f;
 
-            timer = 0.1f;
+            timer = 0.05f;
             while (timer > 0)
             {
                 timer -= Time.deltaTime;

@@ -45,6 +45,10 @@ public class CyclingFlail : WeaponBase
     //[SerializeField] float angleSpread = 45.0f;
     //[SerializeField] float rotationSpeed = 300f;
 
+    [Space]
+    [SerializeField] Gradient normalTrail;
+    [SerializeField] Gradient demonTrail;
+
 
     protected override void OnUpdate()
     {
@@ -121,7 +125,7 @@ public class CyclingFlail : WeaponBase
                         FlailProjectile flail = Instantiate(m1Projectile, transform.position + (Vector3)Random.insideUnitCircle * 0.5f, Quaternion.identity).GetComponent<FlailProjectile>();
                         Flails.Add(flail.gameObject);
                         flail.knockback = m1Knockback;
-                        flail.damage = GameManager.instance.playerStats.ATK * m1DmgMult;
+                        flail.damage = GameManager.instance.playerStats.ATK * m2DmgMult;
                         flail.DmgAmp = m2DmgAmp;
                         flail.demonFollowDistance = m2FlailFollowDist;
                     }
@@ -147,12 +151,16 @@ public class CyclingFlail : WeaponBase
 
                 foreach (GameObject flail in Flails)
                 {
-                    if (demonForm)
+                    if (demonForm) 
                     {
-                        flail.GetComponent<FlailProjectile>().SetDemonForm(demonForm, demonFormFlailColour, demonFormChain);
+                        flail.GetComponent<FlailProjectile>().SetDemonForm(demonForm, demonFormFlailColour, demonFormChain, demonTrail);
+                        flail.GetComponent<FlailProjectile>().damage = GameManager.instance.playerStats.ATK * m2DmgMult;
                     }
                     else
-                        flail.GetComponent<FlailProjectile>().SetDemonForm(demonForm, Color.white, normalChain);
+                    {
+                        flail.GetComponent<FlailProjectile>().SetDemonForm(demonForm, Color.white, normalChain, normalTrail);
+                        flail.GetComponent<FlailProjectile>().damage = GameManager.instance.playerStats.ATK * m1DmgMult;
+                    }
                 }
                 attackTimer = m2CD;
             }

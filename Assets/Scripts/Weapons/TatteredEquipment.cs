@@ -17,6 +17,9 @@ public class TatteredEquipment : WeaponBase
     [Header("Mouse 2")]
     [SerializeField] float m2DmgMult = 1.5f;
     [SerializeField] float m2Knockback;
+
+    public GameObject part;
+    ParticleSystem currentAfterImage;
     protected override void OnUpdate()
     {
         if (attackTimer > 0)
@@ -118,6 +121,8 @@ public class TatteredEquipment : WeaponBase
         int rightMult = -1;
         if (forward.x < 0) rightMult = 1;
 
+        currentAfterImage = Instantiate(part, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+
         SpinProjectile spin =
                             Instantiate(m2Projectile, playerMovement.transform)
                             .GetComponent<SpinProjectile>();
@@ -126,7 +131,9 @@ public class TatteredEquipment : WeaponBase
         spin.rightMult = rightMult;
         spin.transform.localScale = new Vector3(spin.transform.localScale.x * -rightMult, spin.transform.localScale.y, spin.transform.localScale.z);
         spin.transform.localScale += new Vector3(GameManager.instance.playerStats.PRJ * -rightMult, GameManager.instance.playerStats.PRJ, GameManager.instance.playerStats.PRJ);
-
+        
+        
+        var main = currentAfterImage.main;
 
         //Debug.Log(Vector3.Distance(GameManager.instance.playerMovement.transform.position, (Vector3)destination));
         while (Vector3.Distance(GameManager.instance.playerMovement.transform.position, (Vector3)destination) > 0.5f)
@@ -135,6 +142,8 @@ public class TatteredEquipment : WeaponBase
             timer += Time.deltaTime;
             if (timer >= 1.5f) break;
             GameManager.instance.playerMovement.transform.position = Vector2.MoveTowards((Vector2)GameManager.instance.playerMovement.transform.position, destination, GameManager.instance.playerStats.SPD * Time.deltaTime * 5.0f);
+            currentAfterImage.transform.position = playerMovement.transform.position;
+            main.startRotation = GameManager.instance.playerStats.sprite.transform.eulerAngles.z * Mathf.Deg2Rad;
             yield return null;
         }
         Destroy(spin.gameObject);

@@ -20,6 +20,7 @@ public class SpinSwordProjectile : MonoBehaviour
     bool returning = false;
     bool destroying = false;
 
+    public GameObject part;
     void Update()
     {
         //damage intervals
@@ -80,6 +81,7 @@ public class SpinSwordProjectile : MonoBehaviour
 
     IEnumerator DamageFrame()
     {
+        Instantiate(part, transform.position, Quaternion.identity);
         col.enabled = false;
         float damageTimer = 0.0f;
 

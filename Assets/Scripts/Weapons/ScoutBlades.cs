@@ -62,6 +62,7 @@ public class ScoutBlades : WeaponBase
             {
                 playerMovement.canMove = false;
                 playerStats.canTakeDamage = false;
+                GameManager.instance.playerMovement.AOTtrail.enabled = true;
 
                 playerMovement.transform.position = Vector2.MoveTowards(playerMovement.transform.position, ODMtarget.transform.position, dashSpeed * Time.deltaTime);
 
@@ -96,6 +97,7 @@ public class ScoutBlades : WeaponBase
                     ODMing = false;
                     playerMovement.canMove = true;
                     Invoke("DelayedEnableDamage", 0.5f);
+                    GameManager.instance.playerMovement.AOTtrail.enabled = false;
 
                     bladeAmmo--;
                     UIManager.instance.UpdateBladeCount(bladeAmmo);

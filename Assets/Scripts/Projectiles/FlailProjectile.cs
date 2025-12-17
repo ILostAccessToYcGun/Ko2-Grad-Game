@@ -11,6 +11,7 @@ public class FlailProjectile : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] CircleCollider2D col;
+    [SerializeField] TrailRenderer trail;
     public float origSize;
     public bool demonForm = false;
     public bool canMove = true;
@@ -18,13 +19,15 @@ public class FlailProjectile : MonoBehaviour
     public float DmgAmp;
     public float knockback;
     public float demonFollowDistance;
-    public bool kicked;
+    public bool kicked = false;
+
+    public GameObject part;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         origSize = col.radius;
-
+        kicked = false;
 
     }
     public void Move(Vector2 dir)
@@ -42,19 +45,29 @@ public class FlailProjectile : MonoBehaviour
         if (dmg != null)
         {
             if (demonForm)
-                dmg.TakeDamage(damage * DmgAmp, transform.position);
+            {
+                if (kicked)
+                {
+                    dmg.TakeDamage(damage * DmgAmp, transform.position);
+                    Instantiate(part, transform.position, Quaternion.identity);
+                }
+            } 
             else
+            {
                 dmg.TakeDamage(damage, transform.position);
+                Instantiate(part, transform.position, Quaternion.identity);
+            }
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = (collision.gameObject.transform.position - transform.position).normalized * knockback * (demonForm ? 2.0f : 1.0f);
         }
     }
 
-    public void SetDemonForm(bool set, Color colour, Color chainColour)
+    public void SetDemonForm(bool set, Color colour, Color chainColour, Gradient trailCol)
     {
         demonForm = set;
         sprite.color = colour;
         line.startColor = chainColour;
         line.endColor = chainColour;
+        trail.colorGradient = trailCol;
     }
 
     private void Update()
@@ -63,7 +76,8 @@ public class FlailProjectile : MonoBehaviour
         line.SetPosition(1, transform.position);
 
         if (!demonForm) return;
-
+        if (GameManager.instance.gameState != GameManager.States.Playing) return;
+        
         if (Vector2.Distance(transform.position, GameManager.instance.playerMovement.transform.position) >= demonFollowDistance)
         {
             if (!kicked)
@@ -89,11 +103,17 @@ public class FlailProjectile : MonoBehaviour
     //}
     public void Kicked()
     {
+        if (kicked) return;
+        Debug.Log("kicked");
+        kicked = true;
         Invoke("KickFinish", 0.5f);
         col.radius *= 2.0f;
+
+        CameraShake.instance.Shake(0.2f, 0.15f);
     }
     void KickFinish()
     {
+        Debug.Log("finish");
         kicked = false;
         col.radius = origSize;
     }

@@ -58,6 +58,7 @@ MonoBehaviour:
   rotationSpeed: 600
   duration: 0
   rightMult: 1
+  part: {fileID: 9176224070761946763, guid: 5ea9eb242b2c8c740aae5041b8c9bc70, type: 3}
 --- !u!58 &6478596042102297034
 CircleCollider2D:
   m_ObjectHideFlags: 0

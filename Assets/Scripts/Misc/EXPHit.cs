@@ -4,6 +4,8 @@ public class EXPHit : MonoBehaviour
 {
     [SerializeField] EXPCrystal main;
 
+    bool isBeingPickedUp = false;
+
     private void Start()
     {
         main = GetComponentInParent<EXPCrystal>();
@@ -12,10 +14,16 @@ public class EXPHit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
-        if (player != null)
+        if (player != null && !isBeingPickedUp)
         {
+            isBeingPickedUp = true;
             player.GainEXP(main.EXP);
-            Destroy(main.gameObject);
+            Invoke("DestroySelf", 0.5f);
         }
+    }
+
+    void DestroySelf()
+    {
+        Destroy(main.gameObject);
     }
 }

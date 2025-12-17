@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a011815883cad814d9138bf5671eadce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHP: 696
+  baseHP: 200
   baseATK: 1
   baseSPD: 0
   baseEXP: 0
@@ -80,8 +80,8 @@ MonoBehaviour:
   syringeCount: 5
   syringeBlaster: {fileID: 1006327014377245234, guid: 226a294d79582c545a590c6f6c13ba60, type: 3}
   syringeSpawnDist: 8
-  bookCount: 30
-  bookRange: 20
+  bookCount: 60
+  bookRange: 15
   books:
   - {fileID: 4080936081963004397, guid: eacacd39d98212d46a03604986b0d909, type: 3}
   - {fileID: 7769936032993475028, guid: 85bd72ef1483c524881cec58c82f0ac6, type: 3}
@@ -291,7 +291,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.7500002, y: 2.7500002, z: 2.7500002}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7878215270642628927}
@@ -340,7 +340,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: -5205044907046133894, guid: 99d882f4646a421499f143acd6f6f09d, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.9372549, g: 0.49019608, b: 0.34117648, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
@@ -378,7 +378,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.7499998, y: 2.7499998, z: 2.7499998}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8286441364654511166}
@@ -427,7 +427,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: -5205044907046133894, guid: 99d882f4646a421499f143acd6f6f09d, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.69411767, g: 0.24313726, b: 0.3254902, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0

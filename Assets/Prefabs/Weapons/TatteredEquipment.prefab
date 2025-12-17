@@ -183,3 +183,4 @@ MonoBehaviour:
   angleSpread: 10
   m2DmgMult: 1
   m2Knockback: 2
+  part: {fileID: 5572444576801898052, guid: f66abcf6dec467d48b9ad1f5dd52715c, type: 3}
