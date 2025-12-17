@@ -91,13 +91,13 @@ MonoBehaviour:
   m2Projectile: {fileID: 5506984218976037426, guid: 01b6c7980ed80044a8f6eb7b9700abad, type: 3}
   sprite1: {fileID: 7635167219832173093}
   sprite2: {fileID: 1980777598830965590}
-  m1DmgMult: 5
+  m1DmgMult: 4
   m1Knockback: 0.5
   hitEnemy: 0
   bladeCounter: 0
   bladeAmmo: 5
   fragment: {fileID: 292593690176198653, guid: c619043fe77310b47a928a6ab4318cd7, type: 3}
-  m2DmgMult: 1
+  m2DmgMult: 6
   accuracyRange: 2.5
   dashSpeed: 80
   kickDistance: 10

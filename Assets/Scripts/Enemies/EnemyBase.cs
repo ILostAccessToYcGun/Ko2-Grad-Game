@@ -140,7 +140,7 @@ public class EnemyBase : MonoBehaviour, IDamage
     public void TakeDamage(float damage, int evoId = 0)
     {
         HP -= damage;
-
+        //Play Particle here
         if (HP <= 0)
         {
             EnemyManager.instance.enemyCount--;
