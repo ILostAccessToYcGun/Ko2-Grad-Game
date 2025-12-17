@@ -437,10 +437,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHP: 10
-  baseATK: 2
+  baseATK: 1
   baseSPD: 3
   baseATKSPD: 1
-  basePRJ: 2
+  basePRJ: 1
   baseXPG: 1
   baseLevelExp: 25
   baseMagnetRange: 2.5
@@ -462,6 +462,11 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   sprite: {fileID: 3484808357604859492}
   canTakeDamage: 1
+  Evolution1KillCount: 0
+  Evolution2KillCount: 0
+  Evolution1KillsRequired: 1
+  Evolution2KillsRequired: 1
+  killCount: 0
 --- !u!114 &5692192589590910309
 MonoBehaviour:
   m_ObjectHideFlags: 0

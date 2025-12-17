@@ -11,6 +11,10 @@ public class TimeManager : MonoBehaviour
     public int seconds;
     public int minutes;
 
+    public GameObject JCU;
+    public bool canTick = true;
+    public bool bossSpawned = false;
+
     private void Awake()
     {
         instance = this;
@@ -19,6 +23,16 @@ public class TimeManager : MonoBehaviour
     private void Update()
     {
         if (GameManager.instance.gameState != GameManager.States.Playing) return;
+
+        if (minutes == 14 && seconds == 59 && canTick && !bossSpawned)
+        {
+            bossSpawned = true;
+            Instantiate(JCU, Vector3.zero, Quaternion.identity);
+            canTick = false;
+        }
+
+        if (!canTick) return;
+
         //Timer Incrementing
         elapsedTime += Time.deltaTime;
         secondTimer += Time.deltaTime;
@@ -72,5 +86,7 @@ public class TimeManager : MonoBehaviour
         secondTimer = 0;
         seconds = 0;
         minutes = 0;
+        bossSpawned = false;
+        canTick = true;
     }
 }

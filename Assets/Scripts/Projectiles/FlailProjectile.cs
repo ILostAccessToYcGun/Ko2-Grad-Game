@@ -10,6 +10,8 @@ public class FlailProjectile : MonoBehaviour
     [SerializeField] LineRenderer line;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer sprite;
+    [SerializeField] CircleCollider2D col;
+    public float origSize;
     public bool demonForm = false;
     public bool canMove = true;
     public float damage;
@@ -19,7 +21,12 @@ public class FlailProjectile : MonoBehaviour
     public bool kicked;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Start()
+    {
+        origSize = col.radius;
 
+
+    }
     public void Move(Vector2 dir)
     {
         if (!canMove) return;
@@ -46,8 +53,8 @@ public class FlailProjectile : MonoBehaviour
     {
         demonForm = set;
         sprite.color = colour;
-        line.startColor = colour;
-        line.endColor = colour;
+        line.startColor = chainColour;
+        line.endColor = chainColour;
     }
 
     private void Update()
@@ -83,9 +90,11 @@ public class FlailProjectile : MonoBehaviour
     public void Kicked()
     {
         Invoke("KickFinish", 0.5f);
+        col.radius *= 2.0f;
     }
     void KickFinish()
     {
         kicked = false;
+        col.radius = origSize;
     }
 }
