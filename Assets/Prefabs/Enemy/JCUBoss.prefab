@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHP: 696
-  baseATK: 10
+  baseATK: 1
   baseSPD: 0
   baseEXP: 0
   ATKCD: 1
@@ -68,9 +68,13 @@ MonoBehaviour:
   attackCooldownRange: {x: 5, y: 7}
   attackCooldown: 5
   slamKB: 3
-  jcuAnimator: {fileID: 0}
+  jcuAnimator: {fileID: 6815301800767891419}
   spawn: {fileID: 7400000, guid: 17e422c38fed14543b29572a6b052723, type: 2}
+  slamAttack: {fileID: 7400000, guid: d04a319fc9dfaf44d9d902ab4bad6ce7, type: 2}
   spawnSlam: {fileID: 1041637643960073238, guid: bc5641c3086e4eb4893a1d3a8974022c, type: 3}
+  syringeCount: 5
+  syringeBlaster: {fileID: 1006327014377245234, guid: 226a294d79582c545a590c6f6c13ba60, type: 3}
+  syringeSpawnDist: 8
 --- !u!111 &6815301800767891419
 Animation:
   m_ObjectHideFlags: 0
@@ -83,6 +87,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 17e422c38fed14543b29572a6b052723, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 17e422c38fed14543b29572a6b052723, type: 2}
+  - {fileID: 7400000, guid: d04a319fc9dfaf44d9d902ab4bad6ce7, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
