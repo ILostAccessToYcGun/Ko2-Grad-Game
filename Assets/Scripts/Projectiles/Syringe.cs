@@ -20,6 +20,7 @@ public class Syringe : MonoBehaviour
     {
         beam.SetActive(true);
         rb.linearVelocity = transform.up * recoil;
+        CameraShake.instance.Shake(0.05f, totalTime - beamDelay);
     }
 
     void DestroySelf()
