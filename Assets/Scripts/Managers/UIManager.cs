@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
 
 
     [Header("ScoutBlades")]
-    [SerializeField] GameObject ScoutBladeUI;
+    public GameObject ScoutBladeUI;
     [SerializeField] Image Blade1;
     [SerializeField] Image Blade2;
     [SerializeField] Image Blade3;
@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image Blade5;
 
     [Header("RhythmStylus")]
-    [SerializeField] GameObject RhythmStylusUI;
+    public GameObject RhythmStylusUI;
     [SerializeField] Image RhythmStylusFill;
     [SerializeField] Image ExplosionFill;
 

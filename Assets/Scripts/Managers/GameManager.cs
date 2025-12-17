@@ -108,5 +108,15 @@ public class GameManager : MonoBehaviour
         EnemyManager.instance.CleanUpEXP();
 
         GameManager.instance.playerStats.SetCurrentWeapon(GameManager.instance.playerMovement.weaponToEquip);
+
+        if (UIManager.instance.RhythmStylusUI.activeSelf) UIManager.instance.ToggleStylusUI();
+        if (UIManager.instance.ScoutBladeUI.activeSelf) UIManager.instance.ToggleBladeUI();
+
+        BassProjectile[] based = FindObjectsByType<BassProjectile>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (BassProjectile b in based)
+        {
+            Destroy(b.gameObject);
+        }
     }
 }

@@ -121,6 +121,8 @@ MonoBehaviour:
   line: {fileID: 7456226500851568453}
   rb: {fileID: 7664908247504985552}
   sprite: {fileID: 5922010331026318280}
+  col: {fileID: 6996313243798190934}
+  origSize: 0
   demonForm: 0
   canMove: 1
   damage: 0

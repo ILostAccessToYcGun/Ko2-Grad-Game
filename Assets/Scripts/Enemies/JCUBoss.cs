@@ -1,5 +1,6 @@
 using NUnit.Framework.Constraints;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class JCUBoss : EnemyBase
@@ -26,6 +27,11 @@ public class JCUBoss : EnemyBase
     [SerializeField] int syringeCount;
     [SerializeField] GameObject syringeBlaster;
     [SerializeField] float syringeSpawnDist = 3.0f;
+
+    [SerializeField] int bookCount = 30;
+    [SerializeField] float bookRange = 20.0f;
+    [SerializeField] List<GameObject> books;
+
 
 
     public void Start()
@@ -62,6 +68,8 @@ public class JCUBoss : EnemyBase
 
                 case 3:
                     //BOOK RAIN
+                    Debug.Log("book");
+                    StartCoroutine(BookRain());
                     break;
 
             }
@@ -135,5 +143,42 @@ public class JCUBoss : EnemyBase
         }
 
         yield return null;
+    }
+
+
+    IEnumerator BookRain()
+    {
+        float timer = 0.1f;
+        Vector2 spawnOffset = Vector2.zero;
+
+        for (int i = 0; i < bookCount; i++)
+        {
+            spawnOffset = Random.insideUnitCircle * bookRange;
+
+            Debug.Log("Book");
+            BookSlam book =
+                    Instantiate(books[Random.Range(0, 3)], (Vector2)GameManager.instance.playerMovement.transform.position + spawnOffset, Quaternion.identity, transform)
+                    .GetComponent<BookSlam>();
+
+            book.damage = ATK * 0.25f;
+
+            timer = 0.1f;
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                yield return null;
+            }
+            yield return null;
+        }
+
+        yield return null;
+    }
+
+    private void OnDestroy()
+    {
+        TimeManager.instance.canTick = true;
+        GameManager.instance.Win();
+
+        UIManager.instance.UpdateTimeText("15:00");
     }
 }

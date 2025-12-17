@@ -49,6 +49,9 @@ public class PlayerStats : MonoBehaviour, IDamage
     public int Evolution2KillsRequired = 500;
     public int killCount = 0;
 
+    public bool evo1unlocked = false;
+    public bool evo2unlocked = false;
+
     private void Start()
     {
         ResetStats();
@@ -74,6 +77,9 @@ public class PlayerStats : MonoBehaviour, IDamage
 
         Evolution1KillCount = Evolution1KillsRequired;
         Evolution2KillCount = Evolution2KillsRequired;
+
+        evo1unlocked = false;
+        evo2unlocked = false;
 
         if (!isRegen)
             StartCoroutine(PassiveRegen());
@@ -162,8 +168,9 @@ public class PlayerStats : MonoBehaviour, IDamage
     public void ProgressEvolution1()
     {
         Evolution1KillCount--;
-        if (Evolution1KillCount <= 0)
+        if (Evolution1KillCount <= 0 && !evo1unlocked)
         {
+            evo1unlocked = true;
             UIManager.instance.ToggleEvolution1();
         }
     }
@@ -171,8 +178,9 @@ public class PlayerStats : MonoBehaviour, IDamage
     public void ProgressEvolution2()
     {
         Evolution2KillCount--;
-        if (Evolution2KillCount <= 0)
+        if (Evolution2KillCount <= 0 && !evo2unlocked)
         {
+            evo2unlocked = true;
             UIManager.instance.ToggleEvolution2();
         }
     }
