@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
         GameManager.instance.playerStats.ResetStats();
         EnemyManager.instance.CleanUpEnemies();
         EnemyManager.instance.CleanUpEXP();
+        EnemyManager.instance.SetSpawnCD(TimeManager.instance.difficulty);
 
         GameManager.instance.playerStats.SetCurrentWeapon(GameManager.instance.playerMovement.weaponToEquip);
 

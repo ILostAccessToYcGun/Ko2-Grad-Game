@@ -22994,6 +22994,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8600436116338344194, guid: e5c779ff55ef02c46b905908452f0a38, type: 3}
+      propertyPath: 'AOT.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d9fe389c1df6a8e42928e25968db4a50, type: 3}
+    - target: {fileID: 8600436116338344194, guid: e5c779ff55ef02c46b905908452f0a38, type: 3}
+      propertyPath: 'BASS.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d9fe389c1df6a8e42928e25968db4a50, type: 3}
+    - target: {fileID: 8600436116338344194, guid: e5c779ff55ef02c46b905908452f0a38, type: 3}
+      propertyPath: 'Main.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d9fe389c1df6a8e42928e25968db4a50, type: 3}
+    - target: {fileID: 8600436116338344194, guid: e5c779ff55ef02c46b905908452f0a38, type: 3}
+      propertyPath: 'Music.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d9fe389c1df6a8e42928e25968db4a50, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23071,6 +23087,10 @@ PrefabInstance:
     - target: {fileID: 1249941897823472786, guid: db0e73cbbcf0fd046a04c2d1aa886fde, type: 3}
       propertyPath: m_Name
       value: EnemyManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294421225417659239, guid: db0e73cbbcf0fd046a04c2d1aa886fde, type: 3}
+      propertyPath: maxEnemies
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 8663564777297551312, guid: db0e73cbbcf0fd046a04c2d1aa886fde, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23228,6 +23248,10 @@ PrefabInstance:
     - target: {fileID: 5276909375292900273, guid: 7a6ec6380416f7446a1757cb3f855794, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400682736268533977, guid: 7a6ec6380416f7446a1757cb3f855794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6842202454531071104, guid: 7a6ec6380416f7446a1757cb3f855794, type: 3}
       propertyPath: m_Pivot.x

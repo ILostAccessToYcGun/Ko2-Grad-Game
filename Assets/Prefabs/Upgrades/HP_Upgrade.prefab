@@ -303,7 +303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Increases <u>Health</u> by 10%
+  m_text: 'Increases <u>Health</u> by 25%
 
 '
   m_isRightToLeft: 0

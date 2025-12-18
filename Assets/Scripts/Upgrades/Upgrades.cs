@@ -16,16 +16,16 @@ public class Upgrades : MonoBehaviour
 
     public void UpgradeEXP()
     {
-        GameManager.instance.playerStats.XPG += GameManager.instance.playerStats.baseXPG * 0.1f;
-        GameManager.instance.playerStats.magnetRange += GameManager.instance.playerStats.baseMagnetRange * 0.25f;
+        GameManager.instance.playerStats.XPG += GameManager.instance.playerStats.baseXPG * 0.25f;
+        GameManager.instance.playerStats.magnetRange += GameManager.instance.playerStats.baseMagnetRange * 0.5f;
         GameManager.instance.CloseUpgrade();
     }
 
     public void UpgradeHP()
     {
         float ratio = GameManager.instance.playerStats.currentHP / GameManager.instance.playerStats.maxHP;
-        GameManager.instance.playerStats.maxHP += GameManager.instance.playerStats.baseHP * 0.1f;
-        GameManager.instance.playerStats.currentHP = GameManager.instance.playerStats.maxHP * ratio;
+        GameManager.instance.playerStats.maxHP += GameManager.instance.playerStats.baseHP * 0.25f;
+        GameManager.instance.playerStats.currentHP = GameManager.instance.playerStats.maxHP;
         GameManager.instance.CloseUpgrade();
     }
 

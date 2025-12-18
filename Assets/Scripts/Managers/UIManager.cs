@@ -459,6 +459,7 @@ public class UIManager : MonoBehaviour
 
     public void EvolutionPopup()
     {
+        Debug.Log("HUH");
         StartCoroutine(EvolutionSequence());
     }
     private IEnumerator EvolutionSequence()

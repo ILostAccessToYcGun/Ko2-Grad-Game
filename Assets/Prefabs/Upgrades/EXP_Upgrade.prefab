@@ -303,7 +303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Increases <u>Experience Gain</u> by 10% and <u>Magnet Range</u> by 25%
+  m_text: 'Increases <u>Experience Gain</u> by 25% and <u>Magnet Range</u> by 50%
 
 '
   m_isRightToLeft: 0
