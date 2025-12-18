@@ -33,6 +33,8 @@ public class TatteredEquipment : WeaponBase
             if (m1.ReadValue<float>() > 0.0f)
             {
                 //M1 attack
+                AudioManager.instance.Play("Throw", 0.75f, 1.25f);
+
                 bool isFlippedSide = false;
                 bool isEven = GameManager.instance.playerStats.PRJ % 2 == 0 ? true : false;
                 int flipCounter = 0;

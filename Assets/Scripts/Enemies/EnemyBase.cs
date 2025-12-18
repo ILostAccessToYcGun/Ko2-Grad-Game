@@ -194,9 +194,8 @@ public class EnemyBase : MonoBehaviour, IDamage
         GameObject part1 = Instantiate(hitParticle, transform.position, Quaternion.identity);
         part1.transform.localScale = sprite.transform.localScale;
         HelperManager.instance.RotateTowardsDirection(attackPos, part1.transform);
-
-        
         StartCoroutine(FlashRed());
+        AudioManager.instance.Play("Hit", 0.75f, 1.25f);
 
         if (HP <= 0)
         {
@@ -220,6 +219,7 @@ public class EnemyBase : MonoBehaviour, IDamage
 
             GameManager.instance.playerStats.killCount++;
             CameraShake.instance.Shake(0.1f, 0.2f);
+            AudioManager.instance.Play("Death", 0.8f, 1.2f);
             Destroy(gameObject);
         }
         else

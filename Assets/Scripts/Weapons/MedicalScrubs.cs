@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.U2D;
@@ -27,6 +28,8 @@ public class MedicalScrubs : WeaponBase
     [Space]
     [SerializeField] Sprite scrub1;
     [SerializeField] Sprite scrub2;
+
+    [SerializeField] AudioSource gas;
     new public void Start()
     {
         base.Start();
@@ -63,10 +66,13 @@ public class MedicalScrubs : WeaponBase
                 {
                     StartCoroutine(Anesthetic());
                     GameManager.instance.playerMovement.Anesthetictrail.enabled = true;
+                    gas.pitch = Random.Range(0.8f, 1.2f);
+                    gas.Play();
                 }
                 else
                 {
                     GameManager.instance.playerMovement.Anesthetictrail.enabled = false;
+                    gas.Stop();
                 }
                 attackTimer = m2CD;
                 
@@ -78,6 +84,7 @@ public class MedicalScrubs : WeaponBase
     {
         float timer = 0.1f;
         Vector2 randRotation;
+        AudioManager.instance.Play("Throw", 0.75f, 1.25f);
         for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
         {
             randRotation = Random.insideUnitCircle;

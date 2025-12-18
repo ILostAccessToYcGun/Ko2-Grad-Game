@@ -191,7 +191,7 @@ MonoBehaviour:
   m2Knockback: 1.5
   rotationSpeedRange: {x: 1, y: 0}
   rotationDrag: 0.999
-  rotationStrength: 15
+  rotationStrength: 0.125
   speedReduction: 0.5
   isCircling: 0
   gym1: {fileID: -4581124713119839191, guid: 3075f91d9ac07bb4a8d808046abd6c79, type: 3}

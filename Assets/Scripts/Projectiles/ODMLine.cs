@@ -45,6 +45,8 @@ public class ODMLine : MonoBehaviour
             dashing = false;
             parent.ODMsConnected++;
 
+            AudioManager.instance.Play("ODMHit", 0.9f, 1.1f);
+
             GameObject ouch = Instantiate(gougePart, target.transform.position, Quaternion.identity);
             ouch.transform.localScale = target.GetComponentInChildren<SpriteRenderer>().transform.localScale;
             HelperManager.instance.RotateTowardsDirection((target.transform.position - transform.position).normalized, ouch.transform);

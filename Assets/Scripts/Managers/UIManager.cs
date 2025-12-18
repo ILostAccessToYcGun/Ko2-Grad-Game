@@ -109,6 +109,7 @@ public class UIManager : MonoBehaviour
     public void ToggleConfirmation()
     {
         if (Confirmation != null) Confirmation.SetActive(!Confirmation.activeSelf);
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
     }
 
     public void ToggleUpgrade()
@@ -227,6 +228,7 @@ public class UIManager : MonoBehaviour
         Debug.Log("Choose ur weapon now");
         ToggleWeaponSelect();
         ToggleMainMenu();
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
     }
 
     public void HowToPlayButton()
@@ -234,15 +236,26 @@ public class UIManager : MonoBehaviour
         Debug.Log("gj on graduating med school frfr");
         ToggleMainMenu();
         ToggleHowToPlay();
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
     }
 
     public void Quit()
     {
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
+        StartCoroutine(ActuallyQuit());
+        
+    }
+
+    public IEnumerator ActuallyQuit()
+    {
+        yield return new WaitForSecondsRealtime(0.25f);
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+        yield return null;
     }
 
     public void ReturnFromLose()
@@ -253,6 +266,7 @@ public class UIManager : MonoBehaviour
         ToggleLose();
         //GameManager.instance.Pause();
         GameManager.instance.playerMovement.weaponToEquip = null;
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
     }
 
     public void ReturnFromWin()
@@ -263,6 +277,7 @@ public class UIManager : MonoBehaviour
         ToggleWin();
         //GameManager.instance.Pause();
         GameManager.instance.playerMovement.weaponToEquip = null;
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
     }
 
     public void LockIn()
@@ -272,6 +287,7 @@ public class UIManager : MonoBehaviour
         ToggleWeaponSelect();
         ToggleHUD();
         GameManager.instance.Play();
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
     }
 
 
@@ -352,6 +368,7 @@ public class UIManager : MonoBehaviour
     public void ChooseWeapon(GameObject weapon)
     {
         GameManager.instance.playerMovement.weaponToEquip = weapon;
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
     }
     public void SetEvolution1(GameObject weapon)
     {
@@ -371,12 +388,15 @@ public class UIManager : MonoBehaviour
         GameManager.instance.playerMovement.weaponToEquip = evolution1;
         DisableEvolutions();
         GameManager.instance.playerStats.ClearCanEvolveStatus();
+        evolutionPopup.SetActive(false);
+
     }
     public void ChooseEvolution2()
     {
         GameManager.instance.playerMovement.weaponToEquip = evolution2;
         DisableEvolutions();
         GameManager.instance.playerStats.ClearCanEvolveStatus();
+        evolutionPopup.SetActive(false);
     }
 
     public void ToggleEvolution1()

@@ -19,6 +19,8 @@ public class FlipDamage : MonoBehaviour
         part1.transform.localScale = transform.localScale * 0.5f;
         GameObject part2 = Instantiate(particle2, transform.position + spawnOffset, Quaternion.identity);
         part2.transform.localScale = transform.localScale * 0.5f;
+
+        AudioManager.instance.Play("Slam", 0.75f, 1.25f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -139,6 +139,7 @@ public class CyclingFlail : WeaponBase
                     GameManager.instance.playerMovement.currentFrame2 = demonForm2;
 
                     GameManager.instance.playerStats.dmgTaken = m2DmgTaken;
+                    AudioManager.instance.Play("FormChange", 0.5f, 0.6f);
                 }
                 else
                 {
@@ -147,6 +148,7 @@ public class CyclingFlail : WeaponBase
                     GameManager.instance.playerMovement.currentFrame2 = unDemonForm2;
 
                     GameManager.instance.playerStats.dmgTaken = GameManager.instance.playerStats.baseDmgTaken;
+                    AudioManager.instance.Play("FormChange", 1f, 1.2f);
                 }
 
                 foreach (GameObject flail in Flails)
@@ -178,6 +180,8 @@ public class CyclingFlail : WeaponBase
         GameManager.instance.playerStats.sprite.sprite = kickSprite;
 
         if (forward.x < 0) GameManager.instance.playerStats.sprite.flipX = true;
+
+        AudioManager.instance.Play("Throw", 0.75f, 1.25f);
 
         for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
         {

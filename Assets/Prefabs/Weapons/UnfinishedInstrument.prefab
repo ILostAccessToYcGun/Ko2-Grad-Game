@@ -85,7 +85,7 @@ MonoBehaviour:
   weaponName: Unfinished Instrument
   attackTimer: 0
   m1CD: 1
-  m2CD: 2
+  m2CD: 1.5
   m1Projectile: {fileID: 125990100077451070, guid: c7b0f109170570347955830935928817, type: 3}
   m2Projectile: {fileID: 3281700788182517059, guid: 7833323a4f02d67428b57288ad2cde4d, type: 3}
   m1DmgMult: 1

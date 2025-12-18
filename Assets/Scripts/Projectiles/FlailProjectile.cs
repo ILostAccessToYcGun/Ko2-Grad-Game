@@ -36,6 +36,7 @@ public class FlailProjectile : MonoBehaviour
         rb.linearVelocity = dir + new Vector2(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
         rb.angularVelocity = Random.Range(-200.0f, 200.0f);
         canMove = false;
+        AudioManager.instance.Play("FlailMove", 0.8f, 1.2f);
         StartCoroutine(MoveCooldown());
     }
 

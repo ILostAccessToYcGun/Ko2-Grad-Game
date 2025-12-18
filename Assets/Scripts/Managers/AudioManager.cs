@@ -41,8 +41,26 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
-    private void Start()
+    public void Play(string name, float min, float max)
     {
-        //music
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.Log("no sounds for that name");
+            return;
+        }
+        s.source.pitch = UnityEngine.Random.Range(min, max);
+        s.source.Play();
+    }
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.Log("no sounds for that name");
+            return;
+        }
+        s.source.Stop();
     }
 }

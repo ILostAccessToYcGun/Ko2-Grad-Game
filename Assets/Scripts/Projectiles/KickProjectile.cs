@@ -40,6 +40,7 @@ public class KickProjectile : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = moveDir * knockback * 4.0f;
             //StartCoroutine(flail.Kicked());
             flail.Kicked();
+            AudioManager.instance.Play("FlailKick", 0.75f, 1.25f);
         }
     }
 

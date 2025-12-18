@@ -32,6 +32,7 @@ public class UnfinishedInstrument : WeaponBase
             if (m1.ReadValue<float>() > 0.0f)
             {
                 //M1 attack
+                AudioManager.instance.Play("Tone", 1.2f, 1.6f);
                 bool isFlippedSide = false;
                 bool isEven = GameManager.instance.playerStats.PRJ % 2 == 0 ? true : false;
                 int flipCounter = 0;
@@ -116,7 +117,8 @@ public class UnfinishedInstrument : WeaponBase
     IEnumerator SlamAttack(Vector2 pos, Vector2 forward)
     {
         float timer = 0.2f;
-        
+        AudioManager.instance.Play("Tone", 0.6f, 0.9f);
+
         for ( int i = 0; i < GameManager.instance.playerStats.PRJ; i++ )
         {
             MusicNoteSlam note =

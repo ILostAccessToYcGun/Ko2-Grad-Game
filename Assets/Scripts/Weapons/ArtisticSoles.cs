@@ -81,32 +81,35 @@ public class ArtisticSoles : WeaponBase
 
         if (isCircling)
         {
-            //Debug.Log(Vector2.SignedAngle(GameManager.instance.playerMovement.moveDir, lastDir));
-            currentRotationSpeed *= rotationDrag;
-            if (GameManager.instance.playerMovement.moveDir != Vector2.zero)
+            if (GameManager.instance.gameState == GameManager.States.Playing)
             {
-                float angle = Vector2.SignedAngle(GameManager.instance.playerMovement.moveDir, lastDir);
-
-                if (Mathf.Abs(angle) > 0.1f && Mathf.Abs(angle) < 180.0f)
-                {
-                    if (angle < 0)
-                    {
-                        //Debug.Log("angle--");
-                        //anti clockwise, WASD
-                        currentRotationSpeed -= rotationStrength * Time.deltaTime;
-                    }
-                    else if (angle > 0)
-                    {
-                        //Debug.Log("angle++");
-                        //clockwise, WDSA
-                        currentRotationSpeed += rotationStrength * Time.deltaTime;
-                    }
-                }
-
+                //Debug.Log(Vector2.SignedAngle(GameManager.instance.playerMovement.moveDir, lastDir));
+                currentRotationSpeed *= rotationDrag;
                 if (GameManager.instance.playerMovement.moveDir != Vector2.zero)
-                    lastDir = GameManager.instance.playerMovement.moveDir;
+                {
+                    float angle = Vector2.SignedAngle(GameManager.instance.playerMovement.moveDir, lastDir);
+
+                    if (Mathf.Abs(angle) > 0.1f && Mathf.Abs(angle) < 180.0f)
+                    {
+                        if (angle < 0)
+                        {
+                            //Debug.Log("angle--");
+                            //anti clockwise, WASD
+                            currentRotationSpeed -= rotationStrength * playerStats.ATKSPD;
+                        }
+                        else if (angle > 0)
+                        {   
+                            //Debug.Log("angle++");
+                            //clockwise, WDSA
+                            currentRotationSpeed += rotationStrength * playerStats.ATKSPD;
+                        }
+                    }
+
+                    if (GameManager.instance.playerMovement.moveDir != Vector2.zero)
+                        lastDir = GameManager.instance.playerMovement.moveDir;
+                }
+                currentCircle.rotationSpeed = currentRotationSpeed;
             }
-            currentCircle.rotationSpeed = currentRotationSpeed;
         }
 
 
@@ -141,6 +144,7 @@ public class ArtisticSoles : WeaponBase
                 //consecutive flips
 
                 GameManager.instance.playerMovement.Fliptrail.enabled = true;
+                AudioManager.instance.Play("Jump", 0.75f, 1.25f);
 
                 //play the animation
                 if (forwardVector.x > 0) flipper.flipAnimation.clip = flipClock;

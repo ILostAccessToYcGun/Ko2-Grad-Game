@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         UIManager.instance.TogglePause();
         UIManager.instance.ToggleConfirmation();
         UIManager.instance.ShowFinalStats();
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
     }
 
     public void Win()
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
         GameManager.instance.gameState = GameManager.States.Paused;
         UIManager.instance.TogglePause();
         UIManager.instance.ToggleHUD();
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
     }
 
     public void Unpause()
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour
         GameManager.instance.gameState = GameManager.States.Playing;
         UIManager.instance.TogglePause();
         UIManager.instance.ToggleHUD();
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
 
     }
 
@@ -93,6 +96,8 @@ public class GameManager : MonoBehaviour
         GameManager.instance.gameState = GameManager.States.Playing;
         UIManager.instance.ToggleHUD();
         UIManager.instance.ToggleUpgrade();
+        AudioManager.instance.Play("MenuClick", 0.9f, 1.1f);
+        AudioManager.instance.Play("Upgrade", 0.9f, 1.1f);
     }
 
     public void Play()

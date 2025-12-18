@@ -24,6 +24,12 @@ public class Bass_dGuitar : WeaponBase
     [SerializeField] float stunTime;
     [SerializeField] float offset;
     [SerializeField] float startDistance;
+
+    private new void Start()
+    {
+        base.Start();
+        MusicManage.instance.SelectOSU();
+    }
     protected override void OnUpdate()
     {
         if (attackTimer > 0)
@@ -46,6 +52,11 @@ public class Bass_dGuitar : WeaponBase
                 angle = angle / (GameManager.instance.playerStats.PRJ * 0.25f);
 
                 CameraShake.instance.Shake(0.2f, 0.25f);
+                float distance = Vector2.Distance(GameManager.instance.cam.screenToWorld, (Vector2)playerMovement.transform.position);
+
+                float pitch = 2.0f * (distance / 28.0f) + 0.5f;
+
+                AudioManager.instance.Play("Bass", pitch - 0.01f, pitch + 0.01f);
 
                 if (isEven)
                 {
@@ -124,6 +135,8 @@ public class Bass_dGuitar : WeaponBase
                 smash.offset = offset;
                 smash.startDistance = startDistance;
 
+                Invoke("SFX", 0.25f);
+                
 
                 if (isSwingRight) smash.swingAnimation.clip = smash.right;
                 else smash.swingAnimation.clip = smash.left;
@@ -134,5 +147,16 @@ public class Bass_dGuitar : WeaponBase
                 attackTimer = m2CD;
             }
         }
+    }
+
+    void SFX()
+    {
+        AudioManager.instance.Play("GuitarSmash", 0.9f, 1.1f);
+        Invoke("SFX2", 0.1f);
+    }
+
+    void SFX2()
+    {
+        AudioManager.instance.Play("Bass", 0.9f, 1.1f);
     }
 }

@@ -21,6 +21,7 @@ public class BookSlam : MonoBehaviour
     {
         BookSlamDamage slam = Instantiate(Hitbox, transform.position, Quaternion.identity).GetComponent<BookSlamDamage>();
         slam.damage = damage;
+        AudioManager.instance.Play("BookSlam", 0.75f, 1.25f);
         Destroy(gameObject);
     }
 

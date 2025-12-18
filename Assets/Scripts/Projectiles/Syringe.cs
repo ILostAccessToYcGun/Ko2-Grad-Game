@@ -21,6 +21,7 @@ public class Syringe : MonoBehaviour
         beam.SetActive(true);
         rb.linearVelocity = transform.up * recoil;
         CameraShake.instance.Shake(0.05f, totalTime - beamDelay);
+        AudioManager.instance.Play("Needle", 0.5f, 1.5f);
     }
 
     void DestroySelf()

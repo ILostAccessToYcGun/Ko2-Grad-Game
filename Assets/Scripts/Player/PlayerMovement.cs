@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
                 timer = 0.0f;
                 if (GameManager.instance.playerStats.sprite.sprite == currentFrame1) GameManager.instance.playerStats.sprite.sprite = currentFrame2;
                 else GameManager.instance.playerStats.sprite.sprite = currentFrame1;
+                AudioManager.instance.Play("PlayerStep", 0.8f, 1.2f);
             }
             else
             {

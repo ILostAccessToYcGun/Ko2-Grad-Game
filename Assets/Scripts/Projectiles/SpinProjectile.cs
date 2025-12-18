@@ -7,6 +7,13 @@ public class SpinProjectile : MonoBehaviour
     public float knockback;
     public int rightMult;
 
+    public AudioSource spin;
+
+    private void Start()
+    {
+        spin.pitch = Random.Range(0.8f, 1.2f);
+    }
+
     void Update()
     {
         transform.Rotate(0.0f, 0.0f, rightMult * GameManager.instance.playerStats.SPD * Time.deltaTime * 300.0f);

@@ -133,6 +133,7 @@ public class UnforgedWeapon : WeaponBase
         sprite.enabled = false;
         isSwingRight = !isSwingRight;
         float timer = 0.1f;
+        Invoke("SFX", 0.1f);
 
         for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
         {
@@ -164,4 +165,9 @@ public class UnforgedWeapon : WeaponBase
         yield return null;
     }
     
+
+    void SFX()
+    {
+        AudioManager.instance.Play("Slash", 0.75f, 1.25f);
+    }
 }

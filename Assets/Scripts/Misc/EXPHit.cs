@@ -19,6 +19,8 @@ public class EXPHit : MonoBehaviour
             isBeingPickedUp = true;
             player.GainEXP(main.EXP);
             Invoke("DestroySelf", 0.5f);
+
+            AudioManager.instance.Play("EXP", 0.75f, 1.25f);
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,9 @@ public class CircleProjectile : MonoBehaviour
     [SerializeField] GameObject part;
     [SerializeField] GameObject currentPart;
 
+
+    [SerializeField] AudioSource spin;
+
     private void Start()
     {
         StartCoroutine(ReactivateHitBox());
@@ -23,15 +27,17 @@ public class CircleProjectile : MonoBehaviour
     void Update()
     {
         if (GameManager.instance.gameState != GameManager.States.Playing) return;
-        if (rotationSpeed == 0.0f)
-            DOTInterval = baseInterval / Mathf.Clamp(Mathf.Abs(0.00001f * 0.5f), 1.0f, 100.0f);
-        else
-            DOTInterval = baseInterval / Mathf.Clamp(Mathf.Abs(rotationSpeed * 0.5f), 1.0f, 100.0f);
+
+        DOTInterval = baseInterval / Mathf.Clamp(Mathf.Abs(rotationSpeed * 0.5f), 1.0f, 100.0f);
 
         DOTInterval = Mathf.Clamp(DOTInterval, 0.0f, 5.0f);
+        spin.volume = Mathf.Abs(rotationSpeed * 0.5f) * 0.05f;
 
         Rotator.transform.Rotate(new Vector3(0.0f, 0.0f, -rotationSpeed));
         GameManager.instance.playerStats.sprite.transform.Rotate(new Vector3(0.0f, 0.0f, -rotationSpeed));
+
+        if (currentPart != null) 
+            currentPart.transform.position = GameManager.instance.playerMovement.transform.position;
 
         if (Mathf.Abs(rotationSpeed) >= 2.0f && currentPart == null)
         {

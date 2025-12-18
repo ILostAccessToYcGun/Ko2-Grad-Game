@@ -21,6 +21,14 @@ public class SpinSwordProjectile : MonoBehaviour
     bool destroying = false;
 
     public GameObject part;
+    public AudioSource spin;
+
+    private void Start()
+    {
+        AudioManager.instance.Play("Throw", 0.8f, 1.2f);
+        spin.pitch = Random.Range(0.8f, 1.2f);
+    }
+
     void Update()
     {
         //damage intervals

@@ -61,6 +61,7 @@ public class PlayerStats : MonoBehaviour, IDamage
     Color originalColour;
     private void Start()
     {
+        originalColour = sprite.color;
         ResetStats();
     }
 
@@ -99,6 +100,8 @@ public class PlayerStats : MonoBehaviour, IDamage
         evo2unlocked = false;
         evolved = false;
 
+        sprite.color = originalColour;
+
         if (!isRegen)
             StartCoroutine(PassiveRegen());
 
@@ -107,8 +110,6 @@ public class PlayerStats : MonoBehaviour, IDamage
         {
             exp.UpdateRange();
         }
-
-        originalColour = sprite.color;
     }
 
     public void GainEXP(float amount)
@@ -242,9 +243,11 @@ public class PlayerStats : MonoBehaviour, IDamage
 
         CameraShake.instance.Shake(0.1f, 0.25f);
         StartCoroutine(FlashRed());
+        AudioManager.instance.Play("Hit", 0.75f, 1.25f);
 
         if (currentHP <= 0)
         {
+            AudioManager.instance.Play("Death", 0.8f, 1.2f);
             GameManager.instance.Lose();
             isRegen = false;
         }
@@ -255,6 +258,7 @@ public class PlayerStats : MonoBehaviour, IDamage
         Destroy(currentEvolve);
         currentEvolve = null;
         evolved = true;
+        AudioManager.instance.Play("Evolve", 0.9f, 1.1f);
     }
 
 

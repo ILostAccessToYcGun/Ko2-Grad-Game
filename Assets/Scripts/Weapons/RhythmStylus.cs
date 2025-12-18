@@ -14,8 +14,8 @@ public class RhythmStylus : WeaponBase
 
     [Header("Mouse 2")]
     [SerializeField] float m2DmgMult = 2.0f;
-    [SerializeField] float maxDragTime = 10.0f;
-    [SerializeField] float currentDragTime = 10.0f;
+    [SerializeField] float maxDragTime = 5.0f;
+    [SerializeField] float currentDragTime = 5.0f;
 
     [SerializeField] float explosionTimer = 0.0f;
     public List<StylusDrag> explosions;
@@ -28,6 +28,8 @@ public class RhythmStylus : WeaponBase
     [SerializeField] GameObject MouseTrail;
     [SerializeField] GameObject currentTrail;
 
+    bool dragSound = false;
+
 
     private new void Start()
     {
@@ -35,7 +37,7 @@ public class RhythmStylus : WeaponBase
         UIManager.instance.ToggleStylusUI();
         UIManager.instance.UpdateStylusReserve(currentDragTime / maxDragTime);
         currentTrail = Instantiate(MouseTrail, GameManager.instance.cam.screenToWorld, Quaternion.identity);
-
+        MusicManage.instance.SelectOSU();
     }
     protected override void OnUpdate()
     {
@@ -93,9 +95,12 @@ public class RhythmStylus : WeaponBase
                 tap.knockback = m1Knockback;
                 tap.parent = this;
                 attackTimer = m1CD;
+
+                AudioManager.instance.Play("OsuHit", 0.95f, 1.05f);
             }
             else if (m2.ReadValue<float>() > 0.0f)
             {
+                
                 //stulys drag + earthwake explosion
                 m2Held = true;
 
@@ -112,6 +117,11 @@ public class RhythmStylus : WeaponBase
                 attackTimer = dragPlaceCD;
                 lastExplosive = drag.gameObject;
 
+                if (!dragSound)
+                {
+                    dragSound = true;
+                    AudioManager.instance.Play("OsuHit", 0.75f, 0.85f);
+                }
                 UpdateLine();
             }
         }
@@ -132,6 +142,8 @@ public class RhythmStylus : WeaponBase
         explosionTimer = 0.0f;
         UIManager.instance.UpdateExplosionReserve(explosionTimer / currentDragTime);
         UIManager.instance.UpdateStylusReserve(currentDragTime / maxDragTime);
+        AudioManager.instance.Play("OsuHit", 0.75f, 0.85f);
+        dragSound = false;
 
         foreach (var drag in explosions)
         {

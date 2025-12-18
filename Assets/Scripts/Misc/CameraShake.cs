@@ -20,6 +20,7 @@ public class CameraShake : MonoBehaviour
         float timer = duration;
         while ( timer >= 0)
         {
+            if (GameManager.instance.gameState != GameManager.States.Playing) break;
             timer -= Time.deltaTime;
             transform.localPosition = Random.insideUnitCircle * magnitude;
             yield return null;

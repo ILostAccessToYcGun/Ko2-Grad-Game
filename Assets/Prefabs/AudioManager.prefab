@@ -1,0 +1,352 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5781974664036686441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4021430035287404055}
+  - component: {fileID: 4323168303011617774}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4021430035287404055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5781974664036686441}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2224060916641342215}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4323168303011617774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5781974664036686441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747e5264decf46445a4d867e1a259500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MenuClick
+    clip: {fileID: 8300000, guid: 4b8e917de7254464ba75dee8b375347d, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: d036e55bbd826914eb87b4f9e4724af1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: 6a59d0ade14ac164da6fa5937e29c4f5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerStep
+    clip: {fileID: 8300000, guid: 783bd5090b4d04d49ae36a36484af872, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Evolve
+    clip: {fileID: 8300000, guid: 71b419cbf62ca4c49bfa66b9e0ee6080, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Upgrade
+    clip: {fileID: 8300000, guid: 872e9ce34396dd742a75ae3d617ca139, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BigSlash
+    clip: {fileID: 8300000, guid: a8c140c6aee6caf4b8145f0c17f94362, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Slash
+    clip: {fileID: 8300000, guid: a4be6f5a08b173a418b69c137985961a, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: FlailKick
+    clip: {fileID: 8300000, guid: b0c697575f324a84c9fcd87ca7d52257, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EXP
+    clip: {fileID: 8300000, guid: eb7a4614d89c4b44b8a261c06965a1f2, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: FlailMove
+    clip: {fileID: 8300000, guid: ebbb59b2ea3331845be9b63de13b4c79, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Throw
+    clip: {fileID: 8300000, guid: 817fc839e53802e489e45f03c1e8a8c5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Tone
+    clip: {fileID: 8300000, guid: a030dcc8f1aa82e4789e76e506cdda67, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ODMHit
+    clip: {fileID: 8300000, guid: f89ab8665eba40e409fac65b02254aaf, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ODMShoot
+    clip: {fileID: 8300000, guid: 9aea1e2a4209b0543a06e4a528b1549d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: FormChange
+    clip: {fileID: 8300000, guid: 000be4ce606b8f24287de5ba05332f45, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: OsuHit
+    clip: {fileID: 8300000, guid: d95a83e48eb8d7f4b8a6373f560ebd2c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bass
+    clip: {fileID: 8300000, guid: 3f30a65d0c7af3e46b3286938bc64cb3, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GuitarSmash
+    clip: {fileID: 8300000, guid: df06c884ec5cf354b8c2e4a190b8a91a, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: e19ef06f001266843833b4510ab8244b, type: 3}
+    volume: 0.9
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Needle
+    clip: {fileID: 8300000, guid: 9ce852f3f8c49a044a2683445c00607b, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Slam
+    clip: {fileID: 8300000, guid: 0e818328e3b8e4a4f8bc7827bcebd257, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BookSlam
+    clip: {fileID: 8300000, guid: 56f01b5e1646f9f41b30f9443ee96563, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!1 &6386686522926941006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2224060916641342215}
+  - component: {fileID: 8600436116338344194}
+  - component: {fileID: 6844722006982914597}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2224060916641342215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6386686522926941006}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4021430035287404055}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8600436116338344194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6386686522926941006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70aa153865670d847a6313e1469829a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Music:
+  - {fileID: 8300000, guid: 351b07ff482092b4784ff25fae941e2a, type: 3}
+  - {fileID: 8300000, guid: 1941d4d8b0d4faf4a977cb1b58b22cb2, type: 3}
+  - {fileID: 8300000, guid: fcfb68b1ed078204d9c10d932122c278, type: 3}
+  Main:
+  - {fileID: 8300000, guid: 351b07ff482092b4784ff25fae941e2a, type: 3}
+  - {fileID: 8300000, guid: 1941d4d8b0d4faf4a977cb1b58b22cb2, type: 3}
+  - {fileID: 8300000, guid: fcfb68b1ed078204d9c10d932122c278, type: 3}
+  AOT:
+  - {fileID: 8300000, guid: 82fd49d7411b4f34b92a62fe7c6193d0, type: 3}
+  - {fileID: 8300000, guid: 351b07ff482092b4784ff25fae941e2a, type: 3}
+  - {fileID: 8300000, guid: 1941d4d8b0d4faf4a977cb1b58b22cb2, type: 3}
+  - {fileID: 8300000, guid: cbec8b9dc2d0e2e458056488350901c1, type: 3}
+  OSU:
+  - {fileID: 8300000, guid: 1941d4d8b0d4faf4a977cb1b58b22cb2, type: 3}
+  - {fileID: 8300000, guid: 4e8ff171170d1b141bc877f596e2c65e, type: 3}
+  - {fileID: 8300000, guid: 47f3d42de27abad448915548b4fb9783, type: 3}
+  - {fileID: 8300000, guid: d1ac2b2dd3217704a8dea2dda17bb6d3, type: 3}
+  BASS:
+  - {fileID: 8300000, guid: 351b07ff482092b4784ff25fae941e2a, type: 3}
+  - {fileID: 8300000, guid: fcfb68b1ed078204d9c10d932122c278, type: 3}
+  - {fileID: 8300000, guid: e4d2b36065154c64ab469b1d5b411163, type: 3}
+  - {fileID: 8300000, guid: 4a067c8425892d84ca8b4b2b073e6c06, type: 3}
+  player: {fileID: 6844722006982914597}
+--- !u!82 &6844722006982914597
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6386686522926941006}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -12,6 +12,8 @@ public class JCUSlamDamage : MonoBehaviour
         Invoke("DestroySelf", 0.5f);
         GameObject part = Instantiate(particle, transform.position + spawnOffset, Quaternion.identity);
         CameraShake.instance.Shake(0.2f, 0.4f);
+
+        AudioManager.instance.Play("Slam", 0.75f, 1.25f);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

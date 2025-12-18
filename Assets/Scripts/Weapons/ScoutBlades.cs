@@ -35,19 +35,13 @@ public class ScoutBlades : WeaponBase
     public GameObject ODM2;
     [SerializeField] float m2Knockback;
     bool dashSlash = false;
-    //[SerializeField] float speed;
-    //[SerializeField] float acceleration;
-    //[SerializeField] float damageInterval;
-    //[SerializeField] float duration;
-    //[SerializeField] float angleSpread = 45.0f;
-    //[SerializeField] float rotationSpeed = 300f;
 
     private new void Start()
     {
         base.Start();
         UIManager.instance.ToggleBladeUI();
         UIManager.instance.UpdateBladeCount(bladeAmmo);
-
+        MusicManage.instance.SelectAOT();
     }
 
     protected override void OnUpdate()
@@ -66,11 +60,14 @@ public class ScoutBlades : WeaponBase
 
                 playerMovement.transform.position = Vector2.MoveTowards(playerMovement.transform.position, ODMtarget.transform.position, dashSpeed * Time.deltaTime);
 
+
                 //DASH SLASH
                 if (Vector2.Distance(playerMovement.transform.position, ODMtarget.transform.position) < 2.5f && dashSlash == false)
                 {
                     for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
                     {
+                        AudioManager.instance.Play("Slash", 0.75f, 1.25f);
+
                         ScoutSwing swing =
                             Instantiate(m1Projectile, transform.position, Quaternion.identity, transform)
                             .GetComponentInChildren<ScoutSwing>();
@@ -186,6 +183,8 @@ public class ScoutBlades : WeaponBase
                     odm.target = ODMtarget;
                     odm.offset = offset;
 
+                    AudioManager.instance.Play("ODMShoot", 0.9f, 1.1f);
+
                     Invoke("ODMDelay", Random.Range(0.2f, 0.4f));
                 }
                 attackTimer = m2CD;
@@ -206,33 +205,40 @@ public class ScoutBlades : WeaponBase
             swingAnimation = 1;
         }
 
-        for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
+        if (swingAnimation == 3)
         {
-            ScoutSwing swing =
-                    Instantiate(m1Projectile, transform.position, Quaternion.identity, transform)
-                    .GetComponentInChildren<ScoutSwing>();
+            AudioManager.instance.Play("BigSlash", 0.75f, 1.25f);
+        }
+        else
+            AudioManager.instance.Play("Slash", 0.75f, 1.25f);
 
-            HelperManager.instance.RotateTowardsDirection((GameManager.instance.cam.screenToWorld - (Vector2)GameManager.instance.playerMovement.transform.position).normalized, swing.transform.parent);
-            swing.damage = GameManager.instance.playerStats.ATK * m1DmgMult;
-            swing.knockback = m1Knockback;
-            swing.parent = this;
-            bladeCounter++;
-
-            //Debug.Log(swingAnimation);
-            if (swingAnimation == 1) swing.swingAnimation.clip = swing.first;
-            else if (swingAnimation == 2) swing.swingAnimation.clip = swing.second;
-            else swing.swingAnimation.clip = swing.third;
-
-            swing.swingAnimation.Play();
-
-            timer = 0.1f;
-            while (timer > 0)
+        for (int i = 0; i < GameManager.instance.playerStats.PRJ; i++)
             {
-                timer -= Time.deltaTime;
+                ScoutSwing swing =
+                        Instantiate(m1Projectile, transform.position, Quaternion.identity, transform)
+                        .GetComponentInChildren<ScoutSwing>();
+
+                HelperManager.instance.RotateTowardsDirection((GameManager.instance.cam.screenToWorld - (Vector2)GameManager.instance.playerMovement.transform.position).normalized, swing.transform.parent);
+                swing.damage = GameManager.instance.playerStats.ATK * m1DmgMult;
+                swing.knockback = m1Knockback;
+                swing.parent = this;
+                bladeCounter++;
+
+                //Debug.Log(swingAnimation);
+                if (swingAnimation == 1) swing.swingAnimation.clip = swing.first;
+                else if (swingAnimation == 2) swing.swingAnimation.clip = swing.second;
+                else swing.swingAnimation.clip = swing.third;
+
+                swing.swingAnimation.Play();
+
+                timer = 0.1f;
+                while (timer > 0)
+                {
+                    timer -= Time.deltaTime;
+                    yield return null;
+                }
                 yield return null;
             }
-            yield return null;
-        }
        
         sprite1.enabled = true;
         sprite2.enabled = true;
@@ -251,6 +257,7 @@ public class ScoutBlades : WeaponBase
         odm.target = ODMtarget;
         odm.offset = offset;
 
+        AudioManager.instance.Play("ODMShoot", 0.9f, 1.1f);
     }
 
     void DelayedEnableDamage()
