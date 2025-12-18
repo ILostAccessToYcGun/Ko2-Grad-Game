@@ -40,7 +40,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125408429422492773}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -722,6 +722,7 @@ MonoBehaviour:
   baseFrameDelay: 0.5
   AOTtrail: {fileID: 5701657052070773546}
   Anesthetictrail: {fileID: 7907588401069933207}
+  Fliptrail: {fileID: 5005217774689740243}
   moveDir: {x: 0, y: 0}
   weaponToEquip: {fileID: 6841627146122221847, guid: f2929f7df00e27c4d8ab337573dc67d4, type: 3}
   timer: 0
@@ -769,8 +770,8 @@ MonoBehaviour:
   canTakeDamage: 1
   Evolution1KillCount: 0
   Evolution2KillCount: 0
-  Evolution1KillsRequired: 1
-  Evolution2KillsRequired: 1
+  Evolution1KillsRequired: 100
+  Evolution2KillsRequired: 100
   killCount: 0
   evo1unlocked: 0
   evo2unlocked: 0
