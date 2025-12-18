@@ -133,23 +133,33 @@ public class EnemyBase : MonoBehaviour, IDamage
 
         StartCoroutine(SycnCovid());
         isBurn = true;
+
+        Color actualOriginalColour = originalColour;
+
+        originalColour = new Color(0.3647f, 0.1529f, 0.3647f, 1.0f);
+        sprite.color = originalColour;
+        
+
         float timer = 0.0f;
         burnTimer = burnTime;
         while (burnTimer > 0)
         {
             burnTimer -= Time.deltaTime;
-            timer = 1.0f;
-            while (timer > 0)
+            timer += Time.deltaTime;
+            if (timer >= 1.0f)
             {
-                timer -= Time.deltaTime;
+                timer = 0.0f;
+                TakeDamage(damage);
                 yield return null;
             }
-            TakeDamage(damage);
             yield return null;
 
         }
         yield return null;
         isBurn = false;
+        originalColour = actualOriginalColour;
+        sprite.color = originalColour;
+
         Destroy(currentCovid);
     }
 
@@ -214,7 +224,7 @@ public class EnemyBase : MonoBehaviour, IDamage
         }
         else
         {
-            CameraShake.instance.Shake(0.05f, 0.075f);
+            CameraShake.instance.Shake(0.05f * (1 + (damage * 0.5f)), 0.075f);
         }
     }
 

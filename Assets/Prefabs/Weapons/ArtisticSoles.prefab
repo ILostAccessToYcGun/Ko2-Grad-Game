@@ -188,7 +188,7 @@ MonoBehaviour:
   target: {x: 0, y: 0}
   m1Knockback: 0
   m2DmgMult: 1
-  m2Knockback: 1
+  m2Knockback: 1.5
   rotationSpeedRange: {x: 1, y: 0}
   rotationDrag: 0.999
   rotationStrength: 15

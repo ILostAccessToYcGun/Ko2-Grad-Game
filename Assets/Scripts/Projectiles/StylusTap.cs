@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StylusTap : MonoBehaviour
@@ -15,9 +16,12 @@ public class StylusTap : MonoBehaviour
     public float smallestDist = 10.0f;
     bool isDisabling = false;
 
+    public GameObject part;
+
     private void Start()
     {
         Invoke("DestroySelf", 0.2f);
+        Instantiate(part, transform.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

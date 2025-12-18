@@ -29,6 +29,9 @@ public class FlipAnimation : MonoBehaviour
         parent.checkConsecutive = true;
         parent.consecutiveTimer = parent.consecutiveTimeFrame;
 
+        GameManager.instance.playerMovement.Fliptrail.enabled = false;
+        CameraShake.instance.Shake(0.2f, 0.15f);
+
         if (parent.flipCounter >= GameManager.instance.playerStats.PRJ) parent.flipCounter = 0;
     }
 }

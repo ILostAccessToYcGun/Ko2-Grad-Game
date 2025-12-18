@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class AnestheticProjectile : MonoBehaviour
@@ -11,10 +12,14 @@ public class AnestheticProjectile : MonoBehaviour
     public float DOTInterval = 0.5f;
     public float sizeGain = 0.1f;
 
+    public GameObject part;
+    GameObject currentPart;
+
     private void Start()
     {
         Invoke("DestroySelf", duration);
         StartCoroutine(ReactivateHitBox());
+        currentPart = Instantiate(part, transform.position, Quaternion.identity);
     }
 
     public List<GameObject> hitTargets;
@@ -22,6 +27,8 @@ public class AnestheticProjectile : MonoBehaviour
     {
         transform.position += (Vector3)moveDir * speed * Time.deltaTime;
         transform.localScale += new Vector3(1, 1, 1) * sizeGain * Time.deltaTime;
+        currentPart.transform.position = transform.position;
+        currentPart.transform.localScale = transform.localScale;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

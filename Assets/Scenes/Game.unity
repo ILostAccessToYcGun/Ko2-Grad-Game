@@ -22926,10 +22926,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6347390356927338490, guid: 6669a291e350952488f93e0107d4d78d, type: 3}
-      propertyPath: cursorSprite
-      value: 
-      objectReference: {fileID: 2800000, guid: fd765704d87246a4ca08277200deaacf, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23227,6 +23223,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3645039578937009557, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
+      propertyPath: Fliptrail
+      value: 
+      objectReference: {fileID: 8379118098803406970}
+    - target: {fileID: 5005217774689740243, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8458616252781432463, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -23276,6 +23280,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
+--- !u!96 &8379118098803406970 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 5005217774689740243, guid: 4e9407d4c0f3e184ab3e7fe7b88cde97, type: 3}
+  m_PrefabInstance: {fileID: 8379118098803406969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -25,26 +25,21 @@ public class RhythmStylus : WeaponBase
     [SerializeField] GameObject lastExplosive;
     [SerializeField] LineRenderer dragLine;
 
+    [SerializeField] GameObject MouseTrail;
+    [SerializeField] GameObject currentTrail;
 
-
-
-    //[SerializeField] float m2Knockback;
-    //[SerializeField] float m2Speed;
-    //[SerializeField] float m2Decceleration;
-    //[SerializeField] float damageInterval;
-    //[SerializeField] float m2Duration;
-    //[SerializeField] float angleSpread = 45.0f;
-    //[SerializeField] float rotationSpeed = 300f;
 
     private new void Start()
     {
         base.Start();
         UIManager.instance.ToggleStylusUI();
         UIManager.instance.UpdateStylusReserve(currentDragTime / maxDragTime);
+        currentTrail = Instantiate(MouseTrail, GameManager.instance.cam.screenToWorld, Quaternion.identity);
 
     }
     protected override void OnUpdate()
     {
+        currentTrail.transform.position = GameManager.instance.cam.screenToWorld;
         if (explosions.Count <= 0)
         {
             explosionPos.Clear();

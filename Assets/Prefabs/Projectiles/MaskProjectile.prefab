@@ -52,6 +52,8 @@ MonoBehaviour:
   maxSize: 5
   knockback: 6
   duration: 0.5
+  burnTime: 5
+  part: {fileID: 4345138012899188119, guid: 83856d6c9f538254c8c7a98c962f5d7f, type: 3}
 --- !u!212 &5392004946369027833
 SpriteRenderer:
   m_ObjectHideFlags: 0

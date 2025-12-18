@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class MaskProjectile : MonoBehaviour
@@ -10,12 +11,22 @@ public class MaskProjectile : MonoBehaviour
     public float maxSize;
     public float knockback;
     public float duration = 5.0f;
-    public float burnTime = 5.0f;
+    public float burnTime = 7.5f;
 
     bool isDestroying = false;
 
+    public GameObject part;
+    GameObject currentPart;
+
+    private void Start()
+    {
+        currentPart = Instantiate(part, transform.position, Quaternion.identity);
+    }
+
     void Update()
     {
+        if (currentPart != null)
+            currentPart.transform.position = transform.position;
         transform.localScale += new Vector3(speed * Time.deltaTime, speed * Time.deltaTime, speed * Time.deltaTime);
 
         if (transform.localScale.x >= maxSize)

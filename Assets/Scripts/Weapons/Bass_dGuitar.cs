@@ -45,6 +45,8 @@ public class Bass_dGuitar : WeaponBase
 
                 angle = angle / (GameManager.instance.playerStats.PRJ * 0.25f);
 
+                CameraShake.instance.Shake(0.2f, 0.25f);
+
                 if (isEven)
                 {
                     currentSpread += angle * 0.5f;

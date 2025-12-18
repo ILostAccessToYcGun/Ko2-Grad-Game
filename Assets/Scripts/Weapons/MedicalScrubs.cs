@@ -59,7 +59,15 @@ public class MedicalScrubs : WeaponBase
                 //anesthetic trail
 
                 isEmitting = !isEmitting;
-                if (isEmitting) StartCoroutine(Anesthetic());
+                if (isEmitting)
+                {
+                    StartCoroutine(Anesthetic());
+                    GameManager.instance.playerMovement.Anesthetictrail.enabled = true;
+                }
+                else
+                {
+                    GameManager.instance.playerMovement.Anesthetictrail.enabled = false;
+                }
                 attackTimer = m2CD;
                 
             }

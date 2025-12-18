@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public float baseFrameDelay;
 
     public TrailRenderer AOTtrail;
+    public TrailRenderer Anesthetictrail;
+    public TrailRenderer Fliptrail;
 
     [Header("Debug")]
     public Vector2 moveDir;

@@ -91,13 +91,13 @@ public class ArtisticSoles : WeaponBase
                 {
                     if (angle < 0)
                     {
-                        Debug.Log("angle--");
+                        //Debug.Log("angle--");
                         //anti clockwise, WASD
                         currentRotationSpeed -= rotationStrength * Time.deltaTime;
                     }
                     else if (angle > 0)
                     {
-                        Debug.Log("angle++");
+                        //Debug.Log("angle++");
                         //clockwise, WDSA
                         currentRotationSpeed += rotationStrength * Time.deltaTime;
                     }
@@ -139,7 +139,8 @@ public class ArtisticSoles : WeaponBase
                 current = playerMovement.transform.position;
                 //M1 attack
                 //consecutive flips
-                
+
+                GameManager.instance.playerMovement.Fliptrail.enabled = true;
 
                 //play the animation
                 if (forwardVector.x > 0) flipper.flipAnimation.clip = flipClock;

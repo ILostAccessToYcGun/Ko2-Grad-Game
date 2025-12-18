@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         if (!cam) cam = FindFirstObjectByType<CameraTween>();
         Time.timeScale = 0;
         GameManager.instance.gameState = GameManager.States.Paused;
-        Cursor.SetCursor(cursorSprite, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(cursorSprite, new Vector2(cursorSprite.width / 2f, cursorSprite.height / 2f), CursorMode.Auto);
     }
 
     // Update is called once per frame

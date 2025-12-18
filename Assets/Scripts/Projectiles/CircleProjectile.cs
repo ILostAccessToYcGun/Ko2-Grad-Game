@@ -6,9 +6,13 @@ public class CircleProjectile : MonoBehaviour
 {
     public float damage;
     public float rotationSpeed = 2.0f;
-    public float baseInterval = 3f;
+    public float baseInterval = 2f;
     public float knockback = 0.5f;
     public float DOTInterval;
+
+    [SerializeField] GameObject Rotator;
+    [SerializeField] GameObject part;
+    [SerializeField] GameObject currentPart;
 
     private void Start()
     {
@@ -26,8 +30,18 @@ public class CircleProjectile : MonoBehaviour
 
         DOTInterval = Mathf.Clamp(DOTInterval, 0.0f, 5.0f);
 
-        transform.Rotate(new Vector3(0.0f, 0.0f, -rotationSpeed));
+        Rotator.transform.Rotate(new Vector3(0.0f, 0.0f, -rotationSpeed));
         GameManager.instance.playerStats.sprite.transform.Rotate(new Vector3(0.0f, 0.0f, -rotationSpeed));
+
+        if (Mathf.Abs(rotationSpeed) >= 2.0f && currentPart == null)
+        {
+            currentPart = Instantiate(part, transform.position, Quaternion.identity);
+        }
+
+        if (Mathf.Abs(rotationSpeed) < 2.0f && currentPart != null)
+        {
+            Destroy(currentPart);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -63,5 +77,9 @@ public class CircleProjectile : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.instance.playerStats.sprite.transform.rotation = Quaternion.identity;
+        if (currentPart != null)
+        {
+            Destroy(currentPart);
+        }
     }
 }

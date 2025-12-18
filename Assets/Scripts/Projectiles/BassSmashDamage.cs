@@ -7,9 +7,13 @@ public class BassSmashDamage : MonoBehaviour
     public float knockback;
     public Vector2 moveDir;
 
+    public GameObject part;
+
     private void Start()
     {
         Invoke("DestroySelf", 0.5f);
+        CameraShake.instance.Shake(0.15f, 0.1f);
+        Instantiate(part, transform.position, Quaternion.identity);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
