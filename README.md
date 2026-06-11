@@ -46,4 +46,14 @@ E.g
 Because particles, cameras and trails is the golden trifecta of juice and player feedback. (In hindsight, sound should go there aswell)
 
 # Lessons/Reflection
+This project was less about learning and more of an application of all I have learned. I applied my prior knowledge from my own works and from my university assignments to assist in the creation of the game. One example of this is creating static singletons, simple but very effective. Additionally I learned about sprite slicing, this allowed me to adjust UI sprites for effective and aesthetic scaling on UI. 
+
+I think this project was a good experience. It showed me that I can lead a project from ideation through development and into delivery. it also revealed some weakpoints, such as oversetimating my scheduling.
+
+# Improvements
+The project is by no means perfect. From a programming perspective, many of the systems in place, are not optimized the best. Due to the short time constraint I focused on making things functional over making them as efficient as possible, however I made optimizations where I could. For example I used many base classes and a parenting to make the code as dry as possible, however some systems like the weapon attack speed system are not as elegant.
+
+# Future Plans
+I currently have no plans to continue content development in the game, as this was a one time present and not a live ops project. However in the future I may look to replace the music in the game to remove copywrite restraints. I find this change quite minute and insignificant, so I don't have any urgency to make this change.
+
 
